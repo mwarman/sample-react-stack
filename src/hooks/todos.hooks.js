@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { getTodos } from '../api/todos.api';
+import { getTodo, getTodos } from '../api/todos.api';
 
 const QueryKeys = {
   Todos: 'todos',
@@ -8,4 +8,8 @@ const QueryKeys = {
 
 export const useGetTodos = (options) => {
   return useQuery([QueryKeys.Todos], getTodos, options);
+};
+
+export const useGetTodo = (id, options) => {
+  return useQuery([QueryKeys.Todos, id], () => getTodo(id), options);
 };

@@ -2,13 +2,15 @@ import { Link } from 'react-router-dom';
 
 const TodoListItem = ({ id, userId, title, completed }) => {
   return (
-    <div>
-      <div>{title}</div>
-      <div>{completed ? 'done' : 'not done'}</div>
-      <div>
+    <tr>
+      <td>
+        <Link to={`/todos/${id}`}>{title}</Link>
+      </td>
+      <td>{completed ? 'done' : 'not done'}</td>
+      <td>
         <Link to={`/users/${userId}`}>User</Link>
-      </div>
-    </div>
+      </td>
+    </tr>
   );
 };
 

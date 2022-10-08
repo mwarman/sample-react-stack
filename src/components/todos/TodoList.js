@@ -2,16 +2,20 @@ import TodoListItem from './TodoListItem';
 
 const TodoList = ({ todos = [] }) => {
   return (
-    <div>
-      <div>
-        <div>Title</div>
-        <div>Status</div>
-        <div>Assignee</div>
-      </div>
-      {todos.map((todo) => (
-        <TodoListItem key={todo.id} {...todo} />
-      ))}
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <td>Title</td>
+          <td>Status</td>
+          <td>Assignee</td>
+        </tr>
+      </thead>
+      <tbody>
+        {todos.map((todo) => (
+          <TodoListItem key={todo.id} {...todo} />
+        ))}
+      </tbody>
+    </table>
   );
 };
 

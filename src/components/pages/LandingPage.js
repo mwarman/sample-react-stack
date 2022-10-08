@@ -9,7 +9,7 @@ const LandingPage = () => {
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/todos">Todos</NavLink>
+          <NavLink to="/todos/list">Todos</NavLink>
         </li>
       </nav>
     </div>
