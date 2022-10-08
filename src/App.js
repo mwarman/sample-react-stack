@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-function App() {
+import LandingPage from './components/pages/LandingPage';
+import TodosPage from './components/pages/TodosPage';
+import ErrorPage from './components/pages/ErrorPage';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60, // 1 minute
+    },
+  },
+});
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <LandingPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/todos',
+    element: <TodosPage />,
+  },
+]);
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   );
-}
+};
 
 export default App;
