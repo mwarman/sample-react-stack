@@ -13,7 +13,7 @@ const Todo = () => {
   }
 
   return (
-    <div>
+    <div className="mt-2">
       <h2 className="text-2xl font-bold text-slate-500">{todo.title}</h2>
       <div>
         <span className="mr-2 font-bold">Status:</span>

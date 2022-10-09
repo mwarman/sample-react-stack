@@ -1,11 +1,12 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import LandingPage from './components/pages/LandingPage';
-import TodoListPage from './components/pages/TodoListPage';
-import TodosPage from './components/pages/TodosPage';
-import Todo from './components/todos/Todo';
-import ErrorPage from './components/pages/ErrorPage';
+import StandardPage from "./components/pages/StandardPage";
+import LandingPage from "./components/pages/LandingPage";
+import TodoListPage from "./components/pages/TodoListPage";
+import TodosPage from "./components/pages/TodosPage";
+import Todo from "./components/todos/Todo";
+import ErrorPage from "./components/pages/ErrorPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -17,21 +18,27 @@ const queryClient = new QueryClient({
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <LandingPage />,
+    path: "/",
+    element: <StandardPage />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: '/todos/list',
-    element: <TodoListPage />,
-  },
-  {
-    path: '/todos',
-    element: <TodosPage />,
     children: [
       {
-        path: ':todoId',
-        element: <Todo />,
+        index: true,
+        element: <LandingPage />,
+      },
+      {
+        path: "/todos/list",
+        element: <TodoListPage />,
+      },
+      {
+        path: "/todos",
+        element: <TodosPage />,
+        children: [
+          {
+            path: ":todoId",
+            element: <Todo />,
+          },
+        ],
       },
     ],
   },
