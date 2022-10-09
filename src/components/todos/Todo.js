@@ -1,12 +1,11 @@
 import { Link, useParams } from "react-router-dom";
 
+import Badge from "../common/Badge";
 import { useGetTodo } from "../../hooks/todos.hooks";
 
 const Todo = () => {
   const { todoId } = useParams();
-  // console.log(`todoId:${todoId}`);
   const { data: todo, status } = useGetTodo(todoId);
-  // console.log(`status::${status}::todo::${JSON.stringify(todo)}`);
 
   if (status === "loading") {
     return <h2 className="text-xl">Loading...</h2>;
@@ -17,7 +16,11 @@ const Todo = () => {
       <h2 className="text-2xl font-bold text-slate-500">{todo.title}</h2>
       <div>
         <span className="mr-2 font-bold">Status:</span>
-        {todo.completed ? "done" : "not done"}
+        {todo.completed ? (
+          <Badge type="success">DONE</Badge>
+        ) : (
+          <Badge>NOT STARTED</Badge>
+        )}
       </div>
       <div>
         <span className="mr-2 font-bold">User:</span>

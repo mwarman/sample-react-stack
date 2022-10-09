@@ -6,7 +6,6 @@ import { useGetTodos } from "../../hooks/todos.hooks";
 const TodoNav = () => {
   const { data: todos, status } = useGetTodos();
   const { todoId } = useParams();
-  console.log(`todoId::${todoId}`);
 
   if (status === "loading") {
     return <div>Loading...</div>;
@@ -18,9 +17,10 @@ const TodoNav = () => {
         <div
           key={todo.id}
           className={classNames(
-            "border-t",
+            "border-b",
             "border-slate-300",
             "py-1",
+            "px-2",
             {
               "bg-slate-100": todoId == todo.id,
             },
@@ -29,7 +29,7 @@ const TodoNav = () => {
         >
           <Link
             to={`/todos/${todo.id}`}
-            className="text-blue-500 hover:text-blue-700"
+            className="block truncate text-blue-500 hover:text-blue-700"
           >
             {todo.title}
           </Link>

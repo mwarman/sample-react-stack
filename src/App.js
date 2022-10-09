@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import StandardPage from "./components/pages/StandardPage";
+import StandardLayout from "./components/layouts/StandardLayout";
 import LandingPage from "./components/pages/LandingPage";
 import TodoListPage from "./components/pages/TodoListPage";
 import TodosPage from "./components/pages/TodosPage";
@@ -19,7 +19,7 @@ const queryClient = new QueryClient({
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <StandardPage />,
+    element: <StandardLayout />,
     errorElement: <ErrorPage />,
     children: [
       {

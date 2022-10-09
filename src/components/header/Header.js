@@ -1,11 +1,32 @@
 import { Link, NavLink } from "react-router-dom";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 
+const leftMenu = [
+  {
+    name: "Todos",
+    to: "/todos/list",
+    title: "List todos",
+  },
+  {
+    name: "People",
+    to: "/users/list",
+    title: "List people",
+  },
+];
+
+const rightMenu = [
+  {
+    name: "Sign In",
+    to: "/auth/signin",
+    title: "Sign In",
+  },
+];
+
 const Header = () => {
   return (
     <div
       id="header"
-      className="flex h-20 items-center border-b border-slate-300"
+      className="flex h-16 items-center border-b border-slate-300"
     >
       <div id="title" className="mr-10 ml-2">
         <Link to="/" title="Todos">
@@ -14,26 +35,35 @@ const Header = () => {
         </Link>
       </div>
       <nav>
-        <NavLink
-          to="/todos/list"
-          className="mr-6 text-slate-600 hover:text-black"
+        {leftMenu.map((link, index) => (
+          <NavLink
+            key={index}
+            to={link.to}
+            className="mr-6 text-slate-600 hover:text-black"
+            title={link.title}
+          >
+            {link.name}
+          </NavLink>
+        ))}
+        <Link
+          to="/todos/create"
+          className="mr-6 rounded-full bg-blue-500 px-3 py-2 text-white hover:bg-blue-700"
+          title="Create todo"
         >
-          Todos
-        </NavLink>
-        <NavLink
-          to="/todos/list"
-          className="mr-6 text-slate-600 hover:text-black"
-        >
-          Something else
-        </NavLink>
+          Create
+        </Link>
       </nav>
       <nav className="ml-auto">
-        <NavLink
-          to="/auth/signin"
-          className="mr-6 text-slate-600 hover:text-black"
-        >
-          Sign In
-        </NavLink>
+        {rightMenu.map((link, index) => (
+          <NavLink
+            key={index}
+            to={link.to}
+            className="mr-6 text-slate-600 hover:text-black"
+            title={link.title}
+          >
+            {link.name}
+          </NavLink>
+        ))}
       </nav>
     </div>
   );

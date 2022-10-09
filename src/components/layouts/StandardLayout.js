@@ -6,7 +6,7 @@ const StandardPage = () => {
   return (
     <>
       <Header />
-      <div className="h-[calc(100vh_-_80px)] overflow-y-auto">
+      <div className="h-[calc(100vh_-_64px)] overflow-y-auto">
         <Outlet />
       </div>
     </>

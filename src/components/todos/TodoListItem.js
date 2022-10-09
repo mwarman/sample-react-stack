@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import Badge from "../common/Badge";
+
 const TodoListItem = ({ id, userId, title, completed }) => {
   return (
     <tr className="border-y border-slate-300 hover:bg-slate-200">
@@ -8,7 +10,13 @@ const TodoListItem = ({ id, userId, title, completed }) => {
           {title}
         </Link>
       </td>
-      <td className="px-2 py-1">{completed ? "done" : "not done"}</td>
+      <td className="px-2 py-1">
+        {completed ? (
+          <Badge type="success">DONE</Badge>
+        ) : (
+          <Badge>NOT STARTED</Badge>
+        )}
+      </td>
       <td className="px-2 py-1">
         <Link
           to={`/users/${userId}`}
