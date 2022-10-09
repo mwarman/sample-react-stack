@@ -4,7 +4,7 @@ import TodoNav from "../todos/TodoNav";
 
 const TodosPage = () => {
   return (
-    <div className="mx-2 mt-2">
+    <div className="p-2">
       <h1 className="text-3xl font-bold">Todos</h1>
       <nav className="mt-3 flex">
         {[
@@ -21,7 +21,7 @@ const TodosPage = () => {
         ))}
       </nav>
       <div className="mt-3 grid grid-cols-4 gap-4">
-        <div className="overflow-y-scroll">
+        <div className="h-[calc(100vh_-_100px)] overflow-y-scroll">
           <TodoNav />
         </div>
         <div className="col-span-3">
