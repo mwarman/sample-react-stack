@@ -22,14 +22,14 @@ const TodoNav = () => {
             "py-1",
             "px-2",
             {
-              "bg-slate-100": todoId == todo.id,
+              "bg-blue-50": todoId == todo.id,
             },
             { "py-8": todoId == todo.id }
           )}
         >
           <Link
             to={`/todos/${todo.id}`}
-            className="block truncate text-blue-500 hover:text-blue-700"
+            className="block truncate hover:underline"
           >
             {todo.title}
           </Link>
