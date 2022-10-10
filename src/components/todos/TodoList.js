@@ -1,13 +1,13 @@
-import TodoListItem from './TodoListItem';
+import TodoListItem from "./TodoListItem";
 
 const TodoList = ({ todos = [] }) => {
   return (
-    <table>
+    <table className="w-full">
       <thead>
-        <tr>
-          <td>Title</td>
-          <td>Status</td>
-          <td>Assignee</td>
+        <tr className="border-b-2 border-slate-300 font-bold">
+          <td className="p-2">Title</td>
+          <td className="p-2">Status</td>
+          <td className="p-2">Assignee</td>
         </tr>
       </thead>
       <tbody>

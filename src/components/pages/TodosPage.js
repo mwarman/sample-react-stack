@@ -1,23 +1,14 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from "react-router-dom";
 
-import TodoNav from '../todos/TodoNav';
+import TodoNav from "../todos/TodoNav";
 
 const TodosPage = () => {
   return (
-    <div>
-      <h1>Todos</h1>
-      <nav>
-        <li>
-          <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to="/todos/list">Todos</NavLink>
-        </li>
-      </nav>
-      <div>
+    <div className="grid h-full grid-cols-4 gap-4">
+      <div className="overflow-y-scroll">
         <TodoNav />
       </div>
-      <div>
+      <div className="col-span-3">
         <Outlet />
       </div>
     </div>
