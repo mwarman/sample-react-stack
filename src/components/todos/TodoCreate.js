@@ -2,6 +2,8 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 
+import ButtonBar from "../common/ButtonBar";
+import Button from "../common/Button";
 import InputField from "../common/InputField";
 
 const validationSchema = Yup.object({
@@ -46,17 +48,19 @@ const TodoCreate = () => {
               />
             </div>
 
-            <div className="mt-4 flex items-center">
-              <button
+            <ButtonBar className="mt-4">
+              <Button
+                variant="secondary"
                 type="button"
-                className="mr-4 rounded-full border border-slate-300 px-3 py-2 text-slate-500 hover:border-slate-500 hover:bg-slate-500 hover:text-white"
+                className="mr-4"
+                disabled={formik.isSubmitting}
               >
                 Cancel
-              </button>
-              <button
+              </Button>
+              <Button
+                variant="primary"
                 type="submit"
                 disabled={formik.isSubmitting}
-                className="rounded-full border border-blue-500 bg-blue-500 px-3 py-2 text-white hover:border-blue-700 hover:bg-blue-700 disabled:border-blue-400 disabled:bg-blue-400 disabled:text-slate-200"
               >
                 {formik.isSubmitting ? (
                   <div className="flex items-center">
@@ -66,8 +70,8 @@ const TodoCreate = () => {
                 ) : (
                   <span>Submit</span>
                 )}
-              </button>
-            </div>
+              </Button>
+            </ButtonBar>
           </Form>
         )}
       </Formik>
