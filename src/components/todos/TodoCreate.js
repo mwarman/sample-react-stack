@@ -23,7 +23,7 @@ const TodoCreate = () => {
           setTimeout(() => {
             console.log(JSON.stringify(values));
             setSubmitting(false);
-          }, 20000);
+          }, 3000);
         }}
       >
         {(formik) => (

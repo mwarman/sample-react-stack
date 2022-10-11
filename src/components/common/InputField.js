@@ -1,4 +1,5 @@
 import { useField } from "formik";
+import classNames from "classnames";
 
 const InputField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -10,7 +11,13 @@ const InputField = ({ label, ...props }) => {
         {label}
       </label>
       <input
-        className="mt-1 block w-full rounded-md border-slate-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 disabled:bg-slate-100"
+        className={classNames(
+          "mt-1 block w-full rounded-md border-slate-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 disabled:bg-slate-100",
+          {
+            "border-pink-500 text-pink-600 focus:border-pink-500 focus:ring-pink-200":
+              showError,
+          }
+        )}
         {...field}
         {...props}
       />
