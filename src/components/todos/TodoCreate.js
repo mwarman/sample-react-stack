@@ -1,5 +1,8 @@
-import { Formik } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
+import { ArrowPathIcon } from "@heroicons/react/24/outline";
+
+import InputField from "../common/InputField";
 
 const validationSchema = Yup.object({
   title: Yup.string()
@@ -20,80 +23,52 @@ const TodoCreate = () => {
           setTimeout(() => {
             console.log(JSON.stringify(values));
             setSubmitting(false);
-          }, 1000);
+          }, 20000);
         }}
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-        }) => (
-          <form onSubmit={handleSubmit}>
+        {(formik) => (
+          <Form>
             <div className="mt-4">
-              <label htmlFor="title" className="text-slate-700">
-                Title
-              </label>
-              <input
-                id="title"
+              <InputField
                 name="title"
+                label="Title"
                 type="text"
-                tabIndex="1"
-                autoFocus
-                placeholder="Enter the task..."
-                className="mt-1 block w-full rounded-md border-slate-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.title}
+                disabled={formik.isSubmitting}
               />
-              {touched.title && errors.title ? (
-                <div className="mt-0.5 text-xs text-red-600">
-                  {errors.title}
-                </div>
-              ) : null}
             </div>
+
             <div className="mt-4">
-              <label htmlFor="user" className="mr-2 text-slate-700">
-                User
-              </label>
-              <input
-                id="userId"
+              <InputField
                 name="userId"
+                label="User"
                 type="number"
-                tabIndex="2"
-                placeholder="Select the assignee..."
-                className="mt-1 block w-full rounded-md border-slate-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.userId}
+                disabled={formik.isSubmitting}
               />
-              {touched.userId && errors.userId ? (
-                <div className="mt-0.5 text-xs text-red-600">
-                  {errors.userId}
-                </div>
-              ) : null}
             </div>
-            <div className="mt-4">
+
+            <div className="mt-4 flex items-center">
               <button
                 type="button"
-                tabIndex="1000"
                 className="mr-4 rounded-full border border-slate-300 px-3 py-2 text-slate-500 hover:border-slate-500 hover:bg-slate-500 hover:text-white"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                tabIndex="999"
-                disabled={isSubmitting}
-                className="rounded-full border border-blue-500 bg-blue-500 px-3 py-2 text-white hover:border-blue-700 hover:bg-blue-700"
+                disabled={formik.isSubmitting}
+                className="rounded-full border border-blue-500 bg-blue-500 px-3 py-2 text-white hover:border-blue-700 hover:bg-blue-700 disabled:border-blue-400 disabled:bg-blue-400 disabled:text-slate-200"
               >
-                Submit
+                {formik.isSubmitting ? (
+                  <div className="flex items-center">
+                    <ArrowPathIcon className="mr-2 h-5 w-5 animate-spin" />
+                    <span>Submitting...</span>
+                  </div>
+                ) : (
+                  <span>Submit</span>
+                )}
               </button>
             </div>
-          </form>
+          </Form>
         )}
       </Formik>
     </div>
