@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
@@ -5,6 +6,8 @@ import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import ButtonBar from "../common/ButtonBar";
 import Button from "../common/Button";
 import InputField from "../common/InputField";
+
+import { useCreateTodo } from "../../hooks/todos.hooks";
 
 const validationSchema = Yup.object({
   title: Yup.string()
@@ -14,6 +17,9 @@ const validationSchema = Yup.object({
 });
 
 const TodoCreate = () => {
+  const navigate = useNavigate();
+  const createTodo = useCreateTodo();
+
   return (
     <div className="m-4">
       <div className="text-2xl font-bold">Create Todo</div>
@@ -21,11 +27,21 @@ const TodoCreate = () => {
         initialValues={{ title: "", userId: "" }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
-          console.log(`submitted`);
           setTimeout(() => {
-            console.log(JSON.stringify(values));
-            setSubmitting(false);
-          }, 3000);
+            createTodo.mutate(
+              { ...values, completed: false },
+              {
+                onSuccess: () => {
+                  setSubmitting(false);
+                  navigate("/todos/list");
+                },
+                onError: (err) => {
+                  console.error(`Failed to create todo. Detail:`, err);
+                  // TODO display error notification
+                },
+              }
+            );
+          }, 2000);
         }}
       >
         {(formik) => (

@@ -1,9 +1,9 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { getTodo, getTodos } from '../api/todos.api';
+import { createTodo, getTodo, getTodos } from "../api/todos.api";
 
 const QueryKeys = {
-  Todos: 'todos',
+  Todos: "todos",
 };
 
 export const useGetTodos = (options) => {
@@ -12,4 +12,15 @@ export const useGetTodos = (options) => {
 
 export const useGetTodo = (id, options) => {
   return useQuery([QueryKeys.Todos, id], () => getTodo(id), options);
+};
+
+export const useCreateTodo = (options) => {
+  const queryClient = useQueryClient();
+  return useMutation(createTodo, {
+    ...options,
+    onSuccess: (data) => {
+      queryClient.invalidateQueries([QueryKeys.Todos]);
+      options?.onSuccess && options.onSuccess(data);
+    },
+  });
 };
