@@ -1,7 +1,7 @@
-import axios from "axios";
+import http from "../utils/http";
 
 export const getUsers = async () => {
-  return axios({
+  return http({
     method: "get",
     url: "https://jsonplaceholder.typicode.com/users",
   }).then((response) => {
@@ -10,7 +10,7 @@ export const getUsers = async () => {
 };
 
 export const getUser = async (id) => {
-  return axios({
+  return http({
     method: "get",
     url: `https://jsonplaceholder.typicode.com/users/${id}`,
   }).then((response) => {

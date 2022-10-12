@@ -6,7 +6,7 @@ const TodoListPage = () => {
 
   return (
     <div className="mt-3">
-      <TodoList todos={todos}></TodoList>
+      <TodoList todos={todos} isLoading={status === "loading"}></TodoList>
     </div>
   );
 };
