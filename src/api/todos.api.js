@@ -1,7 +1,7 @@
-import axios from "axios";
+import http from "../utils/http";
 
 export const getTodos = async () => {
-  return axios({
+  return http({
     method: "get",
     url: "https://jsonplaceholder.typicode.com/todos",
   }).then((response) => {
@@ -10,7 +10,7 @@ export const getTodos = async () => {
 };
 
 export const getTodo = async (id) => {
-  return axios({
+  return http({
     method: "get",
     url: `https://jsonplaceholder.typicode.com/todos/${id}`,
   }).then((response) => {
@@ -19,7 +19,7 @@ export const getTodo = async (id) => {
 };
 
 export const createTodo = async (todo) => {
-  return axios({
+  return http({
     method: "post",
     url: "https://jsonplaceholder.typicode.com/todos",
     headers: {
