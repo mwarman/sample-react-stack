@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Form } from "formik";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 
@@ -6,6 +7,8 @@ import Button from "../common/Button";
 import InputField from "../common/InputField";
 
 const TodoForm = ({ formik }) => {
+  const navigate = useNavigate();
+
   return (
     <Form>
       <div className="mt-4">
@@ -32,6 +35,7 @@ const TodoForm = ({ formik }) => {
           type="button"
           className="mr-4"
           disabled={formik.isSubmitting}
+          onClick={() => navigate(-1)}
         >
           Cancel
         </Button>
