@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { ArrowPathIcon } from "@heroicons/react/24/outline";
 
 import Placeholder from "../common/Placeholder";
 import Badge from "../common/Badge";
 import ButtonBar from "../common/ButtonBar";
+import LoadingButton from "../common/LoadingButton";
 import Button from "../common/Button";
 import TodoUser from "./TodoUser";
 import { useGetTodo, useUpdateTodo } from "../../hooks/todos.hooks";
@@ -47,24 +47,16 @@ const Todo = () => {
       <h2 className="mb-2 text-2xl font-bold text-slate-500">{todo.title}</h2>
 
       <ButtonBar className="mb-4">
-        <Button
+        <LoadingButton
           variant="secondary"
           size="sm"
           className="mr-2"
           onClick={toggleCompleted}
           disabled={updateTodo.isLoading}
+          isLoading={updateTodo.isLoading}
         >
-          {updateTodo.isLoading ? (
-            <div className="flex items-center">
-              <ArrowPathIcon className="mr-2 h-4 w-4 animate-spin" />
-              <span>
-                {todo.completed ? "Mark Incomplete" : "Mark Complete"}
-              </span>
-            </div>
-          ) : (
-            <span>{todo.completed ? "Mark Incomplete" : "Mark Complete"}</span>
-          )}
-        </Button>
+          {todo.completed ? "Mark Incomplete" : "Mark Complete"}
+        </LoadingButton>
         <Button
           variant="secondary"
           size="sm"

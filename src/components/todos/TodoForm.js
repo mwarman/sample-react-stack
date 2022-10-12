@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { Form } from "formik";
-import { ArrowPathIcon } from "@heroicons/react/24/outline";
 
 import ButtonBar from "../common/ButtonBar";
+import LoadingButton from "../common/LoadingButton";
 import Button from "../common/Button";
 import InputField from "../common/InputField";
 
@@ -39,16 +39,14 @@ const TodoForm = ({ formik }) => {
         >
           Cancel
         </Button>
-        <Button variant="primary" type="submit" disabled={formik.isSubmitting}>
-          {formik.isSubmitting ? (
-            <div className="flex items-center">
-              <ArrowPathIcon className="mr-2 h-5 w-5 animate-spin" />
-              <span>Submitting...</span>
-            </div>
-          ) : (
-            <span>Submit</span>
-          )}
-        </Button>
+        <LoadingButton
+          variant="primary"
+          type="submit"
+          disabled={formik.isSubmitting}
+          isLoading={formik.isSubmitting}
+        >
+          Submit
+        </LoadingButton>
       </ButtonBar>
     </Form>
   );
