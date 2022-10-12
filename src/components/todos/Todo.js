@@ -1,11 +1,15 @@
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Placeholder from "../common/Placeholder";
 import Badge from "../common/Badge";
+import ButtonBar from "../common/ButtonBar";
+import Button from "../common/Button";
 import TodoUser from "./TodoUser";
 import { useGetTodo } from "../../hooks/todos.hooks";
 
 const Todo = () => {
+  const navigate = useNavigate();
   const { todoId } = useParams();
   const { data: todo, status } = useGetTodo(todoId);
 
@@ -32,6 +36,18 @@ const Todo = () => {
   return (
     <div className="mt-2 mr-4">
       <h2 className="mb-2 text-2xl font-bold text-slate-500">{todo.title}</h2>
+      <ButtonBar className="mb-4">
+        <Button variant="secondary" size="sm" className="mr-2">
+          {todo.completed ? "Mark Incomplete" : "Mark Complete"}
+        </Button>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={() => navigate(`/todos/${todo.id}/edit`)}
+        >
+          Edit
+        </Button>
+      </ButtonBar>
       <div className="grid grid-cols-2 gap-4">
         <div>
           <span className="mr-2 font-bold">Status:</span>

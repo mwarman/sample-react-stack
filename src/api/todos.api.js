@@ -30,3 +30,16 @@ export const createTodo = async (todo) => {
     return response.data;
   });
 };
+
+export const updateTodo = async (todo) => {
+  return http({
+    method: "put",
+    url: `https://jsonplaceholder.typicode.com/todos/${todo.id}`,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: todo,
+  }).then((response) => {
+    return response.data;
+  });
+};
