@@ -1,6 +1,8 @@
 import TodoListItem from "./TodoListItem";
 import TodoListItemLoading from "./TodoListItemLoading";
 
+import { keys } from "../../utils/keys";
+
 const TodoList = ({ isLoading, todos = [] }) => {
   return (
     <table className="w-full">
@@ -14,9 +16,9 @@ const TodoList = ({ isLoading, todos = [] }) => {
       <tbody>
         {isLoading ? (
           <>
-            <TodoListItemLoading />
-            <TodoListItemLoading />
-            <TodoListItemLoading />
+            {keys(5).map(({ key }) => (
+              <TodoListItemLoading key={key} />
+            ))}
           </>
         ) : (
           todos.map((todo) => <TodoListItem key={todo.id} {...todo} />)
