@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
@@ -14,8 +13,7 @@ const validationSchema = Yup.object({
   userId: Yup.number().required("Required"),
 });
 
-const TodoCreate = () => {
-  const navigate = useNavigate();
+const TodoCreate = ({ onCancel, onSuccess }) => {
   const toastsContext = useToastsContext();
   const createTodo = useCreateTodo();
 
@@ -34,7 +32,7 @@ const TodoCreate = () => {
                 toastsContext.createToast(
                   `Created TODO-${todo.id} successfully.`
                 );
-                navigate("/todos/list");
+                onSuccess && onSuccess();
               },
               onError: (err) => {
                 console.error(`Failed to create todo. Detail:`, err);
@@ -44,7 +42,7 @@ const TodoCreate = () => {
           );
         }}
       >
-        {(formik) => <TodoForm formik={formik} />}
+        {(formik) => <TodoForm formik={formik} onCancel={onCancel} />}
       </Formik>
     </div>
   );

@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { Form } from "formik";
 
 import ButtonBar from "../common/ButtonBar";
@@ -6,8 +5,10 @@ import LoadingButton from "../common/LoadingButton";
 import Button from "../common/Button";
 import InputField from "../common/InputField";
 
-const TodoForm = ({ formik }) => {
-  const navigate = useNavigate();
+const TodoForm = ({ formik, onCancel }) => {
+  const cancel = () => {
+    onCancel && onCancel();
+  };
 
   return (
     <Form>
@@ -35,7 +36,7 @@ const TodoForm = ({ formik }) => {
           type="button"
           className="mr-4"
           disabled={formik.isSubmitting}
-          onClick={() => navigate(-1)}
+          onClick={cancel}
         >
           Cancel
         </Button>
