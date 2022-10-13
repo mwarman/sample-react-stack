@@ -1,5 +1,6 @@
 import axios from "axios";
 
+import config from "../utils/config";
 import { delay } from "../utils/delay";
 
 const instance = axios.create({
@@ -14,7 +15,7 @@ const instance = axios.create({
 });
 
 instance.interceptors.response.use(async (response) => {
-  await delay();
+  await delay(config.REACT_APP_API_DELAY_MS);
   return response;
 });
 

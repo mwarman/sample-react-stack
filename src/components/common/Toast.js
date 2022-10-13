@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 
-const TOAST_AUTODISMISS_MS = 5000;
+import config from "../../utils/config";
 
 const Toast = ({ id, message, onDismiss }) => {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       onDismiss(id);
-    }, TOAST_AUTODISMISS_MS);
+    }, config.REACT_APP_TOAST_AUTODISMISS_MS);
     return () => clearTimeout(timeoutId);
   }, [id]);
 
