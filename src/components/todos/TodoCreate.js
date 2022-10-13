@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import TodoForm from "./TodoForm";
 
 import { useCreateTodo } from "../../hooks/todos.hooks";
-import { useToasts } from "../../hooks/toasts.hooks";
+import { useToastsContext } from "../../hooks/toasts.hooks";
 
 const validationSchema = Yup.object({
   title: Yup.string()
@@ -16,7 +16,7 @@ const validationSchema = Yup.object({
 
 const TodoCreate = () => {
   const navigate = useNavigate();
-  const toastContext = useToasts();
+  const toastContext = useToastsContext();
   const createTodo = useCreateTodo();
 
   return (

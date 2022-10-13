@@ -1,9 +1,8 @@
-import { useToasts } from "../../hooks/toasts.hooks";
+import { useToastsContext } from "../../hooks/toasts.hooks";
 import Toast from "./Toast";
 
 const Toasts = () => {
-  const toastContext = useToasts();
-  console.log(`Toasts::toasts::${JSON.stringify(toastContext.toasts)}`);
+  const toastContext = useToastsContext();
 
   return (
     <div id="toasts" className="absolute bottom-0 left-0 z-50 p-4">
