@@ -7,19 +7,33 @@ import ButtonBar from "../common/ButtonBar";
 import LoadingButton from "../common/LoadingButton";
 import Button from "../common/Button";
 import TodoUser from "./TodoUser";
+
 import { useGetTodo, useUpdateTodo } from "../../hooks/todos.hooks";
+import { useToastsContext } from "../../hooks/toasts.hooks";
 
 const Todo = () => {
   const navigate = useNavigate();
   const { todoId } = useParams();
+  const toastsContext = useToastsContext();
   const updateTodo = useUpdateTodo();
   const { data: todo, status } = useGetTodo(todoId);
 
   const toggleCompleted = () => {
-    updateTodo.mutate({
-      ...todo,
-      completed: !todo.completed,
-    });
+    updateTodo.mutate(
+      {
+        ...todo,
+        completed: !todo.completed,
+      },
+      {
+        onSuccess: (todo) => {
+          toastsContext.createToast(
+            `Marked TODO-${todo.id} ${
+              todo.completed ? "complete" : "incomplete"
+            }.`
+          );
+        },
+      }
+    );
   };
 
   if (status === "loading") {

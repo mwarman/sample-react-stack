@@ -4,8 +4,10 @@ import React, { useMemo, useReducer } from "react";
 export const ToastsContext = React.createContext();
 
 // create a reducer to manage toast state
-const CREATE_TOAST = "CREATE_TOAST";
-const REMOVE_TOAST = "REMOVE_TOAST";
+// use a reducer (vs state) to allow state mutation with `setTimeout`
+// and `setInterval`
+export const CREATE_TOAST = "CREATE_TOAST";
+export const REMOVE_TOAST = "REMOVE_TOAST";
 const defaultState = { toasts: [] };
 const toastsReducer = (state, action) => {
   switch (action.type) {
@@ -24,6 +26,13 @@ const toastsReducer = (state, action) => {
   }
 };
 
+/**
+ * A React Context Provider component for toasts.
+ * @param {Object} props The component properties.
+ * @returns {JSXElement} A JSX element which serves as the React Context
+ * provider for toasts. Children may consume the context values with
+ * the `useToastsContext` hook.
+ */
 export const ToastsContextProvider = (props) => {
   const [state, dispatch] = useReducer(toastsReducer, defaultState);
 

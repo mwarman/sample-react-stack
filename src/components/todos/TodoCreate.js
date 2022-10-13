@@ -16,7 +16,7 @@ const validationSchema = Yup.object({
 
 const TodoCreate = () => {
   const navigate = useNavigate();
-  const toastContext = useToastsContext();
+  const toastsContext = useToastsContext();
   const createTodo = useCreateTodo();
 
   return (
@@ -29,9 +29,11 @@ const TodoCreate = () => {
           createTodo.mutate(
             { ...values, completed: false },
             {
-              onSuccess: () => {
+              onSuccess: (todo) => {
                 setSubmitting(false);
-                toastContext.createToast("Created todo successfully.");
+                toastsContext.createToast(
+                  `Created TODO-${todo.id} successfully.`
+                );
                 navigate("/todos/list");
               },
               onError: (err) => {
