@@ -4,7 +4,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ToastsContextProvider } from "./contexts/toasts.context";
 import StandardLayout from "./components/layouts/StandardLayout";
 import LandingPage from "./components/pages/LandingPage";
-import TodoCreatePage from "./components/pages/TodoCreatePage";
 import TodoEditPage from "./components/pages/TodoEditPage";
 import TodoListPage from "./components/pages/TodoListPage";
 import TodosPage from "./components/pages/TodosPage";
@@ -28,10 +27,6 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <LandingPage />,
-      },
-      {
-        path: "/todos/create",
-        element: <TodoCreatePage />,
       },
       {
         path: "/todos/:todoId/edit",
