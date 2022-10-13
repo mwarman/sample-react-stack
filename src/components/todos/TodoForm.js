@@ -6,8 +6,12 @@ import LoadingButton from "../common/LoadingButton";
 import Button from "../common/Button";
 import InputField from "../common/InputField";
 
-const TodoForm = ({ formik }) => {
+const TodoForm = ({ formik, onCancel }) => {
   const navigate = useNavigate();
+
+  const cancel = () => {
+    onCancel && onCancel();
+  };
 
   return (
     <Form>
@@ -35,7 +39,7 @@ const TodoForm = ({ formik }) => {
           type="button"
           className="mr-4"
           disabled={formik.isSubmitting}
-          onClick={() => navigate(-1)}
+          onClick={cancel}
         >
           Cancel
         </Button>

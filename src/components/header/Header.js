@@ -1,6 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 
+import CreateTodoButton from "../todos/CreateTodoButton";
+
 const leftMenu = [
   {
     name: "Todos",
@@ -45,13 +47,7 @@ const Header = () => {
             {link.name}
           </NavLink>
         ))}
-        <Link
-          to="/todos/create"
-          className="mr-6 rounded-full bg-blue-500 px-3 py-2 text-white hover:bg-blue-700"
-          title="Create todo"
-        >
-          Create
-        </Link>
+        <CreateTodoButton className="text-base" />
       </nav>
       <nav className="ml-auto">
         {rightMenu.map((link, index) => (

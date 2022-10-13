@@ -60,7 +60,7 @@ const TodoEdit = () => {
           );
         }}
       >
-        {(formik) => <TodoForm formik={formik} />}
+        {(formik) => <TodoForm formik={formik} onCancel={() => navigate(-1)} />}
       </Formik>
     </div>
   );
