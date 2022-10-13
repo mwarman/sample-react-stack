@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+import { ToastsContextProvider } from "./contexts/toasts.context";
 import StandardLayout from "./components/layouts/StandardLayout";
 import LandingPage from "./components/pages/LandingPage";
 import TodoCreatePage from "./components/pages/TodoCreatePage";
@@ -57,7 +58,9 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <ToastsContextProvider>
+        <RouterProvider router={router} />
+      </ToastsContextProvider>
     </QueryClientProvider>
   );
 };

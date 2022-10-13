@@ -7,6 +7,7 @@ import Placeholder from "../common/Placeholder";
 import TodoForm from "./TodoForm";
 
 import { useGetTodo, useUpdateTodo } from "../../hooks/todos.hooks";
+import { useToastsContext } from "../../hooks/toasts.hooks";
 
 const validationSchema = Yup.object({
   title: Yup.string()
@@ -18,6 +19,7 @@ const validationSchema = Yup.object({
 const TodoEdit = () => {
   const navigate = useNavigate();
   const { todoId } = useParams();
+  const toastsContext = useToastsContext();
   const { data: todo, status } = useGetTodo(todoId);
   const updateTodo = useUpdateTodo();
 
@@ -45,6 +47,9 @@ const TodoEdit = () => {
             {
               onSuccess: () => {
                 setSubmitting(false);
+                toastsContext.createToast(
+                  `Updated TODO-${todo.id} successfully.`
+                );
                 navigate(`/todos/${todo.id}`);
               },
               onError: (err) => {

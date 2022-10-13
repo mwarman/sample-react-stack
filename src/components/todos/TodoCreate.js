@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import TodoForm from "./TodoForm";
 
 import { useCreateTodo } from "../../hooks/todos.hooks";
+import { useToastsContext } from "../../hooks/toasts.hooks";
 
 const validationSchema = Yup.object({
   title: Yup.string()
@@ -15,6 +16,7 @@ const validationSchema = Yup.object({
 
 const TodoCreate = () => {
   const navigate = useNavigate();
+  const toastsContext = useToastsContext();
   const createTodo = useCreateTodo();
 
   return (
@@ -27,8 +29,11 @@ const TodoCreate = () => {
           createTodo.mutate(
             { ...values, completed: false },
             {
-              onSuccess: () => {
+              onSuccess: (todo) => {
                 setSubmitting(false);
+                toastsContext.createToast(
+                  `Created TODO-${todo.id} successfully.`
+                );
                 navigate("/todos/list");
               },
               onError: (err) => {
