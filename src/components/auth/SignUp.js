@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -6,6 +7,7 @@ import InputField from "../common/InputField";
 import ButtonBar from "../common/ButtonBar";
 import Button from "../common/Button";
 import LoadingButton from "../common/LoadingButton";
+import Alert from "../common/Alert";
 
 import { useSignUp } from "../../hooks/auth.hooks";
 import { useToastsContext } from "../../hooks/toasts.hooks";
@@ -19,6 +21,7 @@ const validationSchema = Yup.object({
 });
 
 const SignUp = () => {
+  const [error, setError] = useState();
   const navigate = useNavigate();
   const toastsContext = useToastsContext();
   const signUp = useSignUp();
@@ -26,6 +29,12 @@ const SignUp = () => {
   return (
     <div className="rounded border p-4">
       <h2 className="text-2xl font-bold">Sign Up</h2>
+
+      {error && (
+        <Alert variant="error" className="mt-4">
+          {error}
+        </Alert>
+      )}
 
       <Formik
         initialValues={{ username: "", password: "" }}
@@ -39,7 +48,7 @@ const SignUp = () => {
               navigate("/auth/signin");
             },
             onError: (err) => {
-              console.error(`Failed to sign up. Detail:`, err);
+              setError(`Registration failed. ${err.message}`);
               setSubmitting(false);
               // TODO display error notification
             },

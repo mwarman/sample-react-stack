@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -10,7 +11,6 @@ import Alert from "../common/Alert";
 
 import { useSignIn } from "../../hooks/auth.hooks";
 import { useToastsContext } from "../../hooks/toasts.hooks";
-import { useState } from "react";
 
 const validationSchema = Yup.object({
   username: Yup.string().email("Must be an email address").required("Required"),
@@ -49,8 +49,7 @@ const SignIn = () => {
               navigate("/todos/list");
             },
             onError: (err) => {
-              console.error(`Failed to sign in. Detail:`, err);
-              setError("Authentication failed");
+              setError("Authentication failed.");
               setSubmitting(false);
               // TODO display error notification
             },
