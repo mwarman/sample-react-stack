@@ -1,17 +1,18 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import { ToastsContextProvider } from "./contexts/toasts.context";
-import StandardLayout from "./components/layouts/StandardLayout";
-import LandingPage from "./components/pages/LandingPage";
-import TodoEditPage from "./components/pages/TodoEditPage";
-import TodoListPage from "./components/pages/TodoListPage";
-import TodosPage from "./components/pages/TodosPage";
-import Todo from "./components/todos/Todo";
-import ErrorPage from "./components/pages/ErrorPage";
-import AuthPage from "./components/pages/AuthPage";
-import SignIn from "./components/auth/SignIn";
-import SignUp from "./components/auth/SignUp";
+import { ToastsContextProvider } from './contexts/toasts.context';
+import StandardLayout from './components/layouts/StandardLayout';
+import LandingPage from './components/pages/LandingPage';
+import TodoEditPage from './components/pages/TodoEditPage';
+import TodoListPage from './components/pages/TodoListPage';
+import TodosPage from './components/pages/TodosPage';
+import Todo from './components/todos/Todo';
+import ErrorPage from './components/pages/ErrorPage';
+import AuthPage from './components/pages/AuthPage';
+import SignIn from './components/auth/SignIn';
+import SignUp from './components/auth/SignUp';
+import SignOut from './components/auth/SignOut';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,7 +24,7 @@ const queryClient = new QueryClient({
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <StandardLayout />,
     errorElement: <ErrorPage />,
     children: [
@@ -32,33 +33,37 @@ const router = createBrowserRouter([
         element: <LandingPage />,
       },
       {
-        path: "/auth",
+        path: '/auth',
         element: <AuthPage />,
         children: [
           {
-            path: "signup",
+            path: 'signup',
             element: <SignUp />,
           },
           {
-            path: "signin",
+            path: 'signin',
             element: <SignIn />,
+          },
+          {
+            path: 'signout',
+            element: <SignOut />,
           },
         ],
       },
       {
-        path: "/todos/:todoId/edit",
+        path: '/todos/:todoId/edit',
         element: <TodoEditPage />,
       },
       {
-        path: "/todos/list",
+        path: '/todos/list',
         element: <TodoListPage />,
       },
       {
-        path: "/todos",
+        path: '/todos',
         element: <TodosPage />,
         children: [
           {
-            path: ":todoId",
+            path: ':todoId',
             element: <Todo />,
           },
         ],

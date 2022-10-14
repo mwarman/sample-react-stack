@@ -1,35 +1,37 @@
-import { Link, NavLink } from "react-router-dom";
-import { CheckBadgeIcon } from "@heroicons/react/24/solid";
+import { Link, NavLink } from 'react-router-dom';
+import { CheckBadgeIcon } from '@heroicons/react/24/solid';
 
-import CreateTodoButton from "../todos/CreateTodoButton";
+import CreateTodoButton from '../todos/CreateTodoButton';
 
 const leftMenu = [
   {
-    name: "Todos",
-    to: "/todos/list",
-    title: "List todos",
+    name: 'Todos',
+    to: '/todos/list',
+    title: 'List todos',
   },
   {
-    name: "People",
-    to: "/users/list",
-    title: "List people",
+    name: 'People',
+    to: '/users/list',
+    title: 'List people',
   },
 ];
 
 const rightMenu = [
   {
-    name: "Sign In",
-    to: "/auth/signin",
-    title: "Sign In",
+    name: 'Sign In',
+    to: '/auth/signin',
+    title: 'Sign In',
+  },
+  {
+    name: 'Sign Out',
+    to: '/auth/signout',
+    title: 'Sign Out',
   },
 ];
 
 const Header = () => {
   return (
-    <div
-      id="header"
-      className="flex h-16 items-center border-b border-slate-300"
-    >
+    <div id="header" className="flex h-16 items-center border-b border-slate-300">
       <div id="title" className="mr-10 ml-2">
         <Link to="/" title="Todos">
           <CheckBadgeIcon className="inline-block h-10 w-10 text-lime-600" />
