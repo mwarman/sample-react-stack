@@ -1,9 +1,10 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import { signIn, signUp } from "../api/auth.api";
+import { getAuthState, signIn, signUp } from '../api/auth.api';
 
 const QueryKeys = {
-  Accounts: "accounts",
+  Accounts: 'accounts',
+  AuthState: 'authstate',
 };
 
 export const useSignUp = (options) => {
@@ -21,4 +22,6 @@ export const useSignIn = (options) => {
   return useMutation((vars) => signIn(vars.username, vars.password), options);
 };
 
-export const useAuthState = (options) => {};
+export const useAuthState = (options) => {
+  return useQuery([QueryKeys.AuthState], getAuthState, options);
+};
