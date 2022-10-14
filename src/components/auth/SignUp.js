@@ -7,6 +7,7 @@ import ButtonBar from "../common/ButtonBar";
 import Button from "../common/Button";
 import LoadingButton from "../common/LoadingButton";
 
+import { useSignUp } from "../../hooks/auth.hooks";
 import { useToastsContext } from "../../hooks/toasts.hooks";
 
 const validationSchema = Yup.object({
@@ -20,6 +21,7 @@ const validationSchema = Yup.object({
 const SignUp = () => {
   const navigate = useNavigate();
   const toastsContext = useToastsContext();
+  const signUp = useSignUp();
 
   return (
     <div className="rounded border p-4">
@@ -30,9 +32,18 @@ const SignUp = () => {
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
           console.log(`signup::submit::${JSON.stringify(values)}`);
-          toastsContext.createToast(`Account created successfully.`);
-          setSubmitting(false);
-          navigate("/auth/signin");
+          signUp.mutate(values, {
+            onSuccess: () => {
+              toastsContext.createToast(`Account created successfully.`);
+              setSubmitting(false);
+              navigate("/auth/signin");
+            },
+            onError: (err) => {
+              console.error(`Failed to sign up. Detail:`, err);
+              setSubmitting(false);
+              // TODO display error notification
+            },
+          });
         }}
       >
         {(formik) => (

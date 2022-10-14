@@ -6,8 +6,11 @@ import InputField from "../common/InputField";
 import ButtonBar from "../common/ButtonBar";
 import Button from "../common/Button";
 import LoadingButton from "../common/LoadingButton";
+import Alert from "../common/Alert";
 
+import { useSignIn } from "../../hooks/auth.hooks";
 import { useToastsContext } from "../../hooks/toasts.hooks";
+import { useState } from "react";
 
 const validationSchema = Yup.object({
   username: Yup.string().email("Must be an email address").required("Required"),
@@ -18,21 +21,40 @@ const validationSchema = Yup.object({
 });
 
 const SignIn = () => {
+  const [error, setError] = useState();
   const navigate = useNavigate();
   const toastsContext = useToastsContext();
+  const signIn = useSignIn();
 
   return (
     <div className="rounded border p-4">
       <h2 className="text-2xl font-bold">Sign In</h2>
+
+      {error && (
+        <Alert variant="error" className="mt-4">
+          {error}
+        </Alert>
+      )}
 
       <Formik
         initialValues={{ username: "", password: "" }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
           console.log(`signin::submit::${JSON.stringify(values)}`);
-          toastsContext.createToast(`Signed in successfully.`);
-          setSubmitting(false);
-          navigate("/todos/list");
+          setError(null);
+          signIn.mutate(values, {
+            onSuccess: (data) => {
+              toastsContext.createToast(`Welcome back ${data.username}`);
+              setSubmitting(false);
+              navigate("/todos/list");
+            },
+            onError: (err) => {
+              console.error(`Failed to sign in. Detail:`, err);
+              setError("Authentication failed");
+              setSubmitting(false);
+              // TODO display error notification
+            },
+          });
         }}
       >
         {(formik) => (
