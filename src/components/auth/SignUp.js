@@ -1,23 +1,23 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
 
-import InputField from "../common/InputField";
-import ButtonBar from "../common/ButtonBar";
-import Button from "../common/Button";
-import LoadingButton from "../common/LoadingButton";
-import Alert from "../common/Alert";
+import InputField from '../common/InputField';
+import ButtonBar from '../common/ButtonBar';
+import Button from '../common/Button';
+import LoadingButton from '../common/LoadingButton';
+import Alert from '../common/Alert';
 
-import { useSignUp } from "../../hooks/auth.hooks";
-import { useToastsContext } from "../../hooks/toasts.hooks";
+import { useSignUp } from '../../hooks/auth.hooks';
+import { useToastsContext } from '../../hooks/toasts.hooks';
 
 const validationSchema = Yup.object({
-  username: Yup.string().email("Must be an email address").required("Required"),
+  username: Yup.string().email('Must be an email address').required('Required'),
   password: Yup.string()
-    .min(10, "Must be at least 10 characters")
-    .max(20, "May be no more than 20 characters")
-    .required("Required"),
+    .min(10, 'Must be at least 10 characters')
+    .max(20, 'May be no more than 20 characters')
+    .required('Required'),
 });
 
 const SignUp = () => {
@@ -37,15 +37,15 @@ const SignUp = () => {
       )}
 
       <Formik
-        initialValues={{ username: "", password: "" }}
+        initialValues={{ username: '', password: '' }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
-          console.log(`signup::submit::${JSON.stringify(values)}`);
+          setError(null);
           signUp.mutate(values, {
             onSuccess: () => {
               toastsContext.createToast(`Account created successfully.`);
               setSubmitting(false);
-              navigate("/auth/signin");
+              navigate('/auth/signin');
             },
             onError: (err) => {
               setError(`Registration failed. ${err.message}`);
@@ -81,7 +81,7 @@ const SignUp = () => {
                 type="button"
                 className="mr-4"
                 disabled={formik.isSubmitting}
-                onClick={() => navigate("/")}
+                onClick={() => navigate('/')}
               >
                 Cancel
               </Button>
