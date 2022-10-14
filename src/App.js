@@ -9,6 +9,9 @@ import TodoListPage from "./components/pages/TodoListPage";
 import TodosPage from "./components/pages/TodosPage";
 import Todo from "./components/todos/Todo";
 import ErrorPage from "./components/pages/ErrorPage";
+import AuthPage from "./components/pages/AuthPage";
+import SignIn from "./components/auth/SignIn";
+import SignUp from "./components/auth/SignUp";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,6 +30,20 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <LandingPage />,
+      },
+      {
+        path: "/auth",
+        element: <AuthPage />,
+        children: [
+          {
+            path: "signup",
+            element: <SignUp />,
+          },
+          {
+            path: "signin",
+            element: <SignIn />,
+          },
+        ],
       },
       {
         path: "/todos/:todoId/edit",
