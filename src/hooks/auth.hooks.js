@@ -19,7 +19,14 @@ export const useSignUp = (options) => {
 };
 
 export const useSignIn = (options) => {
-  return useMutation((vars) => signIn(vars.username, vars.password), options);
+  const queryClient = useQueryClient();
+  return useMutation((vars) => signIn(vars.username, vars.password), {
+    ...options,
+    onSuccess: (data) => {
+      queryClient.removeQueries([QueryKeys.AuthState]);
+      options?.onSuccess && options.onSuccess(data);
+    },
+  });
 };
 
 export const useSignOut = (options) => {
@@ -28,12 +35,15 @@ export const useSignOut = (options) => {
     ...options,
     onSuccess: (data) => {
       queryClient.invalidateQueries([QueryKeys.Accounts]);
-      queryClient.invalidateQueries([QueryKeys.AuthState]);
+      queryClient.setQueryData([QueryKeys.AuthState], { isAuthenticated: false });
       options?.onSuccess && options.onSuccess(data);
     },
   });
 };
 
 export const useAuthState = (options) => {
-  return useQuery([QueryKeys.AuthState], getAuthState, options);
+  return useQuery([QueryKeys.AuthState], getAuthState, {
+    ...options,
+    refetchInterval: 1000 * 60,
+  });
 };

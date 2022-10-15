@@ -42,6 +42,7 @@ export const signIn = async (username, password) => {
 };
 
 export const getAuthState = async () => {
+  console.log(`api::getAuthState`);
   return new Promise((resolve) => {
     delay().then(() => {
       const authState = storage.getJson('auth-state');
