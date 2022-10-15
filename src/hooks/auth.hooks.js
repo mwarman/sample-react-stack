@@ -23,7 +23,7 @@ export const useSignIn = (options) => {
   return useMutation((vars) => signIn(vars.username, vars.password), {
     ...options,
     onSuccess: (data) => {
-      queryClient.removeQueries([QueryKeys.AuthState]);
+      queryClient.resetQueries([QueryKeys.AuthState]);
       options?.onSuccess && options.onSuccess(data);
     },
   });

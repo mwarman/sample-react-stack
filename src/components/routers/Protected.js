@@ -1,13 +1,18 @@
 import { Navigate } from 'react-router-dom';
 
+import Loading from '../common/Loading';
+
 import { useAuthState } from '../../hooks/auth.hooks';
 
 const Protected = ({ children }) => {
   const { data: authState, status } = useAuthState();
-  console.log(`Protected::${status}::${JSON.stringify(authState)}`);
 
   if (status === 'loading') {
-    return null;
+    return (
+      <div className="flex h-full w-screen items-center justify-center">
+        <Loading text="Loading..." />
+      </div>
+    );
   }
 
   if (authState.isAuthenticated) {

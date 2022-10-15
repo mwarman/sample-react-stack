@@ -3,33 +3,46 @@ import { CheckBadgeIcon } from '@heroicons/react/24/solid';
 
 import CreateTodoButton from '../todos/CreateTodoButton';
 
-const leftMenu = [
-  {
-    name: 'Todos',
-    to: '/todos/list',
-    title: 'List todos',
-  },
-  {
-    name: 'People',
-    to: '/users/list',
-    title: 'List people',
-  },
-];
+import { useAuthState } from '../../hooks/auth.hooks';
 
-const rightMenu = [
-  {
-    name: 'Sign In',
-    to: '/auth/signin',
-    title: 'Sign In',
+const menus = {
+  unauthenticated: {
+    left: [],
+    right: [
+      {
+        name: 'Sign In',
+        to: '/auth/signin',
+        title: 'Sign In',
+      },
+    ],
   },
-  {
-    name: 'Sign Out',
-    to: '/auth/signout',
-    title: 'Sign Out',
+  authenticated: {
+    left: [
+      {
+        name: 'Todos',
+        to: '/todos/list',
+        title: 'List todos',
+      },
+      {
+        name: 'People',
+        to: '/users/list',
+        title: 'List people',
+      },
+    ],
+    right: [
+      {
+        name: 'Sign Out',
+        to: '/auth/signout',
+        title: 'Sign Out',
+      },
+    ],
   },
-];
+};
 
 const Header = () => {
+  const { data: authState, isSuccess } = useAuthState();
+  const isAuthenticated = isSuccess && authState?.isAuthenticated;
+
   return (
     <div id="header" className="flex h-16 items-center border-b border-slate-300">
       <div id="title" className="mr-10 ml-2">
@@ -39,29 +52,55 @@ const Header = () => {
         </Link>
       </div>
       <nav>
-        {leftMenu.map((link, index) => (
-          <NavLink
-            key={index}
-            to={link.to}
-            className="mr-6 text-slate-600 hover:text-black"
-            title={link.title}
-          >
-            {link.name}
-          </NavLink>
-        ))}
-        <CreateTodoButton className="text-base" />
+        {isAuthenticated ? (
+          <>
+            {menus.authenticated.left.map((link, index) => (
+              <NavLink
+                key={index}
+                to={link.to}
+                className="mr-6 text-slate-600 hover:text-black"
+                title={link.title}
+              >
+                {link.name}
+              </NavLink>
+            ))}
+            <CreateTodoButton className="text-base" />
+          </>
+        ) : (
+          menus.unauthenticated.left.map((link, index) => (
+            <NavLink
+              key={index}
+              to={link.to}
+              className="mr-6 text-slate-600 hover:text-black"
+              title={link.title}
+            >
+              {link.name}
+            </NavLink>
+          ))
+        )}
       </nav>
       <nav className="ml-auto">
-        {rightMenu.map((link, index) => (
-          <NavLink
-            key={index}
-            to={link.to}
-            className="mr-6 text-slate-600 hover:text-black"
-            title={link.title}
-          >
-            {link.name}
-          </NavLink>
-        ))}
+        {isAuthenticated
+          ? menus.authenticated.right.map((link, index) => (
+              <NavLink
+                key={index}
+                to={link.to}
+                className="mr-6 text-slate-600 hover:text-black"
+                title={link.title}
+              >
+                {link.name}
+              </NavLink>
+            ))
+          : menus.unauthenticated.right.map((link, index) => (
+              <NavLink
+                key={index}
+                to={link.to}
+                className="mr-6 text-slate-600 hover:text-black"
+                title={link.title}
+              >
+                {link.name}
+              </NavLink>
+            ))}
       </nav>
     </div>
   );
