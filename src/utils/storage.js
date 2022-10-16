@@ -6,10 +6,12 @@ const setJson = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value));
 };
 
-export default {
+const storage = {
   getItem: localStorage.getItem.bind(localStorage),
   getJson,
   setItem: localStorage.setItem.bind(localStorage),
   setJson,
   removeItem: localStorage.removeItem.bind(localStorage),
 };
+
+export default storage;
