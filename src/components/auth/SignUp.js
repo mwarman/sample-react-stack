@@ -13,6 +13,8 @@ import { useSignUp } from '../../hooks/auth.hooks';
 import { useToastsContext } from '../../hooks/toasts.hooks';
 
 const validationSchema = Yup.object({
+  firstName: Yup.string().max(30, 'May be no more than 30 characters').required('Required'),
+  lastName: Yup.string().max(30, 'May be no more than 30 characters').required('Required'),
   username: Yup.string().email('Must be an email address').required('Required'),
   password: Yup.string()
     .min(10, 'Must be at least 10 characters')
@@ -37,7 +39,7 @@ const SignUp = () => {
       )}
 
       <Formik
-        initialValues={{ username: '', password: '' }}
+        initialValues={{ firstName: '', lastName: '', username: '', password: '' }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
           setError(null);
@@ -57,6 +59,24 @@ const SignUp = () => {
       >
         {(formik) => (
           <Form>
+            <div className="mt-4">
+              <InputField
+                name="firstName"
+                label="First Name"
+                type="text"
+                disabled={formik.isSubmitting}
+              />
+            </div>
+
+            <div className="mt-4">
+              <InputField
+                name="lastName"
+                label="Last Name"
+                type="text"
+                disabled={formik.isSubmitting}
+              />
+            </div>
+
             <div className="mt-4">
               <InputField
                 name="username"

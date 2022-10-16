@@ -43,7 +43,7 @@ const SignIn = () => {
           setError(null);
           signIn.mutate(values, {
             onSuccess: (data) => {
-              toastsContext.createToast(`Welcome back ${data.username}`);
+              toastsContext.createToast(`Welcome back ${data.firstName}.`);
               setSubmitting(false);
               navigate('/todos/list');
             },
