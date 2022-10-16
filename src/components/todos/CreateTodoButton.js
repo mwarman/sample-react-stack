@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import Button from "../common/Button";
-import Modal from "../common/Modal";
-import TodoCreate from "./TodoCreate";
+import Button from '../common/Button';
+import Modal from '../common/Modal';
+import TodoCreate from './TodoCreate';
 
 const CreateTodoButton = (props) => {
   const [showModal, setShowModal] = useState(false);
@@ -13,16 +13,14 @@ const CreateTodoButton = (props) => {
         size="sm"
         variant="primary"
         onClick={() => setShowModal(true)}
+        title="Create todo"
         {...props}
       >
         Create
       </Button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <TodoCreate
-            onSuccess={() => setShowModal(false)}
-            onCancel={() => setShowModal(false)}
-          />
+          <TodoCreate onSuccess={() => setShowModal(false)} onCancel={() => setShowModal(false)} />
         </Modal>
       )}
     </>
