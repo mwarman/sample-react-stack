@@ -2,6 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { CheckBadgeIcon } from '@heroicons/react/24/solid';
 
 import CreateTodoButton from '../todos/CreateTodoButton';
+import Avatar from '../common/Avatar';
 
 import { useAuthState } from '../../hooks/auth.hooks';
 
@@ -51,7 +52,7 @@ const Header = () => {
           <span className="sr-only">Todos</span>
         </Link>
       </div>
-      <nav>
+      <nav className="flex items-center">
         {isAuthenticated ? (
           <>
             {menus.authenticated.left.map((link, index) => (
@@ -79,19 +80,10 @@ const Header = () => {
           ))
         )}
       </nav>
-      <nav className="ml-auto">
-        {isAuthenticated
-          ? menus.authenticated.right.map((link, index) => (
-              <NavLink
-                key={index}
-                to={link.to}
-                className="mr-6 text-slate-600 hover:text-black"
-                title={link.title}
-              >
-                {link.name}
-              </NavLink>
-            ))
-          : menus.unauthenticated.right.map((link, index) => (
+      <nav className="ml-auto flex items-center">
+        {isAuthenticated ? (
+          <>
+            {menus.authenticated.right.map((link, index) => (
               <NavLink
                 key={index}
                 to={link.to}
@@ -101,6 +93,20 @@ const Header = () => {
                 {link.name}
               </NavLink>
             ))}
+            <Avatar className="mr-4" />
+          </>
+        ) : (
+          menus.unauthenticated.right.map((link, index) => (
+            <NavLink
+              key={index}
+              to={link.to}
+              className="mr-6 text-slate-600 hover:text-black"
+              title={link.title}
+            >
+              {link.name}
+            </NavLink>
+          ))
+        )}
       </nav>
     </div>
   );

@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import { getAuthState, signIn, signOut, signUp } from '../api/auth.api';
+import { getAccount, getAuthState, signIn, signOut, signUp } from '../api/auth.api';
 
 const QueryKeys = {
   Accounts: 'accounts',
@@ -46,4 +46,8 @@ export const useAuthState = (options) => {
     ...options,
     refetchInterval: 1000 * 60,
   });
+};
+
+export const useGetAccount = (id, options) => {
+  return useQuery([QueryKeys.Accounts, id], () => getAccount(id), options);
 };

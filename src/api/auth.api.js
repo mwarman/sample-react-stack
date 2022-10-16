@@ -41,6 +41,15 @@ export const signIn = async (username, password) => {
   });
 };
 
+export const signOut = async () => {
+  return new Promise((resolve) => {
+    delay().then(() => {
+      storage.removeItem('auth-state');
+      return resolve();
+    });
+  });
+};
+
 export const getAuthState = async () => {
   return new Promise((resolve) => {
     delay().then(() => {
@@ -58,11 +67,15 @@ export const getAuthState = async () => {
   });
 };
 
-export const signOut = async () => {
-  return new Promise((resolve) => {
+export const getAccount = async (id) => {
+  return new Promise((resolve, reject) => {
     delay().then(() => {
-      storage.removeItem('auth-state');
-      return resolve();
+      const accounts = storage.getJson('accounts') || [];
+      const account = accounts.find((a) => a.id === id);
+      if (account) {
+        return resolve(account);
+      }
+      return reject(new Error('Not found.'));
     });
   });
 };
