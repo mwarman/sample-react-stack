@@ -23,6 +23,7 @@ export const useSignIn = (options) => {
   return useMutation((vars) => signIn(vars.username, vars.password), {
     ...options,
     onSuccess: (data) => {
+      queryClient.setQueryData([QueryKeys.Accounts, data.id], data);
       queryClient.resetQueries([QueryKeys.AuthState]);
       options?.onSuccess && options.onSuccess(data);
     },
