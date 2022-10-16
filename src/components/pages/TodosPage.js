@@ -1,6 +1,6 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
 
-import TodoNav from "../todos/TodoNav";
+import TodoNav from '../todos/TodoNav';
 
 const TodosPage = () => {
   return (
