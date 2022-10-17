@@ -1,19 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import Placeholder from "../common/Placeholder";
+import Placeholder from '../common/Placeholder';
 
-import { useGetUser } from "../../hooks/users.hooks";
+import { useGetAccount } from '../../hooks/auth.hooks';
 
-const UserName = ({ userId }) => {
-  const { data: user, status } = useGetUser(userId);
+const UserName = ({ accountId }) => {
+  const { data: account, status } = useGetAccount(accountId);
 
-  if (status === "loading") {
+  if (status === 'loading') {
     return <Placeholder />;
   }
 
   return (
-    <Link to={`/users/${user.id}`} className="hover:underline">
-      {user.name}
+    <Link to={`/users/${account.id}`} className="hover:underline">
+      {`${account.firstName} ${account.lastName}`}
     </Link>
   );
 };

@@ -10,7 +10,7 @@ const CreateTodoButton = (props) => {
   return (
     <>
       <Button
-        size="sm"
+        size={props.size || 'sm'}
         variant="primary"
         onClick={() => setShowModal(true)}
         title="Create todo"

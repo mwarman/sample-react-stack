@@ -1,12 +1,12 @@
-import { useGetUser } from "../../hooks/users.hooks";
+import { useGetAccount } from '../../hooks/auth.hooks';
 
-import UserName from "../users/UserName";
-import Mention from "../common/Mention";
+import UserName from '../users/UserName';
+import Mention from '../common/Mention';
 
-const TodoUser = ({ userId }) => {
-  const { data: user, status } = useGetUser(userId);
+const TodoUser = ({ accountId }) => {
+  const { data: account, status } = useGetAccount(accountId);
 
-  if (status === "loading") {
+  if (status === 'loading') {
     return <div>Loading...</div>;
   }
 
@@ -15,9 +15,9 @@ const TodoUser = ({ userId }) => {
       <div className="mb-2 font-bold text-slate-700">User Details:</div>
       <div>
         <span className="mr-2">
-          <UserName userId={user.id} />
+          <UserName accountId={account.id} />
         </span>
-        <Mention name={user.username} />
+        <Mention name={`${account.firstName} ${account.lastName}`} />
       </div>
     </div>
   );

@@ -1,15 +1,15 @@
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-import Placeholder from "../common/Placeholder";
-import Badge from "../common/Badge";
-import ButtonBar from "../common/ButtonBar";
-import LoadingButton from "../common/LoadingButton";
-import Button from "../common/Button";
-import TodoUser from "./TodoUser";
+import Placeholder from '../common/Placeholder';
+import Badge from '../common/Badge';
+import ButtonBar from '../common/ButtonBar';
+import LoadingButton from '../common/LoadingButton';
+import Button from '../common/Button';
+import TodoUser from './TodoUser';
 
-import { useGetTodo, useUpdateTodo } from "../../hooks/todos.hooks";
-import { useToastsContext } from "../../hooks/toasts.hooks";
+import { useGetTodo, useUpdateTodo } from '../../hooks/todos.hooks';
+import { useToastsContext } from '../../hooks/toasts.hooks';
 
 const Todo = () => {
   const navigate = useNavigate();
@@ -27,16 +27,14 @@ const Todo = () => {
       {
         onSuccess: (todo) => {
           toastsContext.createToast(
-            `Marked TODO-${todo.id} ${
-              todo.completed ? "complete" : "incomplete"
-            }.`
+            `Marked TODO-${todo.id} ${todo.completed ? 'complete' : 'incomplete'}.`,
           );
         },
-      }
+      },
     );
   };
 
-  if (status === "loading") {
+  if (status === 'loading') {
     return (
       <div className="mt-2 mr-4">
         <h2 className="mb-4">
@@ -69,13 +67,9 @@ const Todo = () => {
           disabled={updateTodo.isLoading}
           isLoading={updateTodo.isLoading}
         >
-          {todo.completed ? "Mark Incomplete" : "Mark Complete"}
+          {todo.completed ? 'Mark Incomplete' : 'Mark Complete'}
         </LoadingButton>
-        <Button
-          variant="secondary"
-          size="sm"
-          onClick={() => navigate(`/todos/${todo.id}/edit`)}
-        >
+        <Button variant="secondary" size="sm" onClick={() => navigate(`/todos/${todo.id}/edit`)}>
           Edit
         </Button>
       </ButtonBar>
@@ -83,14 +77,10 @@ const Todo = () => {
       <div className="grid grid-cols-2 gap-4">
         <div>
           <span className="mr-2 font-bold">Status:</span>
-          {todo.completed ? (
-            <Badge type="success">DONE</Badge>
-          ) : (
-            <Badge>NOT STARTED</Badge>
-          )}
+          {todo.completed ? <Badge type="success">DONE</Badge> : <Badge>NOT STARTED</Badge>}
         </div>
         <div>
-          <TodoUser userId={todo.userId} />
+          <TodoUser accountId={todo.accountId} />
         </div>
       </div>
     </div>
