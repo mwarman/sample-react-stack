@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
-import { CheckIcon } from '@heroicons/react/24/solid';
+import { CheckIcon } from '@heroicons/react/24/outline';
 
 import CreateTodoButton from '../todos/CreateTodoButton';
 import Avatar from '../common/Avatar';
@@ -49,7 +49,7 @@ const Header = () => {
       <div id="title" className="mr-10 ml-2">
         <Link to="/" title="Todos">
           <div className="rounded bg-lime-600 p-1">
-            <CheckIcon className="inline-block h-6 w-6 text-white" />
+            <CheckIcon className="inline-block h-6 w-6 stroke-[3px] text-white" />
             <span className="sr-only">Todos</span>
           </div>
         </Link>
