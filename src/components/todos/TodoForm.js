@@ -1,9 +1,9 @@
-import { Form } from "formik";
+import { Form } from 'formik';
 
-import ButtonBar from "../common/ButtonBar";
-import LoadingButton from "../common/LoadingButton";
-import Button from "../common/Button";
-import InputField from "../common/InputField";
+import ButtonBar from '../common/ButtonBar';
+import LoadingButton from '../common/LoadingButton';
+import Button from '../common/Button';
+import InputField from '../common/InputField';
 
 const TodoForm = ({ formik, onCancel }) => {
   const cancel = () => {
@@ -13,21 +13,7 @@ const TodoForm = ({ formik, onCancel }) => {
   return (
     <Form>
       <div className="mt-4">
-        <InputField
-          name="title"
-          label="Title"
-          type="text"
-          disabled={formik.isSubmitting}
-        />
-      </div>
-
-      <div className="mt-4">
-        <InputField
-          name="userId"
-          label="User"
-          type="number"
-          disabled={formik.isSubmitting}
-        />
+        <InputField name="title" label="Title" type="text" disabled={formik.isSubmitting} />
       </div>
 
       <ButtonBar className="mt-4">

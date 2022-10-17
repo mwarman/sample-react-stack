@@ -1,9 +1,9 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import { createTodo, getTodo, getTodos, updateTodo } from "../api/todos.api";
+import { createTodo, getTodo, getTodos, updateTodo, removeTodo } from '../api/todos.api';
 
 const QueryKeys = {
-  Todos: "todos",
+  Todos: 'todos',
 };
 
 export const useGetTodos = (options) => {
@@ -30,6 +30,19 @@ export const useUpdateTodo = (options) => {
   return useMutation(updateTodo, {
     ...options,
     onSuccess: (data) => {
+      queryClient.setQueryData([QueryKeys.Todos, data.id], data);
+      queryClient.invalidateQueries([QueryKeys.Todos]);
+      options?.onSuccess && options.onSuccess(data);
+    },
+  });
+};
+
+export const useRemoveTodo = (options) => {
+  const queryClient = useQueryClient();
+  return useMutation(removeTodo, {
+    ...options,
+    onSuccess: (data, vars) => {
+      queryClient.removeQueries([QueryKeys.Todos, vars]);
       queryClient.invalidateQueries([QueryKeys.Todos]);
       options?.onSuccess && options.onSuccess(data);
     },

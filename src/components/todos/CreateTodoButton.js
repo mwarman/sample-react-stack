@@ -10,7 +10,7 @@ const CreateTodoButton = (props) => {
   return (
     <>
       <Button
-        size="sm"
+        size={props.size || 'sm'}
         variant="primary"
         onClick={() => setShowModal(true)}
         title="Create todo"
@@ -19,7 +19,7 @@ const CreateTodoButton = (props) => {
         Create
       </Button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <Modal onClose={() => setShowModal(false)} size="fit">
           <TodoCreate onSuccess={() => setShowModal(false)} onCancel={() => setShowModal(false)} />
         </Modal>
       )}
