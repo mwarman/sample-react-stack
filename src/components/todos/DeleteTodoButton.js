@@ -41,7 +41,7 @@ const DeleteTodoButton = ({ todo, ...props }) => {
         Delete
       </Button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <Modal onClose={() => setShowModal(false)} size="fit">
           <div className="m-4">
             <div>
               Delete todo <span className="italic">{todo.title}?</span>

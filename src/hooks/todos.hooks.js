@@ -41,7 +41,8 @@ export const useRemoveTodo = (options) => {
   const queryClient = useQueryClient();
   return useMutation(removeTodo, {
     ...options,
-    onSuccess: (data) => {
+    onSuccess: (data, vars) => {
+      queryClient.removeQueries([QueryKeys.Todos, vars]);
       queryClient.invalidateQueries([QueryKeys.Todos]);
       options?.onSuccess && options.onSuccess(data);
     },
