@@ -6,6 +6,7 @@ import Badge from '../common/Badge';
 import ButtonBar from '../common/ButtonBar';
 import LoadingButton from '../common/LoadingButton';
 import Button from '../common/Button';
+import DeleteTodoButton from './DeleteTodoButton';
 import TodoUser from './TodoUser';
 
 import { useGetTodo, useUpdateTodo } from '../../hooks/todos.hooks';
@@ -69,9 +70,15 @@ const Todo = () => {
         >
           {todo.completed ? 'Mark Incomplete' : 'Mark Complete'}
         </LoadingButton>
-        <Button variant="secondary" size="sm" onClick={() => navigate(`/todos/${todo.id}/edit`)}>
+        <Button
+          variant="secondary"
+          size="sm"
+          className="mr-2"
+          onClick={() => navigate(`/todos/${todo.id}/edit`)}
+        >
           Edit
         </Button>
+        <DeleteTodoButton variant="secondary" todo={todo} />
       </ButtonBar>
 
       <div className="grid grid-cols-2 gap-4">
