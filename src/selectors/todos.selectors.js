@@ -7,9 +7,7 @@ export const selectTodos = (todos = [], options = {}) => {
     sortBy: ['title'],
     sortOrder: ['asc'],
   };
-
   const opts = { ...defaults, ...options };
-  console.log(`selectTodos::opts::${JSON.stringify(opts)}`);
 
   return orderBy(filter(todos, opts.matches), opts.sortBy, opts.sortOrder);
 };

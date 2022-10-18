@@ -4,15 +4,24 @@ import TodoListItem from './TodoListItem';
 import Placeholder from '../common/Placeholder';
 import CreateTodoButton from './CreateTodoButton';
 
+import { SORT_BY_ASSIGNEE, SORT_BY_STATUS, SORT_BY_TITLE } from '../../hooks/todolistfilter.hooks';
 import { keys } from '../../utils/keys';
 
-const TodoList = ({ todos, status, sortBy, setSortBy, sortDirection, setSortDirection }) => {
+const TodoList = ({ todos, status, dispatch, displayOptions }) => {
   const setSort = (attr = 'title') => {
-    if (attr === sortBy) {
-      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
-    } else {
-      setSortBy(attr);
-      setSortDirection('asc');
+    switch (attr) {
+      case 'status':
+        return dispatch({
+          type: SORT_BY_STATUS,
+        });
+      case 'assignee':
+        return dispatch({
+          type: SORT_BY_ASSIGNEE,
+        });
+      default:
+        return dispatch({
+          type: SORT_BY_TITLE,
+        });
     }
   };
 
@@ -54,10 +63,10 @@ const TodoList = ({ todos, status, sortBy, setSortBy, sortDirection, setSortDire
               onClick={() => setSort('title')}
             >
               <span className="mr-1 font-bold">Title</span>
-              {sortBy === 'title' && sortDirection === 'asc' && (
+              {displayOptions.sortBy[0] === 'title' && displayOptions.sortOrder[0] === 'asc' && (
                 <ArrowUpIcon className="inline-block h-4 w-4 stroke-slate-500 stroke-2" />
               )}
-              {sortBy === 'title' && sortDirection === 'desc' && (
+              {displayOptions.sortBy[0] === 'title' && displayOptions.sortOrder[0] === 'desc' && (
                 <ArrowDownIcon className="inline-block h-4 w-4 stroke-slate-500 stroke-2" />
               )}
             </div>
@@ -65,29 +74,33 @@ const TodoList = ({ todos, status, sortBy, setSortBy, sortDirection, setSortDire
           <td>
             <div
               className="flex cursor-pointer items-center p-2 hover:bg-slate-100"
-              onClick={() => setSort('completed')}
+              onClick={() => setSort('status')}
             >
               <span className="mr-1 font-bold">Status</span>
-              {sortBy === 'completed' && sortDirection === 'asc' && (
-                <ArrowUpIcon className="inline-block h-4 w-4 stroke-slate-500 stroke-2" />
-              )}
-              {sortBy === 'completed' && sortDirection === 'desc' && (
-                <ArrowDownIcon className="inline-block h-4 w-4 stroke-slate-500 stroke-2" />
-              )}
+              {displayOptions.sortBy[0] === 'completed' &&
+                displayOptions.sortOrder[0] === 'asc' && (
+                  <ArrowUpIcon className="inline-block h-4 w-4 stroke-slate-500 stroke-2" />
+                )}
+              {displayOptions.sortBy[0] === 'completed' &&
+                displayOptions.sortOrder[0] === 'desc' && (
+                  <ArrowDownIcon className="inline-block h-4 w-4 stroke-slate-500 stroke-2" />
+                )}
             </div>
           </td>
           <td>
             <div
               className="flex cursor-pointer items-center p-2 hover:bg-slate-100"
-              onClick={() => setSort('accountId')}
+              onClick={() => setSort('assignee')}
             >
               <span className="mr-1 font-bold">Assignee</span>
-              {sortBy === 'accountId' && sortDirection === 'asc' && (
-                <ArrowUpIcon className="inline-block h-4 w-4 stroke-slate-500 stroke-2" />
-              )}
-              {sortBy === 'accountId' && sortDirection === 'desc' && (
-                <ArrowDownIcon className="inline-block h-4 w-4 stroke-slate-500 stroke-2" />
-              )}
+              {displayOptions.sortBy[0] === 'accountId' &&
+                displayOptions.sortOrder[0] === 'asc' && (
+                  <ArrowUpIcon className="inline-block h-4 w-4 stroke-slate-500 stroke-2" />
+                )}
+              {displayOptions.sortBy[0] === 'accountId' &&
+                displayOptions.sortOrder[0] === 'desc' && (
+                  <ArrowDownIcon className="inline-block h-4 w-4 stroke-slate-500 stroke-2" />
+                )}
             </div>
           </td>
         </tr>
