@@ -86,7 +86,7 @@ const TodoList = ({ todos, status, sortBy, setSortBy, sortDirection, setSortDire
                 <ArrowUpIcon className="inline-block h-4 w-4 stroke-slate-500 stroke-2" />
               )}
               {sortBy === 'accountId' && sortDirection === 'desc' && (
-                <ArrowUpIcon className="inline-block h-4 w-4 stroke-slate-500 stroke-2" />
+                <ArrowDownIcon className="inline-block h-4 w-4 stroke-slate-500 stroke-2" />
               )}
             </div>
           </td>
