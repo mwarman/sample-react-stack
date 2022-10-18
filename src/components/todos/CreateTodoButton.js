@@ -19,7 +19,7 @@ const CreateTodoButton = (props) => {
         Create
       </Button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)} size="fit">
+        <Modal onClose={() => setShowModal(false)}>
           <TodoCreate onSuccess={() => setShowModal(false)} onCancel={() => setShowModal(false)} />
         </Modal>
       )}
