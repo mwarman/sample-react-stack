@@ -45,8 +45,8 @@ const Header = () => {
   const isAuthenticated = isSuccess && authState?.isAuthenticated;
 
   return (
-    <div id="header" className="flex h-16 items-center border-b border-slate-300">
-      <div id="title" className="mr-10 ml-2">
+    <div id="header" className="flex h-16 items-center px-16 shadow-lg shadow-slate-300/30">
+      <div id="title" className="mr-10">
         <Link to="/" title="Todos">
           <div className="rounded bg-lime-600 p-1">
             <CheckIcon className="inline-block h-6 w-6 stroke-[3px] text-white" />

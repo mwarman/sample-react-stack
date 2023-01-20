@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Protected from './Protected';
 import StandardLayout from '../layouts/StandardLayout';
 import LandingPage from '../pages/LandingPage';
+import DashboardPage from '../dashboard/DashboardPage';
 import TodoEditPage from '../pages/TodoEditPage';
 import TodoListPage from '../pages/TodoListPage';
 import TodosPage from '../pages/TodosPage';
@@ -40,6 +41,14 @@ export const router = createBrowserRouter([
             element: <SignOut />,
           },
         ],
+      },
+      {
+        path: '/dashboard',
+        element: (
+          <Protected>
+            <DashboardPage />
+          </Protected>
+        ),
       },
       {
         path: '/todos/:todoId/edit',

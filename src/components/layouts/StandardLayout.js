@@ -1,13 +1,13 @@
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
 
-import Header from "../header/Header";
-import Toasts from "../common/Toasts";
+import Header from '../header/Header';
+import Toasts from '../common/Toasts';
 
 const StandardPage = () => {
   return (
     <>
       <Header />
-      <div className="h-[calc(100vh_-_64px)] overflow-y-auto">
+      <div className="h-[calc(100vh_-_64px)] overflow-y-auto px-16">
         <Outlet />
       </div>
       <Toasts />

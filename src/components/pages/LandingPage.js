@@ -1,6 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from 'react-router-dom';
+
+import Loading from '../common/Loading';
+
+import { useAuthState } from '../../hooks/auth.hooks';
 
 const LandingPage = () => {
+  const { data: authState, isLoading } = useAuthState();
+
+  if (isLoading) {
+    return <Loading text="Loading..." className="h-1/2 justify-center" />;
+  }
+
+  if (authState.isAuthenticated) {
+    return <Navigate to="/dashboard" />;
+  }
+
   return (
     <div className="flex h-1/2 items-center justify-center">
       <div className="text-2xl">Ready to work?</div>

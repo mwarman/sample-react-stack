@@ -4,7 +4,7 @@ import { ArrowPathIcon } from '@heroicons/react/24/solid';
 const getIconSizeClasses = (size) => {
   switch (size) {
     case 'lg':
-      return 'h-8  w-8';
+      return 'h-8 w-8';
     case 'sm':
       return 'h-5 w-5';
     default:

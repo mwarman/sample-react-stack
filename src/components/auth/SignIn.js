@@ -45,7 +45,7 @@ const SignIn = () => {
             onSuccess: (data) => {
               toastsContext.createToast(`Welcome back ${data.firstName}.`);
               setSubmitting(false);
-              navigate('/todos/list');
+              navigate('/');
             },
             onError: (err) => {
               setError('Authentication failed.');
