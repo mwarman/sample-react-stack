@@ -23,7 +23,7 @@ const TodoEdit = () => {
   if (status === 'loading') {
     return (
       <div className="m-4">
-        <div className="mb-4 text-2xl font-bold">Edit Todo</div>
+        <div className="mb-4 text-2xl">Edit Todo</div>
         <Placeholder className="mb-3 w-1/5" />
         <Placeholder size="lg" className="mb-8" />
         <Placeholder className="mb-3 w-1/5" />
@@ -34,7 +34,7 @@ const TodoEdit = () => {
 
   return (
     <div className="m-4">
-      <div className="text-2xl font-bold">Edit Todo</div>
+      <div className="text-2xl">Edit Todo</div>
       <Formik
         initialValues={{ title: todo.title }}
         validationSchema={validationSchema}

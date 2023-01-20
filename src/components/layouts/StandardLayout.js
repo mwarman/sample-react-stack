@@ -7,7 +7,7 @@ const StandardPage = () => {
   return (
     <>
       <Header />
-      <div className="h-[calc(100vh_-_64px)] overflow-y-auto px-16">
+      <div className="h-[calc(100vh_-_64px)] overflow-y-auto px-16 py-8">
         <Outlet />
       </div>
       <Toasts />

@@ -8,7 +8,7 @@ const DashboardPage = () => {
   const completeTodos = selectTodos(todos, { matches: { completed: true } });
 
   return (
-    <div className="py-8">
+    <div>
       <div className="mb-8 text-2xl">Your Work</div>
 
       <div className="grid grid-cols-3 gap-8">
@@ -18,7 +18,7 @@ const DashboardPage = () => {
         </div>
 
         <div className="flex flex-col items-center">
-          <div className="text-lg">Ready</div>
+          <div className="text-lg">To Do</div>
           <div>{incompleteTodos.length}</div>
         </div>
 

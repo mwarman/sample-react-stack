@@ -1,8 +1,8 @@
-import TodoEdit from "../todos/TodoEdit";
+import TodoEdit from '../todos/TodoEdit';
 
 const TodoEditPage = () => {
   return (
-    <div className="mt-3">
+    <div>
       <TodoEdit />
     </div>
   );

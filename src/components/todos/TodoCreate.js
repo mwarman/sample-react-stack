@@ -18,7 +18,7 @@ const TodoCreate = ({ onCancel, onSuccess }) => {
 
   return (
     <div className="m-4">
-      <div className="text-2xl font-bold">Create Todo</div>
+      <div className="text-2xl">Create Todo</div>
       <Formik
         initialValues={{ title: '' }}
         validationSchema={validationSchema}

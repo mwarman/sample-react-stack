@@ -14,9 +14,9 @@ const TodoListPage = () => {
   const selectedTodos = selectTodos(todos, displayOptions);
 
   return (
-    <div className="h-full p-4">
+    <div className="h-full">
       <div className="flex items-center">
-        <div className="mr-1 text-2xl font-bold">All Todos</div>
+        <div className="mr-1 text-2xl">All Todos</div>
         {isFetching && <ArrowPathIcon className="inline-block h-6 w-6 animate-spin" />}
       </div>
 
