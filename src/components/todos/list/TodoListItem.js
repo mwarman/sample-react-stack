@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
-import Badge from '../common/Badge';
-import UserName from '../users/UserName';
+import Badge from '../../common/Badge';
+import UserName from '../../users/UserName';
 
 const TodoListItem = ({ id, accountId, title, completed, createdAt, updatedAt }) => {
   return (

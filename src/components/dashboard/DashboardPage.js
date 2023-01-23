@@ -1,7 +1,13 @@
+import { useEffect } from 'react';
+
 import { useGetTodos } from '../../hooks/todos.hooks';
 import { selectTodos } from '../../selectors/todos.selectors';
 
 const DashboardPage = () => {
+  useEffect(() => {
+    document.title = 'Dashboard - Sample React Stack';
+  }, []);
+
   const { data: todos, isLoading } = useGetTodos();
   const allTodos = selectTodos(todos);
   const incompleteTodos = selectTodos(todos, { matches: { completed: false } });

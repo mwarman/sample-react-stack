@@ -1,11 +1,11 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import TodoForm from './TodoForm';
+import TodoForm from '../common/TodoForm';
 
-import { useCreateTodo } from '../../hooks/todos.hooks';
-import { useToastsContext } from '../../hooks/toasts.hooks';
-import { useAuthState } from '../../hooks/auth.hooks';
+import { useCreateTodo } from '../../../hooks/todos.hooks';
+import { useToastsContext } from '../../../hooks/toasts.hooks';
+import { useAuthState } from '../../../hooks/auth.hooks';
 
 const validationSchema = Yup.object({
   title: Yup.string().max(50, 'Must be 50 characters or less').required('Required'),

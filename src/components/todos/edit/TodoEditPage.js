@@ -1,4 +1,4 @@
-import TodoEdit from '../todos/TodoEdit';
+import TodoEdit from './TodoEdit';
 
 const TodoEditPage = () => {
   return (

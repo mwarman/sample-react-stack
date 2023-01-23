@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import { CheckIcon } from '@heroicons/react/24/outline';
 
-import CreateTodoButton from '../todos/CreateTodoButton';
+import CreateTodoButton from '../todos/create/CreateTodoButton';
 import Avatar from '../common/Avatar';
 
 import { useAuthState } from '../../hooks/auth.hooks';
@@ -21,12 +21,12 @@ const menus = {
     left: [
       {
         name: 'Todos',
-        to: '/todos/list',
+        to: '/todos',
         title: 'List todos',
       },
       {
         name: 'People',
-        to: '/users/list',
+        to: '/users',
         title: 'List people',
       },
     ],

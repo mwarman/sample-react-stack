@@ -1,11 +1,15 @@
 import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/24/outline';
 
 import TodoListItem from './TodoListItem';
-import Placeholder from '../common/Placeholder';
-import CreateTodoButton from './CreateTodoButton';
+import Placeholder from '../../common/Placeholder';
+import CreateTodoButton from '../create/CreateTodoButton';
 
-import { SORT_BY_ASSIGNEE, SORT_BY_STATUS, SORT_BY_TITLE } from '../../hooks/todolistfilter.hooks';
-import { keys } from '../../utils/keys';
+import {
+  SORT_BY_ASSIGNEE,
+  SORT_BY_STATUS,
+  SORT_BY_TITLE,
+} from '../../../hooks/todolistfilter.hooks';
+import { keys } from '../../../utils/keys';
 
 const TodoList = ({ todos, status, dispatch, displayOptions }) => {
   const setSort = (attr = 'title') => {

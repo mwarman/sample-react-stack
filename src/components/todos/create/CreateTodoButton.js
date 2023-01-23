@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import Button from '../common/Button';
-import Modal from '../common/Modal';
+import Button from '../../common/Button';
+import Modal from '../../common/Modal';
 import TodoCreate from './TodoCreate';
 
 const CreateTodoButton = (props) => {

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 
 import Loading from '../common/Loading';
@@ -5,6 +6,10 @@ import Loading from '../common/Loading';
 import { useAuthState } from '../../hooks/auth.hooks';
 
 const LandingPage = () => {
+  useEffect(() => {
+    document.title = 'Sample React Stack';
+  }, []);
+
   const { data: authState, isLoading } = useAuthState();
 
   if (isLoading) {

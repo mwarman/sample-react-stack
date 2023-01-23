@@ -9,6 +9,10 @@ const SignOut = () => {
   const signOut = useSignOut();
 
   useEffect(() => {
+    document.title = 'Sign Out - Sample React Stack';
+  }, []);
+
+  useEffect(() => {
     signOut.mutate(null, {
       onSuccess: () => {
         navigate('/');

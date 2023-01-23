@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
-import TodoNav from '../todos/TodoNav';
+import TodoNav from './TodoNav';
 
 const TodosPage = () => {
   return (

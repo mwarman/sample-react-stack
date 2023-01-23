@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
@@ -23,6 +23,10 @@ const validationSchema = Yup.object({
 });
 
 const SignUp = () => {
+  useEffect(() => {
+    document.title = 'Sign Up - Sample React Stack';
+  }, []);
+
   const [error, setError] = useState();
   const navigate = useNavigate();
   const toastsContext = useToastsContext();

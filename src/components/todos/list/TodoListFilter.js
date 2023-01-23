@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import { FILTER_STATUS } from '../../hooks/todolistfilter.hooks';
+import { FILTER_STATUS } from '../../../hooks/todolistfilter.hooks';
 
 const TodoListFilter = ({ displayOptions, dispatch }) => {
   const filterByStatus = (status = 'all') => {
