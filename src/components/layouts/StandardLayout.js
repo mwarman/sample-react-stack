@@ -1,18 +1,21 @@
 import { Outlet } from 'react-router-dom';
 
 import Header from '../header/Header';
+import WithModals from '../common/modals/WithModals';
 import Toasts from '../common/Toasts';
 
-const StandardPage = () => {
+const StandardLayout = () => {
   return (
     <>
       <Header />
       <div className="h-[calc(100vh_-_64px)] overflow-y-auto px-16 py-8">
-        <Outlet />
+        <WithModals>
+          <Outlet />
+        </WithModals>
       </div>
       <Toasts />
     </>
   );
 };
 
-export default StandardPage;
+export default StandardLayout;

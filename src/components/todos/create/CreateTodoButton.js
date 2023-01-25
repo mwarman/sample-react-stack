@@ -1,28 +1,24 @@
-import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import Button from '../../common/Button';
-import Modal from '../../common/Modal';
-import TodoCreate from './TodoCreate';
 
 const CreateTodoButton = (props) => {
-  const [showModal, setShowModal] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   return (
     <>
       <Button
         size={props.size || 'sm'}
         variant="primary"
-        onClick={() => setShowModal(true)}
+        onClick={() => {
+          searchParams.append('todoCreate', 'true');
+          setSearchParams(searchParams);
+        }}
         title="Create todo"
         {...props}
       >
         Create
       </Button>
-      {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-          <TodoCreate onSuccess={() => setShowModal(false)} onCancel={() => setShowModal(false)} />
-        </Modal>
-      )}
     </>
   );
 };

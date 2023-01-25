@@ -7,7 +7,7 @@ import { useToastsContext } from '../../hooks/toasts.hooks';
 import ButtonBar from '../common/ButtonBar';
 import Button from '../common/Button';
 import LoadingButton from '../common/LoadingButton';
-import Modal from '../common/Modal';
+import Modal from '../common/modals/Modal';
 
 const DeleteTodoButton = ({ todo, ...props }) => {
   const [showModal, setShowModal] = useState(false);
