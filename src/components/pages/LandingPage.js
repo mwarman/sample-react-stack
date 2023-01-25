@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 import Loading from '../common/Loading';
+import Button from '../common/Button';
 
 import { useAuthState } from '../../hooks/auth.hooks';
 
@@ -9,6 +10,8 @@ const LandingPage = () => {
   useEffect(() => {
     document.title = 'Sample React Stack';
   }, []);
+
+  const navigate = useNavigate();
 
   const { data: authState, isLoading } = useAuthState();
 
@@ -22,13 +25,16 @@ const LandingPage = () => {
 
   return (
     <div className="flex h-1/2 items-center justify-center">
-      <div className="text-2xl">Ready to work?</div>
-      <Link
-        to="/todos/list"
-        className="ml-6 rounded-full bg-blue-500 px-3 py-2 text-xl text-white hover:bg-blue-700"
+      <div className="text-2xl">Got stuff to do?</div>
+      <Button
+        type="button"
+        variant="primary"
+        title="Get Started"
+        className="ml-8 w-36 text-xl"
+        onClick={() => navigate('/dashboard')}
       >
-        Let's go
-      </Link>
+        Get Started
+      </Button>
     </div>
   );
 };

@@ -67,7 +67,7 @@ const Header = () => {
                 {link.name}
               </NavLink>
             ))}
-            <CreateTodoButton className="text-base" />
+            <CreateTodoButton className="w-24 text-base" />
           </>
         ) : (
           menus.unauthenticated.left.map((link, index) => (

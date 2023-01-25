@@ -17,17 +17,22 @@ const TodoEdit = () => {
   const navigate = useNavigate();
   const { todoId } = useParams();
   const toastsContext = useToastsContext();
-  const { data: todo, status } = useGetTodo(todoId);
+  const { data: todo, isLoading } = useGetTodo(todoId);
   const updateTodo = useUpdateTodo();
 
-  if (status === 'loading') {
+  if (isLoading) {
     return (
       <div className="m-4">
-        <div className="mb-4 text-2xl">Todo</div>
-        <Placeholder className="mb-3 w-1/5" />
-        <Placeholder size="lg" className="mb-8" />
-        <Placeholder className="mb-3 w-1/5" />
-        <Placeholder size="lg" className="mb-8" />
+        <div className="mb-2 flex items-center text-slate-700">
+          <Link to="/todos">Todos</Link>
+          <span className="ml-3">/</span>
+          <Placeholder size="lg" className="ml-3 w-1/12" />
+        </div>
+
+        <Placeholder size="xl" className="mb-8 w-1/3" />
+
+        <Placeholder className="mb-3 w-1/12" />
+        <Placeholder className="mb-4 h-20 w-1/2" />
       </div>
     );
   }
@@ -42,9 +47,9 @@ const TodoEdit = () => {
         </Link>
       </div>
 
-      <div className="text-2xl">{todo.title}</div>
       <Formik
         initialValues={{ title: todo.title }}
+        enableReinitialize={true}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
           updateTodo.mutate(
@@ -63,7 +68,7 @@ const TodoEdit = () => {
           );
         }}
       >
-        {(formik) => <TodoForm formik={formik} onCancel={() => navigate(-1)} />}
+        {(formik) => <TodoForm formik={formik} />}
       </Formik>
     </div>
   );
