@@ -1,9 +1,9 @@
-import { useSearchParams } from 'react-router-dom';
-
 import Button from '../../common/Button';
 
+import { useModalContext } from '../../../hooks/modal.hooks';
+
 const CreateTodoButton = (props) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const { setModalOptions } = useModalContext();
 
   return (
     <>
@@ -11,8 +11,7 @@ const CreateTodoButton = (props) => {
         size={props.size || 'sm'}
         variant="primary"
         onClick={() => {
-          searchParams.append('todoCreate', 'true');
-          setSearchParams(searchParams);
+          setModalOptions({ modal: 'todoCreate' });
         }}
         title="Create todo"
         {...props}

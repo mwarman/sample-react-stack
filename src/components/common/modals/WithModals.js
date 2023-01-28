@@ -1,18 +1,26 @@
-import { useSearchParams } from 'react-router-dom';
-
 import CreateTodoModal from '../../todos/create/CreateTodoModal';
 
+import { useModalContext } from '../../../hooks/modal.hooks';
+
+/**
+ * The `WithModals` component uses the `ModalContext` to conditionally render
+ * Modal components.
+ * @param {Object} props The component properties.
+ * @param props.children The child components.
+ * @returns JSX
+ */
 const WithModals = ({ children }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const { modalOptions, setModalOptions } = useModalContext();
+  const { modal = '', props = {} } = modalOptions;
 
   return (
     <>
       <CreateTodoModal
-        isHidden={!searchParams.has('todoCreate')}
+        isHidden={modal !== 'todoCreate'}
         onHide={() => {
-          searchParams.delete('todoCreate');
-          setSearchParams(searchParams);
+          setModalOptions();
         }}
+        {...props}
       />
 
       {children}
