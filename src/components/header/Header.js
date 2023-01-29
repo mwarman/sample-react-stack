@@ -20,14 +20,14 @@ const Header = () => {
         </Link>
       </div>
       <nav className="flex items-center">
-        <HeaderNavLink to="/" title="Dashboard" show={isAuthenticated}>
+        <HeaderNavLink to="/dashboard" title="Dashboard" show={isAuthenticated}>
           Dashboard
         </HeaderNavLink>
         <HeaderNavLink to="/todos" title="Todo List" show={isAuthenticated}>
           Todos
         </HeaderNavLink>
       </nav>
-      <CreateTodoButton className="mx-6 w-24 text-base" />
+      {isAuthenticated && <CreateTodoButton className="mx-6 w-24 text-base" />}
       <nav className="ml-auto flex items-center">
         <HeaderNavLink to="/auth/signout" title="Sign Out" show={isAuthenticated}>
           Sign Out
@@ -36,7 +36,7 @@ const Header = () => {
           Sign In
         </HeaderNavLink>
       </nav>
-      <Avatar />
+      {isAuthenticated && <Avatar />}
     </div>
   );
 };
