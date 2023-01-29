@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import classNames from 'classnames';
-import { ArrowPathIcon } from '@heroicons/react/24/outline';
 
 import { useGetTodos } from '../../../hooks/todos.hooks';
 import { useTodoListFilter } from '../../../hooks/todolistfilter.hooks';
 import { selectTodos } from '../../../selectors/todos.selectors';
 
+import Loading from '../../common/Loading';
 import TodoListFilter from './TodoListFilter';
 import TodoList from './TodoList';
 
@@ -21,8 +21,8 @@ const TodoListPage = () => {
   return (
     <div className="h-full">
       <div className="flex items-center">
-        <div className="mr-1 text-2xl">Todos</div>
-        {isFetching && <ArrowPathIcon className="inline-block h-6 w-6 animate-spin" />}
+        <div className="text-2xl">Todos</div>
+        {isFetching && <Loading className="ml-2 text-xl text-slate-600" />}
       </div>
 
       <div className="mt-3">

@@ -1,5 +1,4 @@
-import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/24/outline';
-
+import Icon from '../../common/icons/Icon';
 import TodoListItem from './TodoListItem';
 import Placeholder from '../../common/Placeholder';
 import CreateTodoButton from '../create/CreateTodoButton';
@@ -68,10 +67,10 @@ const TodoList = ({ todos, status, dispatch, displayOptions }) => {
             >
               <span className="mr-1 font-bold">Title</span>
               {displayOptions.sortBy[0] === 'title' && displayOptions.sortOrder[0] === 'asc' && (
-                <ArrowUpIcon className="inline-block h-4 w-4 stroke-slate-500 stroke-2" />
+                <Icon name="arrow-up" className="text-sm text-slate-600" />
               )}
               {displayOptions.sortBy[0] === 'title' && displayOptions.sortOrder[0] === 'desc' && (
-                <ArrowDownIcon className="inline-block h-4 w-4 stroke-slate-500 stroke-2" />
+                <Icon name="arrow-down" className="text-sm text-slate-600" />
               )}
             </div>
           </td>
@@ -83,11 +82,11 @@ const TodoList = ({ todos, status, dispatch, displayOptions }) => {
               <span className="mr-1 font-bold">Status</span>
               {displayOptions.sortBy[0] === 'completed' &&
                 displayOptions.sortOrder[0] === 'asc' && (
-                  <ArrowUpIcon className="inline-block h-4 w-4 stroke-slate-500 stroke-2" />
+                  <Icon name="arrow-up" className="text-sm text-slate-600" />
                 )}
               {displayOptions.sortBy[0] === 'completed' &&
                 displayOptions.sortOrder[0] === 'desc' && (
-                  <ArrowDownIcon className="inline-block h-4 w-4 stroke-slate-500 stroke-2" />
+                  <Icon name="arrow-down" className="text-sm text-slate-600" />
                 )}
             </div>
           </td>
@@ -99,11 +98,11 @@ const TodoList = ({ todos, status, dispatch, displayOptions }) => {
               <span className="mr-1 font-bold">Assignee</span>
               {displayOptions.sortBy[0] === 'accountId' &&
                 displayOptions.sortOrder[0] === 'asc' && (
-                  <ArrowUpIcon className="inline-block h-4 w-4 stroke-slate-500 stroke-2" />
+                  <Icon name="arrow-up" className="text-sm text-slate-600" />
                 )}
               {displayOptions.sortBy[0] === 'accountId' &&
                 displayOptions.sortOrder[0] === 'desc' && (
-                  <ArrowDownIcon className="inline-block h-4 w-4 stroke-slate-500 stroke-2" />
+                  <Icon name="arrow-down" className="text-sm text-slate-600" />
                 )}
             </div>
           </td>

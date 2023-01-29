@@ -1,7 +1,7 @@
-import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import classNames from 'classnames';
 
 import Button from './Button';
+import Loading from './Loading';
 
 const LoadingButton = ({ children, isLoading, size = 'md', ...props }) => {
   let sizeClasses = '';
@@ -20,7 +20,8 @@ const LoadingButton = ({ children, isLoading, size = 'md', ...props }) => {
     return (
       <Button size={size} {...props}>
         <div className="flex items-center justify-center">
-          <ArrowPathIcon className={classNames(sizeClasses, 'mr-2 animate-spin')} />
+          <Loading className="mr-2" />
+          {/* <ArrowPathIcon className={classNames(sizeClasses, 'mr-2 animate-spin')} /> */}
           {children}
         </div>
       </Button>

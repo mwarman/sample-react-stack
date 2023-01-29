@@ -10,7 +10,7 @@ const Protected = ({ children }) => {
   if (status === 'loading') {
     return (
       <div className="flex h-1/2 w-screen items-center justify-center">
-        <Loading text="Loading..." />
+        <Loading className="text-2xl">Loading...</Loading>
       </div>
     );
   }

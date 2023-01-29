@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import { XMarkIcon } from '@heroicons/react/24/outline';
+
+import Icon from '../icons/Icon';
 
 const getModalSize = (size) => {
   switch (size) {
@@ -27,10 +28,10 @@ const Modal = ({ children, onClose, size }) => {
       >
         <button
           type="button"
-          className="absolute -top-2 -right-2 rounded-full border border-slate-200 bg-white p-2"
+          className="absolute -top-2 -right-2 h-10 w-10 rounded-full border border-slate-200 bg-white p-2"
           onClick={close}
         >
-          <XMarkIcon className="h-6 w-6" />
+          <Icon name="xmark" />
         </button>
         {children}
       </div>
