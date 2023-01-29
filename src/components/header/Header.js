@@ -4,6 +4,9 @@ import Icon from '../common/icons/Icon';
 import HeaderNavLink from './HeaderNavLink';
 import CreateTodoButton from '../todos/create/CreateTodoButton';
 import Avatar from '../common/Avatar';
+import DropdownMenu from '../common/menus/DropdownMenu';
+import DropdownMenuLink from '../common/menus/DropdownMenuLink';
+import DropdownMenuTitle from '../common/menus/DropdownMenuTitle';
 
 import { useAuthState } from '../../hooks/auth.hooks';
 
@@ -29,14 +32,18 @@ const Header = () => {
       </nav>
       {isAuthenticated && <CreateTodoButton className="mx-6 w-24 text-base" />}
       <nav className="ml-auto flex items-center">
-        <HeaderNavLink to="/auth/signout" title="Sign Out" show={isAuthenticated}>
-          Sign Out
-        </HeaderNavLink>
         <HeaderNavLink to="/auth/signin" title="Sign In" show={!isAuthenticated}>
           Sign In
         </HeaderNavLink>
       </nav>
-      {isAuthenticated && <Avatar />}
+      {isAuthenticated && (
+        <DropdownMenu trigger={<Avatar className="cursor-pointer" />} position="-right-0 top-11">
+          <DropdownMenuTitle>Account</DropdownMenuTitle>
+          <DropdownMenuLink to="/auth/signout" title="Sign Out">
+            Sign Out
+          </DropdownMenuLink>
+        </DropdownMenu>
+      )}
     </div>
   );
 };

@@ -2,6 +2,10 @@ import { Link } from 'react-router-dom';
 
 import Badge from '../../common/Badge';
 import UserName from '../../users/UserName';
+import DropdownMenu from '../../common/menus/DropdownMenu';
+import DropdownMenuLink from '../../common/menus/DropdownMenuLink';
+import DropdownMenuTitle from '../../common/menus/DropdownMenuTitle';
+import Icon from '../../common/icons/Icon';
 
 const TodoListItem = ({ id, accountId, title, completed, createdAt, updatedAt }) => {
   return (
@@ -16,6 +20,14 @@ const TodoListItem = ({ id, accountId, title, completed, createdAt, updatedAt })
       </td>
       <td className="px-2 py-1">
         <UserName accountId={accountId} />
+      </td>
+      <td>
+        <DropdownMenu trigger={<Icon name="ellipsis-vertical" className="text-slate-700" />}>
+          <DropdownMenuTitle>Actions</DropdownMenuTitle>
+          <DropdownMenuLink to="/todos" title="Delete Todo">
+            Delete
+          </DropdownMenuLink>
+        </DropdownMenu>
       </td>
     </tr>
   );
