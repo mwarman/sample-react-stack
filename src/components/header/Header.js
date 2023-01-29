@@ -1,44 +1,11 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Icon from '../common/icons/Icon';
+import HeaderNavLink from './HeaderNavLink';
 import CreateTodoButton from '../todos/create/CreateTodoButton';
 import Avatar from '../common/Avatar';
 
 import { useAuthState } from '../../hooks/auth.hooks';
-
-const menus = {
-  unauthenticated: {
-    left: [],
-    right: [
-      {
-        name: 'Sign In',
-        to: '/auth/signin',
-        title: 'Sign In',
-      },
-    ],
-  },
-  authenticated: {
-    left: [
-      {
-        name: 'Todos',
-        to: '/todos',
-        title: 'List todos',
-      },
-      {
-        name: 'People',
-        to: '/users',
-        title: 'List people',
-      },
-    ],
-    right: [
-      {
-        name: 'Sign Out',
-        to: '/auth/signout',
-        title: 'Sign Out',
-      },
-    ],
-  },
-};
 
 const Header = () => {
   const { data: authState, isSuccess } = useAuthState();
@@ -53,61 +20,23 @@ const Header = () => {
         </Link>
       </div>
       <nav className="flex items-center">
-        {isAuthenticated ? (
-          <>
-            {menus.authenticated.left.map((link, index) => (
-              <NavLink
-                key={index}
-                to={link.to}
-                className="mr-6 text-slate-600 hover:text-black"
-                title={link.title}
-              >
-                {link.name}
-              </NavLink>
-            ))}
-            <CreateTodoButton className="w-24 text-base" />
-          </>
-        ) : (
-          menus.unauthenticated.left.map((link, index) => (
-            <NavLink
-              key={index}
-              to={link.to}
-              className="mr-6 text-slate-600 hover:text-black"
-              title={link.title}
-            >
-              {link.name}
-            </NavLink>
-          ))
-        )}
+        <HeaderNavLink to="/" title="Dashboard" show={isAuthenticated}>
+          Dashboard
+        </HeaderNavLink>
+        <HeaderNavLink to="/todos" title="Todo List" show={isAuthenticated}>
+          Todos
+        </HeaderNavLink>
       </nav>
+      <CreateTodoButton className="mx-6 w-24 text-base" />
       <nav className="ml-auto flex items-center">
-        {isAuthenticated ? (
-          <>
-            {menus.authenticated.right.map((link, index) => (
-              <NavLink
-                key={index}
-                to={link.to}
-                className="mr-6 text-slate-600 hover:text-black"
-                title={link.title}
-              >
-                {link.name}
-              </NavLink>
-            ))}
-            <Avatar className="mr-4" />
-          </>
-        ) : (
-          menus.unauthenticated.right.map((link, index) => (
-            <NavLink
-              key={index}
-              to={link.to}
-              className="mr-6 text-slate-600 hover:text-black"
-              title={link.title}
-            >
-              {link.name}
-            </NavLink>
-          ))
-        )}
+        <HeaderNavLink to="/auth/signout" title="Sign Out" show={isAuthenticated}>
+          Sign Out
+        </HeaderNavLink>
+        <HeaderNavLink to="/auth/signin" title="Sign In" show={!isAuthenticated}>
+          Sign In
+        </HeaderNavLink>
       </nav>
+      <Avatar />
     </div>
   );
 };
