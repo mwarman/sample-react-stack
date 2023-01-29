@@ -1,8 +1,8 @@
 import { Form } from 'formik';
 
-import ButtonBar from '../../common/ButtonBar';
-import LoadingButton from '../../common/LoadingButton';
-import Button from '../../common/Button';
+import ButtonBar from '../../common/buttons/ButtonBar';
+import LoadingButton from '../../common/buttons/LoadingButton';
+import Button from '../../common/buttons/Button';
 import InputField from '../../common/forms/InputField';
 import Label from '../../common/forms/Label';
 

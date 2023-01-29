@@ -1,4 +1,4 @@
-import Button from '../../common/Button';
+import Button from '../../common/buttons/Button';
 
 import { useModalContext } from '../../../hooks/modal.hooks';
 

@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 import Placeholder from '../common/Placeholder';
 import Badge from '../common/Badge';
-import ButtonBar from '../common/ButtonBar';
-import LoadingButton from '../common/LoadingButton';
-import Button from '../common/Button';
+import ButtonBar from '../common/buttons/ButtonBar';
+import LoadingButton from '../common/buttons/LoadingButton';
+import Button from '../common/buttons/Button';
 import DeleteTodoButton from './DeleteTodoButton';
 import TodoUser from './TodoUser';
 

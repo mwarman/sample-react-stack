@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { useRemoveTodo } from '../../hooks/todos.hooks';
 import { useToastsContext } from '../../hooks/toasts.hooks';
 
-import ButtonBar from '../common/ButtonBar';
-import Button from '../common/Button';
-import LoadingButton from '../common/LoadingButton';
+import ButtonBar from '../common/buttons/ButtonBar';
+import Button from '../common/buttons/Button';
+import LoadingButton from '../common/buttons/LoadingButton';
 import Modal from '../common/modals/Modal';
 
 const DeleteTodoButton = ({ todo, ...props }) => {

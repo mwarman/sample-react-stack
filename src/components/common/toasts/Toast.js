@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
-import Icon from './icons/Icon';
+import Icon from '../icons/Icon';
 
-import config from '../../utils/config';
+import config from '../../../utils/config';
 
 const Toast = ({ id, message, onDismiss }) => {
   useEffect(() => {

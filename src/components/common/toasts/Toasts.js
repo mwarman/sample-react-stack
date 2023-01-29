@@ -1,5 +1,5 @@
-import { useToastsContext } from "../../hooks/toasts.hooks";
-import Toast from "./Toast";
+import { useToastsContext } from '../../../hooks/toasts.hooks';
+import Toast from './Toast';
 
 const Toasts = () => {
   const toastContext = useToastsContext();

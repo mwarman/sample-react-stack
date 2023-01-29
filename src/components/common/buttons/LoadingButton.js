@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 import Button from './Button';
-import Loading from './Loading';
+import Loading from '../Loading';
 
 const LoadingButton = ({ children, isLoading, size = 'md', ...props }) => {
   let sizeClasses = '';

@@ -5,8 +5,8 @@ import * as Yup from 'yup';
 
 import InputField from '../common/forms/InputField';
 import Label from '../common/forms/Label';
-import ButtonBar from '../common/ButtonBar';
-import LoadingButton from '../common/LoadingButton';
+import ButtonBar from '../common/buttons/ButtonBar';
+import LoadingButton from '../common/buttons/LoadingButton';
 import Alert from '../common/Alert';
 
 import { useSignIn } from '../../hooks/auth.hooks';
