@@ -5,7 +5,7 @@ import { ListContextProvider } from '../../../contexts/list.context';
 import ListLoading from '../../common/lists/ListLoading';
 import ListEmpty from '../../common/lists/ListEmpty';
 import ListTitle from '../../common/lists/ListTitle';
-import TodoListFilter from './TodoListFilter';
+import ListFilter from '../../common/lists/ListFilter';
 import TodoListContent from './TodoListContent';
 
 import { useGetTodos } from '../../../hooks/todos.hooks';
@@ -24,7 +24,7 @@ const TodoListPage = () => {
       </div>
 
       <div className="mb-4">
-        <TodoListFilter />
+        <ListFilter />
       </div>
 
       {isLoading ? (
