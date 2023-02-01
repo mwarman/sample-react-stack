@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import ListHeader from '../../common/lists/ListHeader';
 import ListColumn from '../../common/lists/ListColumn';
 import TodoList from './TodoList';
@@ -8,8 +10,14 @@ import { useListContext } from '../../../hooks/list.hooks';
 import { selectTodosWithListContext } from '../../../selectors/todos.selectors';
 
 const TodoListContent = ({ todos = [] }) => {
-  const { list: listContext } = useListContext();
-  const { page, items } = selectTodosWithListContext(todos, listContext);
+  const { list: listContext, setPage } = useListContext();
+  const { page = [], items = [] } = selectTodosWithListContext(todos, listContext);
+
+  useEffect(() => {
+    if (items.length > 0 && page.length === 0) {
+      setPage(1);
+    }
+  }, [page, items]);
 
   if (items.length === 0) {
     return <ListEmpty />;
