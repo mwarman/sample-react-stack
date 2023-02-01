@@ -7,29 +7,31 @@ import DropdownMenuLink from '../../common/menus/DropdownMenuLink';
 import DropdownMenuTitle from '../../common/menus/DropdownMenuTitle';
 import Icon from '../../common/icons/Icon';
 
-const TodoListItem = ({ id, accountId, title, completed, createdAt, updatedAt }) => {
+const TodoListItem = ({ todo }) => {
   return (
-    <tr className="border-y border-slate-300 hover:bg-slate-200">
-      <td className="px-2 py-1">
-        <Link to={`/todos/${id}`} className="hover:underline">
-          {title}
+    <div className="grid grid-cols-12 items-center gap-4 p-2 hover:bg-slate-200/40">
+      <div className="col-span-7">
+        <Link to={`/todos/${todo.id}`} className="hover:underline">
+          {todo.title}
         </Link>
-      </td>
-      <td className="px-2 py-1">
-        {completed ? <Badge type="success">DONE</Badge> : <Badge>NOT STARTED</Badge>}
-      </td>
-      <td className="px-2 py-1">
-        <UserName accountId={accountId} />
-      </td>
-      <td>
-        <DropdownMenu trigger={<Icon name="ellipsis-vertical" className="text-slate-700" />}>
+      </div>
+      <div className="col-span-2">
+        {todo.completed ? <Badge type="success">DONE</Badge> : <Badge>NOT STARTED</Badge>}
+      </div>
+      <div className="col-span-2">
+        <UserName accountId={todo.accountId} />
+      </div>
+      <div className="col-span-1">
+        <DropdownMenu
+          trigger={<Icon name="ellipsis-vertical" className="ml-auto block text-slate-700" />}
+        >
           <DropdownMenuTitle>Actions</DropdownMenuTitle>
           <DropdownMenuLink to="/todos" title="Delete Todo">
             Delete
           </DropdownMenuLink>
         </DropdownMenu>
-      </td>
-    </tr>
+      </div>
+    </div>
   );
 };
 

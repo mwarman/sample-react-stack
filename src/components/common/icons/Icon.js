@@ -6,9 +6,12 @@ import {
   faArrowRight,
   faArrowUp,
   faArrowRightFromBracket,
+  faChevronLeft,
+  faChevronRight,
   faCircleNotch,
   faEllipsisVertical,
   faListCheck,
+  faMagnifyingGlass,
   faNotdef,
   faRotate,
   faTriangleExclamation,
@@ -27,12 +30,18 @@ const selectIcon = (name) => {
       return faArrowRightFromBracket;
     case 'arrow-up':
       return faArrowUp;
+    case 'chevron-left':
+      return faChevronLeft;
+    case 'chevron-right':
+      return faChevronRight;
     case 'circle-notch':
       return faCircleNotch;
     case 'ellipsis-vertical':
       return faEllipsisVertical;
     case 'list-check':
       return faListCheck;
+    case 'magnifying-glass':
+      return faMagnifyingGlass;
     case 'rotate':
       return faRotate;
     case 'triangle-exclamation':
