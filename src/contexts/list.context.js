@@ -10,7 +10,7 @@ export const Actions = {
   SET_SORT: 'SET_SORT',
 };
 
-const DEFAULT_STATE = {
+export const DEFAULT_STATE = {
   matches: {},
   pagination: {
     page: 1,

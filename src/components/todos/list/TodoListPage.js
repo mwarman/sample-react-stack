@@ -9,8 +9,6 @@ import TodoListFilter from './TodoListFilter';
 import TodoListContent from './TodoListContent';
 
 import { useGetTodos } from '../../../hooks/todos.hooks';
-import { useTodoListFilter } from '../../../hooks/todolistfilter.hooks';
-import { selectTodos } from '../../../selectors/todos.selectors';
 
 const TodoListPage = () => {
   useEffect(() => {
@@ -18,8 +16,6 @@ const TodoListPage = () => {
   }, []);
 
   const { data: todos, isLoading, isFetching } = useGetTodos();
-  const [displayOptions, dispatch] = useTodoListFilter();
-  const selectedTodos = selectTodos(todos, displayOptions);
 
   return (
     <ListContextProvider listOptions={{ sort: { by: 'title' }, pagination: { size: 2 } }}>
@@ -28,15 +24,15 @@ const TodoListPage = () => {
       </div>
 
       <div className="mb-4">
-        <TodoListFilter displayOptions={displayOptions} dispatch={dispatch} />
+        <TodoListFilter />
       </div>
 
       {isLoading ? (
         <ListLoading />
       ) : (
         <div className={classNames({ 'opacity-25': isFetching })}>
-          <TodoListContent todos={selectedTodos} />
-          <ListEmpty items={selectedTodos} />
+          <TodoListContent todos={todos} />
+          <ListEmpty items={todos} />
         </div>
       )}
     </ListContextProvider>
