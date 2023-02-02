@@ -1,40 +1,16 @@
 import { useEffect } from 'react';
-import classNames from 'classnames';
 
 import { ListContextProvider } from '../../../contexts/list.context';
-import ListLoading from '../../common/lists/ListLoading';
-import ListEmpty from '../../common/lists/ListEmpty';
-import ListTitle from '../../common/lists/ListTitle';
-import ListFilter from '../../common/lists/ListFilter';
-import TodoListContent from './TodoListContent';
-
-import { useGetTodos } from '../../../hooks/todos.hooks';
+import TodoListLayout from './TodoListLayout';
 
 const TodoListPage = () => {
   useEffect(() => {
     document.title = 'Todos - Sample React Stack';
   }, []);
 
-  const { data: todos, isLoading, isFetching } = useGetTodos();
-
   return (
     <ListContextProvider listOptions={{ sort: { by: 'title' }, pagination: { size: 2 } }}>
-      <div className="mb-4">
-        <ListTitle title="Todos" showLoading={isFetching} />
-      </div>
-
-      <div className="mb-4">
-        <ListFilter />
-      </div>
-
-      {isLoading ? (
-        <ListLoading />
-      ) : (
-        <div className={classNames({ 'opacity-25': isFetching })}>
-          <TodoListContent todos={todos} />
-          <ListEmpty items={todos} />
-        </div>
-      )}
+      <TodoListLayout />
     </ListContextProvider>
   );
 };
