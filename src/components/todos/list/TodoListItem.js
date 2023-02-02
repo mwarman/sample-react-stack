@@ -7,7 +7,11 @@ import DropdownMenuLink from '../../common/menus/DropdownMenuLink';
 import DropdownMenuTitle from '../../common/menus/DropdownMenuTitle';
 import Icon from '../../common/icons/Icon';
 
+import { useModalContext } from '../../../hooks/modal.hooks';
+
 const TodoListItem = ({ todo }) => {
+  const { setModalOptions } = useModalContext();
+
   return (
     <div className="grid grid-cols-12 items-center gap-4 p-2 hover:bg-slate-200/40">
       <div className="col-span-7">
@@ -26,7 +30,11 @@ const TodoListItem = ({ todo }) => {
           trigger={<Icon name="ellipsis-vertical" className="ml-auto block text-slate-700" />}
         >
           <DropdownMenuTitle>Actions</DropdownMenuTitle>
-          <DropdownMenuLink to="/todos" title="Delete Todo">
+          <DropdownMenuLink
+            to="/todos"
+            title="Delete Todo"
+            onClick={() => setModalOptions({ modal: 'todoDelete', props: { todoId: todo.id } })}
+          >
             Delete
           </DropdownMenuLink>
         </DropdownMenu>

@@ -1,4 +1,5 @@
 import CreateTodoModal from '../../todos/create/CreateTodoModal';
+import DeleteTodoModal from '../../todos/delete/DeleteTodoModal';
 
 import { useModalContext } from '../../../hooks/modal.hooks';
 
@@ -17,6 +18,13 @@ const WithModals = ({ children }) => {
     <>
       <CreateTodoModal
         isHidden={modal !== 'todoCreate'}
+        onHide={() => {
+          setModalOptions();
+        }}
+        {...props}
+      />
+      <DeleteTodoModal
+        isHidden={modal !== 'todoDelete'}
         onHide={() => {
           setModalOptions();
         }}
