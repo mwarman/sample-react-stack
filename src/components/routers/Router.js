@@ -6,8 +6,6 @@ import LandingPage from '../pages/LandingPage';
 import DashboardPage from '../dashboard/DashboardPage';
 import TodoEditPage from '../todos/edit/TodoEditPage';
 import TodoListPage from '../todos/list/TodoListPage';
-import TodosPage from '../todos/TodosPage';
-import Todo from '../todos/Todo';
 import ErrorPage from '../pages/ErrorPage';
 import AuthPage from '../pages/AuthPage';
 import SignIn from '../auth/SignIn';
@@ -68,36 +66,6 @@ export const router = createBrowserRouter([
           },
         ],
       },
-      // {
-      //   path: '/todos/:todoId/edit',
-      //   element: (
-      //     <Protected>
-      //       <TodoEditPage />
-      //     </Protected>
-      //   ),
-      // },
-      // {
-      //   path: '/todos/list',
-      //   element: (
-      //     <Protected>
-      //       <TodoListPage />
-      //     </Protected>
-      //   ),
-      // },
-      // {
-      //   path: '/todos',
-      //   element: (
-      //     <Protected>
-      //       <TodosPage />
-      //     </Protected>
-      //   ),
-      //   children: [
-      //     {
-      //       path: ':todoId',
-      //       element: <Todo />,
-      //     },
-      //   ],
-      // },
     ],
   },
 ]);
