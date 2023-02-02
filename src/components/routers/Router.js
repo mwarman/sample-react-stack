@@ -2,12 +2,12 @@ import { createBrowserRouter, Outlet } from 'react-router-dom';
 
 import Protected from './Protected';
 import StandardLayout from '../layouts/StandardLayout';
-import LandingPage from '../pages/LandingPage';
+import LandingPage from '../public/landing/LandingPage';
 import DashboardPage from '../dashboard/DashboardPage';
 import TodoEditPage from '../todos/edit/TodoEditPage';
 import TodoListPage from '../todos/list/TodoListPage';
-import ErrorPage from '../pages/ErrorPage';
-import AuthPage from '../pages/AuthPage';
+import ErrorPage from '../errors/ErrorPage';
+import AuthPage from '../auth/AuthPage';
 import SignIn from '../auth/SignIn';
 import SignUp from '../auth/SignUp';
 import SignOut from '../auth/SignOut';

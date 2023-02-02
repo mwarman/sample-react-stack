@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
-import Loading from '../common/Loading';
-import Button from '../common/buttons/Button';
+import Loading from '../../common/Loading';
+import Button from '../../common/buttons/Button';
 
-import { useAuthState } from '../../hooks/auth.hooks';
+import { useAuthState } from '../../../hooks/auth.hooks';
 
 const LandingPage = () => {
   useEffect(() => {
