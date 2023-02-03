@@ -2,38 +2,38 @@ import classNames from 'classnames';
 
 import Icon from '../icons/Icon';
 
-const getModalSize = (size) => {
+const getSizeClasses = (size) => {
   switch (size) {
+    case 'full':
+      return 'w-screen h-screen';
     case 'lg':
-      return 'w-[800px]';
+      return 'w-[800px] rounded';
     case 'sm':
-      return 'w-[300px]';
+      return 'w-[300px] rounded';
     default:
-      return 'w-[500px]';
+      return 'w-[500px] rounded';
   }
 };
 
-const Modal = ({ children, onClose, size }) => {
+const Modal = ({ children, onClose, size, title }) => {
   const close = () => {
     onClose && onClose();
   };
 
   return (
-    <div className="absolute top-0 left-0 z-40 flex h-screen w-screen items-center justify-center bg-slate-700/50">
+    <div className="absolute top-0 left-0 z-40 h-screen w-screen bg-slate-700/50" onClick={close}>
       <div
-        className={classNames(
-          'relative z-50 rounded border-slate-200 bg-white p-4',
-          getModalSize(size),
-        )}
+        className={classNames('z-50 mx-auto my-16 bg-white', getSizeClasses(size))}
+        onClick={(e) => e.stopPropagation()}
       >
-        <button
-          type="button"
-          className="absolute -top-2 -right-2 h-10 w-10 rounded-full border border-slate-200 bg-white p-2"
-          onClick={close}
-        >
-          <Icon name="xmark" />
-        </button>
-        {children}
+        <div className="flex items-center justify-between p-4">
+          <div className="text-2xl">{title}</div>
+          <button type="button" onClick={close}>
+            <Icon name="xmark" fixedWidth className="text-xl" />
+          </button>
+        </div>
+
+        <div className="p-4">{children}</div>
       </div>
     </div>
   );

@@ -27,17 +27,6 @@ const TodoForm = ({ formik, onCancel }) => {
       </div>
 
       <ButtonBar className="mt-8 justify-end">
-        {onCancel && (
-          <Button
-            variant="secondary"
-            type="button"
-            className="mr-4 w-32"
-            disabled={formik.isSubmitting}
-            onClick={cancel}
-          >
-            Cancel
-          </Button>
-        )}
         {formik.dirty && (
           <LoadingButton
             variant="primary"
@@ -48,6 +37,17 @@ const TodoForm = ({ formik, onCancel }) => {
           >
             Save
           </LoadingButton>
+        )}
+        {onCancel && (
+          <Button
+            variant="secondary"
+            type="button"
+            className="ml-4 w-32"
+            disabled={formik.isSubmitting}
+            onClick={cancel}
+          >
+            Cancel
+          </Button>
         )}
       </ButtonBar>
     </Form>

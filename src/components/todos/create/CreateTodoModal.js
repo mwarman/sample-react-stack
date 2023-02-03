@@ -11,7 +11,7 @@ const CreateTodoModal = ({ isHidden = true, onHide }) => {
   }
 
   return (
-    <Modal onClose={hide} size="lg">
+    <Modal onClose={hide} size="lg" title="Create Todo">
       <TodoCreate onSuccess={hide} onCancel={hide} />
     </Modal>
   );
