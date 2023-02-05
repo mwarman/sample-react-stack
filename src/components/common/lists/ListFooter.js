@@ -16,12 +16,13 @@ const ListFooter = ({ items = [] }) => {
 
   const getPages = (max = 5) => {
     const pages = [];
-    let page = list.pagination.page - 2;
+    let page = list.pagination.page - Math.floor(max / 2);
     while (pages.length < Math.min(totalPages, max)) {
       if (page > 0 && page <= totalPages) {
         pages.push(page);
       }
       page++;
+      if (page > totalPages) break;
     }
     return pages;
   };
