@@ -1,18 +1,30 @@
 import Modal from '../../common/modals/Modal';
+import ModalTitle from '../../common/modals/ModalTitle';
 import TodoCreate from './TodoCreate';
 
-const CreateTodoModal = ({ isHidden = true, onHide }) => {
+import { useModalContext } from '../../../hooks/modal.hooks';
+
+const CreateTodoModal = () => {
+  const { modalOptions, setModalOptions } = useModalContext();
+  const { modal = '', props = {} } = modalOptions;
+
+  // hide the modal; reset modal context
   const hide = () => {
-    !!onHide && onHide();
+    setModalOptions();
   };
 
-  if (isHidden) {
+  // modal is hidden
+  if (modal !== 'todoCreate') {
     return null;
   }
 
+  // render the modal
   return (
-    <Modal onClose={hide} size="lg" title="Create Todo">
-      <TodoCreate onSuccess={hide} onCancel={hide} />
+    <Modal onHide={hide} size="lg">
+      <ModalTitle title="Create Todo" className="p-4" />
+      <div className="p-4">
+        <TodoCreate onSuccess={hide} onCancel={hide} {...props} />
+      </div>
     </Modal>
   );
 };
