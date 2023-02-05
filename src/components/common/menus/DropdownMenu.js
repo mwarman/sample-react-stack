@@ -15,7 +15,9 @@ const DropdownMenu = ({ children, position = 'top-0 right-8', trigger }) => {
       {/* dropdown menu */}
       <div className="relative">
         {/* dropdown menu trigger */}
-        <div onClick={() => setIsHidden(false)}>{trigger}</div>
+        <div className="cursor-pointer" onClick={() => setIsHidden(false)}>
+          {trigger}
+        </div>
 
         {/* dropdown menu content */}
         <div

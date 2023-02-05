@@ -27,13 +27,18 @@ const TodoListItem = ({ todo }) => {
       </div>
       <div className="col-span-1">
         <DropdownMenu
-          trigger={<Icon name="ellipsis-vertical" className="ml-auto block text-slate-700" />}
+          trigger={
+            <Icon
+              name="ellipsis-vertical"
+              className="ml-auto block w-4 rounded p-1 text-slate-700 hover:bg-slate-200/60"
+            />
+          }
         >
           <DropdownMenuTitle>Actions</DropdownMenuTitle>
           <DropdownMenuLink
             to="/todos"
             title="Delete Todo"
-            onClick={() => setModalOptions({ modal: 'todoDelete', props: { todoId: todo.id } })}
+            onClick={() => setModalOptions({ modal: 'todoDelete', props: { todo } })}
           >
             Delete
           </DropdownMenuLink>
