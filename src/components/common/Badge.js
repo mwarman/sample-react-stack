@@ -1,21 +1,26 @@
-export const Badge = ({ type, children }) => {
-  let classNames = "px-2 py-1 rounded text-xs font-bold ";
+import classNames from 'classnames';
 
-  switch (type) {
-    case "danger":
-      classNames += "bg-red-600 text-white";
-      break;
-    case "success":
-      classNames += "bg-green-600 text-white";
-      break;
-    case "warning":
-      classNames += "bg-amber-300";
-      break;
+const getBadgeColor = (variant) => {
+  switch (variant) {
+    case 'danger':
+      return 'bg-red-600 text-white';
+    case 'success':
+      return 'bg-green-600 text-white';
+    case 'warning':
+      return 'bg-amber-300';
+    case 'primary':
+      return 'bg-blue-500';
     default:
-      classNames += "bg-slate-300";
+      return 'bg-slate-300';
   }
+};
 
-  return <span className={classNames}>{children}</span>;
+export const Badge = ({ variant, children }) => {
+  return (
+    <span className={classNames('rounded px-2 py-1 text-xs font-bold', getBadgeColor(variant))}>
+      {children}
+    </span>
+  );
 };
 
 export default Badge;

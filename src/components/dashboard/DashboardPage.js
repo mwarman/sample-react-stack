@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 
+import Badge from '../common/Badge';
+
 import { useGetTodos } from '../../hooks/todos.hooks';
 import { selectTodos } from '../../selectors/todos.selectors';
 
@@ -17,21 +19,14 @@ const DashboardPage = () => {
     <div>
       <div className="mb-8 text-2xl">Your Work</div>
 
-      <div className="grid grid-cols-3 gap-8">
-        <div className="flex flex-col items-center">
-          <div className="text-lg">All</div>
-          <div>{allTodos.length}</div>
-        </div>
-
-        <div className="flex flex-col items-center">
-          <div className="text-lg">To Do</div>
-          <div>{incompleteTodos.length}</div>
-        </div>
-
-        <div className="flex flex-col items-center">
-          <div className="text-lg">Done</div>
-          <div>{completeTodos.length}</div>
-        </div>
+      <div className="mb-2 flex w-48 items-center justify-between">
+        All <Badge>{allTodos.length}</Badge>
+      </div>
+      <div className="mb-2 flex w-48 items-center  justify-between">
+        To Do <Badge>{incompleteTodos.length}</Badge>
+      </div>
+      <div className="mb-2 flex w-48 items-center  justify-between">
+        Done <Badge variant="success">{completeTodos.length}</Badge>
       </div>
     </div>
   );
