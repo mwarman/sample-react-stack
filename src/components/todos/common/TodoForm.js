@@ -40,7 +40,6 @@ const TodoForm = ({ formik, onCancel }) => {
         )}
         {onCancel && (
           <Button
-            variant="secondary"
             type="button"
             className="ml-4 w-32"
             disabled={formik.isSubmitting}

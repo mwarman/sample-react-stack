@@ -12,7 +12,8 @@ const Button = ({ className, children, size = 'md', variant = 'default', ...prop
         'border-slate-400 text-slate-500 hover:border-slate-500 hover:bg-slate-500 hover:text-white disabled:border-slate-200 disabled:bg-slate-200 disabled:hover:text-slate-500';
       break;
     default:
-      colorClasses = 'border-white bg-white hover:border-slate-200 hover:bg-slate-200';
+      colorClasses =
+        'border-transparent text-slate-700 bg-white hover:border-slate-200 hover:bg-slate-200 disabled:border-slate-100 disabled:bg-slate-100 disabled:text-slate-500';
   }
 
   let sizeClasses = '';
