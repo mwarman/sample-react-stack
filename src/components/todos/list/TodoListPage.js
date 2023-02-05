@@ -9,7 +9,7 @@ const TodoListPage = () => {
   }, []);
 
   return (
-    <ListContextProvider listOptions={{ sort: { by: 'title' }, pagination: { size: 2 } }}>
+    <ListContextProvider listOptions={{ sort: { by: 'title' }, pagination: { size: 25 } }}>
       <TodoListLayout />
     </ListContextProvider>
   );
