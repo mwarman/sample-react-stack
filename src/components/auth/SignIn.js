@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
-import InputField from '../common/InputField';
-import ButtonBar from '../common/ButtonBar';
-import Button from '../common/Button';
-import LoadingButton from '../common/LoadingButton';
+import InputField from '../common/forms/InputField';
+import Label from '../common/forms/Label';
+import ButtonBar from '../common/buttons/ButtonBar';
+import LoadingButton from '../common/buttons/LoadingButton';
 import Alert from '../common/Alert';
 
 import { useSignIn } from '../../hooks/auth.hooks';
@@ -21,6 +21,10 @@ const validationSchema = Yup.object({
 });
 
 const SignIn = () => {
+  useEffect(() => {
+    document.title = 'Sign In - Sample React Stack';
+  }, []);
+
   const [error, setError] = useState();
   const navigate = useNavigate();
   const toastsContext = useToastsContext();
@@ -45,7 +49,7 @@ const SignIn = () => {
             onSuccess: (data) => {
               toastsContext.createToast(`Welcome back ${data.firstName}.`);
               setSubmitting(false);
-              navigate('/todos/list');
+              navigate('/');
             },
             onError: (err) => {
               setError('Authentication failed.');
@@ -58,36 +62,31 @@ const SignIn = () => {
         {(formik) => (
           <Form>
             <div className="mt-4">
+              <Label htmlFor="usernameField">Username</Label>
               <InputField
+                id="usernameField"
                 name="username"
-                label="Username"
                 type="text"
+                autoComplete="off"
                 disabled={formik.isSubmitting}
               />
             </div>
 
             <div className="mt-4">
+              <Label htmlFor="passwordField">Password</Label>
               <InputField
+                id="passwordField"
                 name="password"
-                label="Password"
                 type="password"
                 disabled={formik.isSubmitting}
               />
             </div>
 
-            <ButtonBar className="my-4">
-              <Button
-                variant="secondary"
-                type="button"
-                className="mr-4"
-                disabled={formik.isSubmitting}
-                onClick={() => navigate('/')}
-              >
-                Cancel
-              </Button>
+            <ButtonBar className="my-8 justify-end">
               <LoadingButton
                 variant="primary"
                 type="submit"
+                className="w-32"
                 disabled={formik.isSubmitting}
                 isLoading={formik.isSubmitting}
               >

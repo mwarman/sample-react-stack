@@ -22,7 +22,7 @@ export const getTodo = async (id) => {
         const todos = storage.getJson('todos') || [];
         const todo = todos.find((t) => t.id === id);
         if (todo) {
-          resolve(todo);
+          return resolve(todo);
         }
         return reject(new Error('Not found.'));
       } catch (err) {
@@ -84,7 +84,7 @@ export const updateTodo = async (todo) => {
   });
 };
 
-export const removeTodo = async (id) => {
+export const deleteTodo = async (id) => {
   return new Promise((resolve, reject) => {
     delay().then(() => {
       try {

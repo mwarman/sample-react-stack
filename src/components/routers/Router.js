@@ -1,14 +1,13 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Outlet } from 'react-router-dom';
 
 import Protected from './Protected';
 import StandardLayout from '../layouts/StandardLayout';
-import LandingPage from '../pages/LandingPage';
-import TodoEditPage from '../pages/TodoEditPage';
-import TodoListPage from '../pages/TodoListPage';
-import TodosPage from '../pages/TodosPage';
-import Todo from '../todos/Todo';
-import ErrorPage from '../pages/ErrorPage';
-import AuthPage from '../pages/AuthPage';
+import LandingPage from '../public/landing/LandingPage';
+import DashboardPage from '../dashboard/DashboardPage';
+import TodoEditPage from '../todos/edit/TodoEditPage';
+import TodoListPage from '../todos/list/TodoListPage';
+import ErrorPage from '../errors/ErrorPage';
+import AuthPage from '../auth/AuthPage';
 import SignIn from '../auth/SignIn';
 import SignUp from '../auth/SignUp';
 import SignOut from '../auth/SignOut';
@@ -42,18 +41,10 @@ export const router = createBrowserRouter([
         ],
       },
       {
-        path: '/todos/:todoId/edit',
+        path: '/dashboard',
         element: (
           <Protected>
-            <TodoEditPage />
-          </Protected>
-        ),
-      },
-      {
-        path: '/todos/list',
-        element: (
-          <Protected>
-            <TodoListPage />
+            <DashboardPage />
           </Protected>
         ),
       },
@@ -61,13 +52,17 @@ export const router = createBrowserRouter([
         path: '/todos',
         element: (
           <Protected>
-            <TodosPage />
+            <Outlet />
           </Protected>
         ),
         children: [
           {
+            index: true,
+            element: <TodoListPage />,
+          },
+          {
             path: ':todoId',
-            element: <Todo />,
+            element: <TodoEditPage />,
           },
         ],
       },

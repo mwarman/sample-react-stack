@@ -34,8 +34,8 @@ export const useSignOut = (options) => {
   const queryClient = useQueryClient();
   return useMutation(signOut, {
     ...options,
-    onSuccess: (data) => {
-      queryClient.invalidateQueries([QueryKeys.Accounts]);
+    onSuccess: async (data) => {
+      await queryClient.resetQueries();
       queryClient.setQueryData([QueryKeys.AuthState], { isAuthenticated: false });
       options?.onSuccess && options.onSuccess(data);
     },

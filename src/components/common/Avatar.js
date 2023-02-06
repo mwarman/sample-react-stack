@@ -36,7 +36,7 @@ const Avatar = ({ className }) => {
         )}
         title={`${account.firstName} ${account.lastName}`}
       >
-        <span className="cursor-default">{account.firstName.charAt(0)}</span>
+        <span>{account.firstName.charAt(0)}</span>
       </div>
     );
   }
