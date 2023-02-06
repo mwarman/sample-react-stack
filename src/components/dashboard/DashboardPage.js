@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import Badge from '../common/Badge';
+import Loading from '../common/Loading';
 
 import { useGetTodos } from '../../hooks/todos.hooks';
 import { selectTodos } from '../../selectors/todos.selectors';
@@ -14,6 +15,10 @@ const DashboardPage = () => {
   const allTodos = selectTodos(todos);
   const incompleteTodos = selectTodos(todos, { matches: { completed: false } });
   const completeTodos = selectTodos(todos, { matches: { completed: true } });
+
+  if (isLoading) {
+    return <Loading className="my-8 animate-pulse justify-center text-6xl text-slate-200" />;
+  }
 
   return (
     <div>

@@ -14,7 +14,7 @@ const DeleteTodoModal = () => {
   };
 
   // modal is hidden
-  if (modal != 'todoDelete') {
+  if (modal !== 'todoDelete') {
     return null;
   }
 

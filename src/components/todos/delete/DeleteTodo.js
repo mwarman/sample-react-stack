@@ -1,5 +1,3 @@
-import classNames from 'classnames';
-
 import ButtonBar from '../../common/buttons/ButtonBar';
 import Button from '../../common/buttons/Button';
 import LoadingButton from '../../common/buttons/LoadingButton';

@@ -26,6 +26,7 @@ const TodoListLayout = () => {
     if (items.length > 0 && page.length === 0) {
       setPage(1);
     }
+    // eslint-disable-next-line
   }, [page, items]);
 
   return (
