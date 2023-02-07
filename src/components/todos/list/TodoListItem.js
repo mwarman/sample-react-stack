@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
-import Badge from '../../common/Badge';
+import StatusBadge from '../../common/badges/StatusBadge';
+import PriorityBadge from '../../common/badges/PriorityBadge';
 import UserName from '../../users/UserName';
 import DropdownMenu from '../../common/menus/DropdownMenu';
 import DropdownMenuLink from '../../common/menus/DropdownMenuLink';
@@ -8,22 +9,32 @@ import DropdownMenuTitle from '../../common/menus/DropdownMenuTitle';
 import Icon from '../../common/icons/Icon';
 
 import { useModalContext } from '../../../hooks/modal.hooks';
+import { Priorities, Statuses } from '../../../utils/constants';
 
 const TodoListItem = ({ todo }) => {
   const { setModalOptions } = useModalContext();
 
   return (
     <div className="grid grid-cols-12 items-center gap-4 p-2 hover:bg-slate-200/40">
-      <div className="col-span-7">
+      <div className="col-span-5">
         <Link to={`/todos/${todo.id}`} className="hover:underline">
-          {todo.title}
+          {todo.summary}
         </Link>
       </div>
       <div className="col-span-2">
-        {todo.completed ? <Badge type="success">DONE</Badge> : <Badge>NOT STARTED</Badge>}
+        <StatusBadge status={todo.status}>
+          <span className="uppercase">{Statuses.find((s) => s.code === todo.status).value}</span>
+        </StatusBadge>
       </div>
       <div className="col-span-2">
-        <UserName accountId={todo.accountId} />
+        <PriorityBadge priority={todo.priority}>
+          <span className="uppercase">
+            {Priorities.find((p) => p.code === todo.priority).value}
+          </span>
+        </PriorityBadge>
+      </div>
+      <div className="col-span-2">
+        <UserName accountId={todo.assignee} />
       </div>
       <div className="col-span-1">
         <DropdownMenu
@@ -36,7 +47,7 @@ const TodoListItem = ({ todo }) => {
         >
           <DropdownMenuTitle>Actions</DropdownMenuTitle>
           <DropdownMenuLink
-            to="/todos"
+            to=""
             title="Delete Todo"
             onClick={() => setModalOptions({ modal: 'todoDelete', props: { todo } })}
           >

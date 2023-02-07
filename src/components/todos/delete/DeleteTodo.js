@@ -25,8 +25,8 @@ const DeleteTodo = ({ onCancel, onSuccess, todo }) => {
   return (
     <div>
       <div className="mb-8">
-        You are about to delete <span className="font-bold">{todo.title}</span>. Deleting a todo is
-        permanent. Proceed?
+        You are about to delete <span className="font-bold">{todo.summary}</span>. Deleting a todo
+        is permanent. Proceed?
       </div>
       <ButtonBar>
         <LoadingButton

@@ -1,15 +1,11 @@
 import { Formik } from 'formik';
-import * as Yup from 'yup';
 
 import TodoForm from '../common/TodoForm';
 
+import { todoSchema } from '../../../validators/todo.validators';
 import { useCreateTodo } from '../../../hooks/todos.hooks';
 import { useToastsContext } from '../../../hooks/toasts.hooks';
 import { useAuthState } from '../../../hooks/auth.hooks';
-
-const validationSchema = Yup.object({
-  title: Yup.string().max(50, 'Must be 50 characters or less').required('Required'),
-});
 
 const TodoCreate = ({ onCancel, onSuccess }) => {
   const toastsContext = useToastsContext();
@@ -18,11 +14,11 @@ const TodoCreate = ({ onCancel, onSuccess }) => {
 
   return (
     <Formik
-      initialValues={{ title: '' }}
-      validationSchema={validationSchema}
+      initialValues={{ summary: '', priority: 'medium', status: 'todo' }}
+      validationSchema={todoSchema}
       onSubmit={(values, { setSubmitting }) => {
         createTodo.mutate(
-          { ...values, completed: false, accountId: authState.id },
+          { ...values, assignee: authState.id },
           {
             onSuccess: (todo) => {
               setSubmitting(false);

@@ -8,7 +8,7 @@ import { DEFAULT_STATE as DEFAULT_LIST_CONTEXT } from '../contexts/list.context'
 export const selectTodos = (todos = [], options = {}) => {
   const defaults = {
     matches: {},
-    sortBy: ['title'],
+    sortBy: ['summary'],
     sortOrder: ['asc'],
   };
   const opts = { ...defaults, ...options };
@@ -25,7 +25,7 @@ export const selectTodosWithListContext = (items = [], listContext = {}) => {
   // filter items by text
   const searchCriteria = context.search.toUpperCase();
   selectedItems = filter(selectedItems, (i) => {
-    return i.title.toUpperCase().includes(searchCriteria);
+    return i.summary.toUpperCase().includes(searchCriteria);
   });
 
   // order the items

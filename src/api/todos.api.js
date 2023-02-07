@@ -37,10 +37,12 @@ export const createTodo = async (todo) => {
     delay().then(() => {
       try {
         const todos = storage.getJson('todos') || [];
+        const now = new Date().toISOString();
         const createdTodo = {
           ...todo,
           id: generateId(),
-          createdAt: new Date().toISOString(),
+          createdAt: now,
+          updatedAt: now,
         };
         storage.setJson('todos', [...todos, createdTodo]);
         return resolve(createdTodo);

@@ -1,17 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Formik } from 'formik';
 import { useParams } from 'react-router-dom';
-import * as Yup from 'yup';
 
 import Placeholder from '../../common/Placeholder';
 import TodoForm from '../common/TodoForm';
 
+import { todoSchema } from '../../../validators/todo.validators';
 import { useGetTodo, useUpdateTodo } from '../../../hooks/todos.hooks';
 import { useToastsContext } from '../../../hooks/toasts.hooks';
-
-const validationSchema = Yup.object({
-  title: Yup.string().max(50, 'Must be 50 characters or less').required('Required'),
-});
 
 const TodoEdit = () => {
   const navigate = useNavigate();
@@ -48,16 +44,16 @@ const TodoEdit = () => {
       </div>
 
       <Formik
-        initialValues={{ title: todo.title }}
+        initialValues={{ ...todo }}
         enableReinitialize={true}
-        validationSchema={validationSchema}
+        validationSchema={todoSchema}
         onSubmit={(values, { setSubmitting }) => {
           updateTodo.mutate(
             { ...todo, ...values },
             {
               onSuccess: () => {
                 setSubmitting(false);
-                toastsContext.createToast(`Updated TODO-${todo.id} successfully.`);
+                toastsContext.createToast(`Updated TODO-${todo.id.toUpperCase()}`);
                 navigate(`/todos/${todo.id}`);
               },
               onError: (err) => {

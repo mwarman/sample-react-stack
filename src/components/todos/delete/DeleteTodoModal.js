@@ -24,7 +24,7 @@ const DeleteTodoModal = () => {
         title={
           <>
             <span className="mr-1 font-bold">Delete</span>
-            {props.todo.title}
+            {props.todo.summary}
           </>
         }
         className="p-4"
