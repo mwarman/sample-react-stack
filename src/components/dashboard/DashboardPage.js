@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import Badge from '../common/Badge';
+import Badge from '../common/badges/Badge';
 import Loading from '../common/Loading';
 
 import { useGetTodos } from '../../hooks/todos.hooks';
