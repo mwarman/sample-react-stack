@@ -8,7 +8,7 @@ import TextareaField from '../../common/forms/TextareaField';
 import SelectField from '../../common/forms/SelectField';
 import Label from '../../common/forms/Label';
 
-import { Priorities } from '../../../utils/constants';
+import { Priorities, Statuses } from '../../../utils/constants';
 
 const TodoForm = ({ formik, onCancel }) => {
   const cancel = () => {
@@ -17,7 +17,7 @@ const TodoForm = ({ formik, onCancel }) => {
 
   return (
     <Form>
-      <div className="mb-6">
+      <div className="mb-4">
         <Label htmlFor="summary">Summary</Label>
         <InputField
           id="summary"
@@ -29,12 +29,23 @@ const TodoForm = ({ formik, onCancel }) => {
         />
       </div>
 
-      <div className="mb-6">
+      <div className="mb-4">
         <Label htmlFor="description">Description</Label>
         <TextareaField id="description" name="description" rows="6" maxLength="1000" />
       </div>
 
-      <div className="mb-6 w-60">
+      <div className="mb-4 w-60">
+        <Label htmlFor="status">Status</Label>
+        <SelectField id="status" name="status" disabled={formik.isSubmitting}>
+          {Statuses.map((status) => (
+            <option key={status.code} value={status.code}>
+              {status.value}
+            </option>
+          ))}
+        </SelectField>
+      </div>
+
+      <div className="mb-4 w-60">
         <Label htmlFor="priority">Priority</Label>
         <SelectField id="priority" name="priority" disabled={formik.isSubmitting}>
           {Priorities.map((priority) => (
@@ -45,12 +56,12 @@ const TodoForm = ({ formik, onCancel }) => {
         </SelectField>
       </div>
 
-      <div className="mb-6 w-60">
+      <div className="mb-4 w-60">
         <Label htmlFor="dueAt">Due</Label>
         <InputField id="dueAt" name="dueAt" type="date" disabled={formik.isSubmitting} />
       </div>
 
-      <ButtonBar className="mt-8 justify-end">
+      <ButtonBar className="mt-4 justify-end">
         {formik.dirty && (
           <LoadingButton
             variant="primary"

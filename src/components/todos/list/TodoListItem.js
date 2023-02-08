@@ -16,27 +16,28 @@ const TodoListItem = ({ todo }) => {
 
   return (
     <div className="grid grid-cols-12 items-center gap-4 p-2 hover:bg-slate-200/40">
-      <div className="col-span-5">
-        <Link to={`/todos/${todo.id}`} className="hover:underline">
+      <div className="col-span-6 overflow-clip whitespace-nowrap">
+        <Link to={`/todos/${todo.id}`} title="Edit Todo" className="hover:underline">
           {todo.summary}
         </Link>
       </div>
-      <div className="col-span-2">
+      <div className="col-span-1 overflow-clip whitespace-nowrap">
         <StatusBadge status={todo.status}>
           <span className="uppercase">{Statuses.find((s) => s.code === todo.status).value}</span>
         </StatusBadge>
       </div>
-      <div className="col-span-2">
+      <div className="col-span-1 overflow-clip whitespace-nowrap">
         <PriorityBadge priority={todo.priority}>
           <span className="uppercase">
             {Priorities.find((p) => p.code === todo.priority).value}
           </span>
         </PriorityBadge>
       </div>
-      <div className="col-span-2">
+      <div className="col-span-2 overflow-clip whitespace-nowrap">
         <UserName accountId={todo.assignee} />
       </div>
-      <div className="col-span-1">
+      <div className="col-span-1 overflow-clip whitespace-nowrap">{todo.dueAt}</div>
+      <div className="col-span-1 overflow-clip whitespace-nowrap">
         <DropdownMenu
           trigger={
             <Icon

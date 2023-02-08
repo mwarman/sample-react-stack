@@ -44,10 +44,31 @@ const TodoListLayout = () => {
           <ListEmpty isEmpty={isEmpty}>
             <div className={classNames({ 'opacity-25': isFetching })}>
               <ListHeader>
-                <ListColumn className="col-span-5" name="Summary" path="summary" />
-                <ListColumn className="col-span-2" name="Status" path="status" />
-                <ListColumn className="col-span-2" name="Priority" path="priority" />
-                <ListColumn className="col-span-2" name="Assignee" path="assignee" />
+                <ListColumn
+                  className="col-span-6 overflow-clip whitespace-nowrap"
+                  name="Summary"
+                  path="summary"
+                />
+                <ListColumn
+                  className="col-span-1 overflow-clip whitespace-nowrap"
+                  name="Status"
+                  path="status"
+                />
+                <ListColumn
+                  className="col-span-1 overflow-clip whitespace-nowrap"
+                  name="Priority"
+                  path="priority"
+                />
+                <ListColumn
+                  className="col-span-2 overflow-clip whitespace-nowrap"
+                  name="Assignee"
+                  path="assignee"
+                />
+                <ListColumn
+                  className="col-span-1 overflow-clip whitespace-nowrap"
+                  name="Due"
+                  path="dueAt"
+                />
                 <div></div>
               </ListHeader>
 

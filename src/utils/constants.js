@@ -12,7 +12,7 @@ export const Statuses = [
   {
     ordinal: 30,
     code: 'done',
-    value: 'done',
+    value: 'Done',
   },
 ];
 

@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import { useParams } from 'react-router-dom';
 
 import Placeholder from '../../common/Placeholder';
-import TodoForm from '../common/TodoForm';
+import TodoEditForm from './TodoEditForm';
 
 import { todoSchema } from '../../../validators/todo.validators';
 import { useGetTodo, useUpdateTodo } from '../../../hooks/todos.hooks';
@@ -25,17 +25,26 @@ const TodoEdit = () => {
           <Placeholder size="lg" className="ml-3 w-1/12" />
         </div>
 
-        <Placeholder size="xl" className="mb-8 w-1/3" />
+        <Placeholder size="xl" className="mb-8 w-full" />
 
-        <Placeholder className="mb-3 w-1/12" />
-        <Placeholder className="mb-4 h-20 w-1/2" />
+        <Placeholder size="lg" className="mb-3 w-1/12" />
+        <Placeholder size="xl" className="mb-8 h-32 w-full" />
+
+        <Placeholder size="lg" className="mb-3 w-1/12" />
+        <Placeholder size="xl" className="mb-8 w-1/6" />
+
+        <Placeholder size="lg" className="mb-3 w-1/12" />
+        <Placeholder size="xl" className="mb-8 w-1/6" />
+
+        <Placeholder size="lg" className="mb-3 w-1/12" />
+        <Placeholder size="xl" className="mb-8 w-1/6" />
       </div>
     );
   }
 
   return (
-    <div className="m-4">
-      <div className="mb-2 flex items-center text-slate-700">
+    <div>
+      <div className="mb-4 flex items-center text-slate-700">
         <Link to="/todos">Todos</Link>
         <span className="ml-3">/</span>
         <Link to="" className="ml-3 uppercase">
@@ -64,7 +73,7 @@ const TodoEdit = () => {
           );
         }}
       >
-        {(formik) => <TodoForm formik={formik} />}
+        {(formik) => <TodoEditForm formik={formik} />}
       </Formik>
     </div>
   );

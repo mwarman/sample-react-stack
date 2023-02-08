@@ -1,6 +1,6 @@
 import { Formik } from 'formik';
 
-import TodoForm from '../common/TodoForm';
+import TodoCreateForm from './TodoCreateForm';
 
 import { todoSchema } from '../../../validators/todo.validators';
 import { useCreateTodo } from '../../../hooks/todos.hooks';
@@ -33,7 +33,7 @@ const TodoCreate = ({ onCancel, onSuccess }) => {
         );
       }}
     >
-      {(formik) => <TodoForm formik={formik} onCancel={onCancel} />}
+      {(formik) => <TodoCreateForm formik={formik} onCancel={onCancel} />}
     </Formik>
   );
 };
