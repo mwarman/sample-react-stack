@@ -37,7 +37,7 @@ const TodoListItem = ({ todo }) => {
         <UserName accountId={todo.assignee} />
       </div>
       <div className="col-span-1 overflow-clip whitespace-nowrap">{todo.dueAt}</div>
-      <div className="col-span-1 overflow-clip whitespace-nowrap">
+      <div className="col-span-1">
         <DropdownMenu
           trigger={
             <Icon
