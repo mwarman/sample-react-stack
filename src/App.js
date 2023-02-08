@@ -14,11 +14,13 @@ const queryClient = new QueryClient({
 
 const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <ToastsContextProvider>
-        <RouterProvider router={router} />
-      </ToastsContextProvider>
-    </QueryClientProvider>
+    <div id="app" className="text-slate-700">
+      <QueryClientProvider client={queryClient}>
+        <ToastsContextProvider>
+          <RouterProvider router={router} />
+        </ToastsContextProvider>
+      </QueryClientProvider>
+    </div>
   );
 };
 

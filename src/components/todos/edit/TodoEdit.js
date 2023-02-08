@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Formik } from 'formik';
 import { useParams } from 'react-router-dom';
 
-import Placeholder from '../../common/Placeholder';
+import TodoEditLoading from './TodoEditLoading';
 import TodoEditForm from './TodoEditForm';
 
 import { todoSchema } from '../../../validators/todo.validators';
@@ -17,29 +17,7 @@ const TodoEdit = () => {
   const updateTodo = useUpdateTodo();
 
   if (isLoading) {
-    return (
-      <div className="m-4">
-        <div className="mb-2 flex items-center text-slate-700">
-          <Link to="/todos">Todos</Link>
-          <span className="ml-3">/</span>
-          <Placeholder size="lg" className="ml-3 w-1/12" />
-        </div>
-
-        <Placeholder size="xl" className="mb-8 w-full" />
-
-        <Placeholder size="lg" className="mb-3 w-1/12" />
-        <Placeholder size="xl" className="mb-8 h-32 w-full" />
-
-        <Placeholder size="lg" className="mb-3 w-1/12" />
-        <Placeholder size="xl" className="mb-8 w-1/6" />
-
-        <Placeholder size="lg" className="mb-3 w-1/12" />
-        <Placeholder size="xl" className="mb-8 w-1/6" />
-
-        <Placeholder size="lg" className="mb-3 w-1/12" />
-        <Placeholder size="xl" className="mb-8 w-1/6" />
-      </div>
-    );
+    return <TodoEditLoading />;
   }
 
   return (
