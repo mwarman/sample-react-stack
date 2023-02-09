@@ -33,11 +33,11 @@ export const useSignIn = (options) => {
 
 export const useSignOut = (options) => {
   const queryClient = useQueryClient();
-  const { setModalContext } = useModalContext();
+  const { setModalOptions } = useModalContext();
   return useMutation(signOut, {
     ...options,
     onSuccess: async (data) => {
-      setModalContext();
+      setModalOptions();
       await queryClient.resetQueries();
       queryClient.setQueryData([QueryKeys.AuthState], { isAuthenticated: false });
       options?.onSuccess && options.onSuccess(data);
