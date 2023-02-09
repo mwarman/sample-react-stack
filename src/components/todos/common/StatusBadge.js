@@ -1,4 +1,4 @@
-import Badge from './Badge';
+import Badge from '../../common/badges/Badge';
 
 const StatusBadge = ({ status, ...props }) => {
   const getVariant = (status) => {

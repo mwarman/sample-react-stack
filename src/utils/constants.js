@@ -19,17 +19,23 @@ export const Statuses = [
 export const Priorities = [
   {
     ordinal: 10,
-    code: 'low',
-    value: 'Low',
+    icon: 'angle-up',
+    iconClassName: 'text-red-500',
+    code: 'high',
+    value: 'High',
   },
   {
     ordinal: 20,
+    icon: 'minus',
+    iconClassName: 'text-amber-300',
     code: 'medium',
     value: 'Medium',
   },
   {
     ordinal: 30,
-    code: 'high',
-    value: 'High',
+    icon: 'angle-down',
+    iconClassName: 'text-blue-500',
+    code: 'low',
+    value: 'Low',
   },
 ];

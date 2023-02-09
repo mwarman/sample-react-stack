@@ -7,6 +7,8 @@ import LoadingButton from '../../common/buttons/LoadingButton';
 import Button from '../../common/buttons/Button';
 import InputField from '../../common/forms/InputField';
 import TextareaField from '../../common/forms/TextareaField';
+import CustomSelectField from '../../common/forms/CustomSelectField';
+import PriorityField from '../common/PriorityField';
 import SelectField from '../../common/forms/SelectField';
 import Label from '../../common/forms/Label';
 import UserName from '../../users/UserName';
@@ -62,14 +64,8 @@ const TodoForm = ({ formik, onCancel }) => {
           </div>
 
           <div className="mb-4 w-60">
-            <Label htmlFor="priority">Priority</Label>
-            <SelectField id="priority" name="priority" disabled={formik.isSubmitting}>
-              {Priorities.map((priority) => (
-                <option key={priority.code} value={priority.code}>
-                  {priority.value}
-                </option>
-              ))}
-            </SelectField>
+            <Label htmlFor="priority">Custom Priority</Label>
+            <PriorityField disabled={formik.isSubmitting} />
           </div>
 
           <div className="mb-4 w-60">

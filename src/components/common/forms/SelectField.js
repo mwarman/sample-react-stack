@@ -1,7 +1,7 @@
 import { useField } from 'formik';
 import classNames from 'classnames';
 
-const SelectField = ({ className, label, ...props }) => {
+const SelectField = ({ className, ...props }) => {
   const [field, meta] = useField(props);
   const showError = meta.touched && meta.error;
 

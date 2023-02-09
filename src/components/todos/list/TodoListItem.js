@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
-import StatusBadge from '../../common/badges/StatusBadge';
-import PriorityBadge from '../../common/badges/PriorityBadge';
+import StatusBadge from '../common/StatusBadge';
+import Priority from '../common/Priority';
 import UserName from '../../users/UserName';
 import DropdownMenu from '../../common/menus/DropdownMenu';
 import DropdownMenuLink from '../../common/menus/DropdownMenuLink';
@@ -9,7 +9,7 @@ import DropdownMenuTitle from '../../common/menus/DropdownMenuTitle';
 import Icon from '../../common/icons/Icon';
 
 import { useModalContext } from '../../../hooks/modal.hooks';
-import { Priorities, Statuses } from '../../../utils/constants';
+import { Statuses } from '../../../utils/constants';
 
 const TodoListItem = ({ todo }) => {
   const { setModalOptions } = useModalContext();
@@ -27,11 +27,7 @@ const TodoListItem = ({ todo }) => {
         </StatusBadge>
       </div>
       <div className="col-span-1 overflow-clip whitespace-nowrap">
-        <PriorityBadge priority={todo.priority}>
-          <span className="uppercase">
-            {Priorities.find((p) => p.code === todo.priority).value}
-          </span>
-        </PriorityBadge>
+        <Priority code={todo.priority} />
       </div>
       <div className="col-span-2 overflow-clip whitespace-nowrap">
         <UserName accountId={todo.assignee} />

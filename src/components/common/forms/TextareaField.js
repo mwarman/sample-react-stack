@@ -1,7 +1,7 @@
 import { useField } from 'formik';
 import classNames from 'classnames';
 
-const TextareaField = ({ className, label, ...props }) => {
+const TextareaField = ({ className, ...props }) => {
   const [field, meta] = useField(props);
   const showError = meta.touched && meta.error;
 
