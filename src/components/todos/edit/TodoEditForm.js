@@ -7,13 +7,12 @@ import LoadingButton from '../../common/buttons/LoadingButton';
 import Button from '../../common/buttons/Button';
 import InputField from '../../common/forms/InputField';
 import TextareaField from '../../common/forms/TextareaField';
-import CustomSelectField from '../../common/forms/CustomSelectField';
 import PriorityField from '../common/PriorityField';
 import SelectField from '../../common/forms/SelectField';
 import Label from '../../common/forms/Label';
 import UserName from '../../users/UserName';
 
-import { Priorities, Statuses } from '../../../utils/constants';
+import { Statuses } from '../../../utils/constants';
 
 dayjs.extend(relativeTime);
 

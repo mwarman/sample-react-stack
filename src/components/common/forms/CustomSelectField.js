@@ -27,6 +27,7 @@ import reject from 'lodash/reject';
  */
 const CustomSelectField = ({ className, disabled = false, name, options = [], placeholder }) => {
   const [isClosed, setIsClosed] = useState(true);
+  // eslint-disable-next-line
   const [field, meta, helpers] = useField(name);
 
   const selectedOption = find(options, { value: meta.value });
