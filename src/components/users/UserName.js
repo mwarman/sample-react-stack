@@ -8,7 +8,7 @@ const UserName = ({ accountId }) => {
   const { data: account, status } = useGetAccount(accountId);
 
   if (status === 'loading') {
-    return <Placeholder />;
+    return <Placeholder className="h-5 w-32" />;
   }
 
   return (
