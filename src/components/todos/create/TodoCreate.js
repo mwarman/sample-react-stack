@@ -14,7 +14,13 @@ const TodoCreate = ({ onCancel, onSuccess }) => {
 
   return (
     <Formik
-      initialValues={{ summary: '', priority: 'medium', status: 'todo' }}
+      initialValues={{
+        summary: '',
+        description: '',
+        priority: 'medium',
+        status: 'todo',
+        dueAt: '',
+      }}
       validationSchema={todoSchema}
       onSubmit={(values, { setSubmitting }) => {
         createTodo.mutate(
