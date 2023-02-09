@@ -1,4 +1,4 @@
-import { v4 as uuid } from "uuid";
+import { v4 as uuid } from 'uuid';
 
 /**
  * Generate a random alphanumeric identifier value.
@@ -6,5 +6,5 @@ import { v4 as uuid } from "uuid";
  * @returns {string} Returns a random alphanumeric string.
  */
 export const generateId = (length = 8) => {
-  return uuid().replaceAll("-", "").slice(0, length);
+  return uuid().replaceAll('-', '').slice(0, length).toUpperCase();
 };

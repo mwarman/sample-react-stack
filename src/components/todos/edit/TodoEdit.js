@@ -40,7 +40,7 @@ const TodoEdit = () => {
             {
               onSuccess: () => {
                 setSubmitting(false);
-                toastsContext.createToast(`Updated TODO-${todo.id.toUpperCase()}`);
+                toastsContext.createToast(`Updated TODO-${todo.id}`);
                 navigate(`/todos/${todo.id}`);
               },
               onError: (err) => {
