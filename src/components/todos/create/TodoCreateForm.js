@@ -5,10 +5,8 @@ import LoadingButton from '../../common/buttons/LoadingButton';
 import Button from '../../common/buttons/Button';
 import InputField from '../../common/forms/InputField';
 import TextareaField from '../../common/forms/TextareaField';
-import SelectField from '../../common/forms/SelectField';
+import PriorityField from '../common/PriorityField';
 import Label from '../../common/forms/Label';
-
-import { Priorities } from '../../../utils/constants';
 
 const TodoCreateForm = ({ formik, onCancel }) => {
   const cancel = () => {
@@ -17,7 +15,7 @@ const TodoCreateForm = ({ formik, onCancel }) => {
 
   return (
     <Form>
-      <div className="mb-6">
+      <div className="mb-4">
         <Label htmlFor="summary">Summary</Label>
         <InputField
           id="summary"
@@ -29,28 +27,22 @@ const TodoCreateForm = ({ formik, onCancel }) => {
         />
       </div>
 
-      <div className="mb-6">
+      <div className="mb-4">
         <Label htmlFor="description">Description</Label>
         <TextareaField id="description" name="description" rows="6" maxLength="1000" />
       </div>
 
-      <div className="mb-6 w-60">
+      <div className="mb-4 w-60">
         <Label htmlFor="priority">Priority</Label>
-        <SelectField id="priority" name="priority" disabled={formik.isSubmitting}>
-          {Priorities.map((priority) => (
-            <option key={priority.code} value={priority.code}>
-              {priority.value}
-            </option>
-          ))}
-        </SelectField>
+        <PriorityField disabled={formik.isSubmitting} />
       </div>
 
-      <div className="mb-6 w-60">
+      <div className="mb-4 w-60">
         <Label htmlFor="dueAt">Due</Label>
         <InputField id="dueAt" name="dueAt" type="date" disabled={formik.isSubmitting} />
       </div>
 
-      <ButtonBar className="mt-8 justify-end">
+      <ButtonBar className="mt-4 justify-end">
         {formik.dirty && (
           <LoadingButton
             variant="primary"
