@@ -9,7 +9,7 @@ const StatusField = ({ ...props }) => {
       name="status"
       options={Statuses.map((status) => ({
         value: status.code,
-        label: <StatusBadge key={status.code} code={status.code} />,
+        label: <StatusBadge code={status.code} />,
       }))}
       {...props}
     />

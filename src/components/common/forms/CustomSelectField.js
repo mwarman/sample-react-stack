@@ -92,8 +92,9 @@ const CustomSelectField = ({ className, disabled = false, name, options = [], pl
           )}
           onClick={close}
         >
-          {availableOptions.map((option) => (
+          {availableOptions.map((option, index) => (
             <div
+              key={index}
               className="px-3 py-2 hover:cursor-pointer hover:bg-slate-200/70"
               onClick={() => setValue(option.value)}
             >
