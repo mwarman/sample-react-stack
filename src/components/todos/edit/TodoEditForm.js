@@ -8,11 +8,9 @@ import Button from '../../common/buttons/Button';
 import InputField from '../../common/forms/InputField';
 import TextareaField from '../../common/forms/TextareaField';
 import PriorityField from '../common/PriorityField';
-import SelectField from '../../common/forms/SelectField';
+import StatusField from '../common/StatusField';
 import Label from '../../common/forms/Label';
 import UserName from '../../users/UserName';
-
-import { Statuses } from '../../../utils/constants';
 
 dayjs.extend(relativeTime);
 
@@ -53,17 +51,11 @@ const TodoForm = ({ formik, onCancel }) => {
 
           <div className="mb-4 w-60">
             <Label htmlFor="status">Status</Label>
-            <SelectField id="status" name="status" disabled={formik.isSubmitting}>
-              {Statuses.map((status) => (
-                <option key={status.code} value={status.code}>
-                  {status.value}
-                </option>
-              ))}
-            </SelectField>
+            <StatusField id="status" name="status" disabled={formik.isSubmitting} />
           </div>
 
           <div className="mb-4 w-60">
-            <Label htmlFor="priority">Custom Priority</Label>
+            <Label htmlFor="priority">Priority</Label>
             <PriorityField disabled={formik.isSubmitting} />
           </div>
 

@@ -15,9 +15,15 @@ const getVariantClasses = (variant) => {
   }
 };
 
-export const Badge = ({ variant, children }) => {
+export const Badge = ({ children, className, variant }) => {
   return (
-    <span className={classNames('rounded px-2 py-1 text-xs font-bold', getVariantClasses(variant))}>
+    <span
+      className={classNames(
+        'rounded px-2 py-1 text-xs font-bold',
+        getVariantClasses(variant),
+        className,
+      )}
+    >
       {children}
     </span>
   );

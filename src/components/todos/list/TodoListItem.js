@@ -9,7 +9,6 @@ import DropdownMenuTitle from '../../common/menus/DropdownMenuTitle';
 import Icon from '../../common/icons/Icon';
 
 import { useModalContext } from '../../../hooks/modal.hooks';
-import { Statuses } from '../../../utils/constants';
 
 const TodoListItem = ({ todo }) => {
   const { setModalOptions } = useModalContext();
@@ -22,9 +21,7 @@ const TodoListItem = ({ todo }) => {
         </Link>
       </div>
       <div className="col-span-1 overflow-clip whitespace-nowrap">
-        <StatusBadge status={todo.status}>
-          <span className="uppercase">{Statuses.find((s) => s.code === todo.status).value}</span>
-        </StatusBadge>
+        <StatusBadge code={todo.status} />
       </div>
       <div className="col-span-1 overflow-clip whitespace-nowrap">
         <Priority code={todo.priority} />

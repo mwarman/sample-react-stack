@@ -1,8 +1,13 @@
 import Badge from '../../common/badges/Badge';
 
-const StatusBadge = ({ status, ...props }) => {
-  const getVariant = (status) => {
-    switch (status) {
+import { Statuses } from '../../../utils/constants';
+
+const StatusBadge = ({ code, ...props }) => {
+  const status = Statuses.find((s) => s.code === code);
+  if (!status) throw new Error(`Invalid status code: ${code}`);
+
+  const getVariant = (categoryCode) => {
+    switch (categoryCode) {
       case 'in_progress':
         return 'primary';
       case 'done':
@@ -12,7 +17,11 @@ const StatusBadge = ({ status, ...props }) => {
     }
   };
 
-  return <Badge variant={getVariant(status)} {...props} />;
+  return (
+    <Badge variant={getVariant(status.category)} {...props}>
+      {status.value}
+    </Badge>
+  );
 };
 
 export default StatusBadge;

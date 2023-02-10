@@ -1,16 +1,19 @@
 export const Statuses = [
   {
     ordinal: 10,
+    category: 'todo',
     code: 'todo',
     value: 'To Do',
   },
   {
     ordinal: 20,
+    category: 'in_progress',
     code: 'in_progress',
     value: 'In Progress',
   },
   {
     ordinal: 30,
+    category: 'done',
     code: 'done',
     value: 'Done',
   },
