@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import StatusBadge from '../common/StatusBadge';
 import Priority from '../common/Priority';
 import UserName from '../../users/UserName';
+import DueDate from '../common/DueDate';
 import DropdownMenu from '../../common/menus/DropdownMenu';
 import DropdownMenuLink from '../../common/menus/DropdownMenuLink';
 import DropdownMenuTitle from '../../common/menus/DropdownMenuTitle';
@@ -29,7 +30,9 @@ const TodoListItem = ({ todo }) => {
       <div className="col-span-2 overflow-clip whitespace-nowrap">
         <UserName accountId={todo.assignee} />
       </div>
-      <div className="col-span-1 overflow-clip whitespace-nowrap">{todo.dueAt}</div>
+      <div className="col-span-1 overflow-clip whitespace-nowrap">
+        <DueDate date={todo.dueAt} />
+      </div>
       <div className="col-span-1">
         <DropdownMenu
           trigger={

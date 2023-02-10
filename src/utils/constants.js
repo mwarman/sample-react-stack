@@ -42,3 +42,10 @@ export const Priorities = [
     value: 'Low',
   },
 ];
+
+export const DateFormat = {
+  DATE: 'MM/DD/YYYY',
+  DATE_LONG: 'MMMM D, YYYY',
+  DATETIME: 'MM/DD/YYYY h:mm A',
+  DATETIME_LONG: 'MMMM D, YYYY [at] h:mm A',
+};

@@ -11,6 +11,10 @@ import PriorityField from '../common/PriorityField';
 import StatusField from '../common/StatusField';
 import Label from '../../common/forms/Label';
 import UserName from '../../users/UserName';
+import DateTime from '../../common/dates/DateTime';
+import DateTimeRelative from '../../common/dates/DateTimeRelative';
+
+import { DateFormat } from '../../../utils/constants';
 
 dayjs.extend(relativeTime);
 
@@ -66,10 +70,14 @@ const TodoForm = ({ formik, onCancel }) => {
 
           <div className="mb-4 text-sm">
             <div className="mb-2">
-              Created {dayjs(formik.values.createdAt).format('MMMM D, YYYY [at] H:mm A')}
+              Created <DateTime date={formik.values.createdAt} format={DateFormat.DATETIME_LONG} />
             </div>
-            <div title={dayjs(formik.values.updatedAt).format('MMMM D, YYYY [at] H:mm A')}>
-              Updated {dayjs(formik.values.updatedAt).fromNow()}
+            <div>
+              Updated{' '}
+              <DateTimeRelative
+                date={formik.values.updatedAt}
+                titleFormat={DateFormat.DATETIME_LONG}
+              />
             </div>
           </div>
         </div>
