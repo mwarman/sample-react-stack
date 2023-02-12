@@ -1,5 +1,6 @@
 import { RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import { ToastsContextProvider } from './contexts/toasts.context';
 import { router } from './components/routers/Router';
@@ -19,6 +20,7 @@ const App = () => {
         <ToastsContextProvider>
           <RouterProvider router={router} />
         </ToastsContextProvider>
+        <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
       </QueryClientProvider>
     </div>
   );
