@@ -2,8 +2,23 @@ import chunk from 'lodash/chunk';
 import filter from 'lodash/filter';
 import merge from 'lodash/merge';
 import orderBy from 'lodash/orderBy';
+import dayjs from 'dayjs';
 
 import { DEFAULT_STATE as DEFAULT_LIST_CONTEXT } from '../contexts/list.context';
+import { Priorities, Statuses } from '../utils/constants';
+
+export const selectTodoOnQuery = (todo) => {
+  const selectedTodo = {
+    ...todo,
+    priorityObj: Priorities.find((p) => p.code === todo.priority),
+    statusObj: Statuses.find((s) => s.code === todo.status),
+  };
+  selectedTodo.isOverdue =
+    selectedTodo.statusObj.category !== 'done' &&
+    !!selectedTodo.dueAt &&
+    dayjs(selectedTodo.dueAt).isBefore(dayjs(), 'day');
+  return selectedTodo;
+};
 
 export const selectTodos = (todos = [], options = {}) => {
   const defaults = {

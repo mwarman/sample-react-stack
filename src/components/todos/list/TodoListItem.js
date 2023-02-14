@@ -31,7 +31,7 @@ const TodoListItem = ({ todo }) => {
         <UserName accountId={todo.assignee} />
       </div>
       <div className="col-span-1 overflow-clip whitespace-nowrap">
-        <DueDate date={todo.dueAt} />
+        <DueDate dueDate={todo.dueAt} isOverdue={todo.isOverdue} />
       </div>
       <div className="col-span-1">
         <DropdownMenu

@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import map from 'lodash/map';
 
-import { Priorities, Statuses } from '../utils/constants';
+import { Expressions, Priorities, Statuses } from '../utils/constants';
 
 /**
  * Todo
@@ -30,5 +30,8 @@ export const todoSchema = Yup.object({
   priority: Yup.string()
     .oneOf(map(Priorities, 'code'), 'Select a value from the list')
     .required('Required'),
-  dueAt: Yup.date(),
+  dueAt: Yup.string().matches(Expressions.ISO8601_DATE, {
+    excludeEmptyString: true,
+    message: 'Invalid date format',
+  }),
 });

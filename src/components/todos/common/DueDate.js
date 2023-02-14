@@ -6,13 +6,14 @@ import DateTime from '../../common/dates/DateTime';
 
 dayjs.extend(relativeTime);
 
-const DueDate = ({ className, date, ...props }) => {
-  const isOverdue = dayjs().isAfter(dayjs(date), 'day');
-  const title = isOverdue ? `Was due ${dayjs(date).fromNow()}` : `Is due ${dayjs(date).fromNow()}`;
+const DueDate = ({ className, dueDate, isOverdue, ...props }) => {
+  const title = isOverdue
+    ? `Was due ${dayjs(dueDate).fromNow()}`
+    : `Is due ${dayjs(dueDate).fromNow()}`;
 
   return (
     <DateTime
-      date={date}
+      date={dueDate}
       {...props}
       className={classNames(className, { 'text-red-500': isOverdue })}
       title={title}
