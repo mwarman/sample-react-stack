@@ -52,12 +52,12 @@ const TodoListLayout = () => {
                 <ListColumn
                   className="col-span-1 overflow-clip whitespace-nowrap"
                   name="Status"
-                  path="status"
+                  path="statusObj.ordinal"
                 />
                 <ListColumn
                   className="col-span-1 overflow-clip whitespace-nowrap"
                   name="Priority"
-                  path="priority"
+                  path="priorityObj.ordinal"
                 />
                 <ListColumn
                   className="col-span-2 overflow-clip whitespace-nowrap"
