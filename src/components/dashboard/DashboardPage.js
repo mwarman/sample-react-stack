@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import Badge from '../common/Badge';
+import Badge from '../common/badges/Badge';
 import Loading from '../common/Loading';
 
 import { useGetTodos } from '../../hooks/todos.hooks';
@@ -12,26 +12,35 @@ const DashboardPage = () => {
   }, []);
 
   const { data: todos, isLoading } = useGetTodos();
-  const allTodos = selectTodos(todos);
-  const incompleteTodos = selectTodos(todos, { matches: { completed: false } });
-  const completeTodos = selectTodos(todos, { matches: { completed: true } });
 
   if (isLoading) {
     return <Loading className="my-8 animate-pulse justify-center text-6xl text-slate-200" />;
   }
+
+  const totalCount = selectTodos(todos).length;
+  const notStartedCount = selectTodos(todos, {
+    matches: { statusObj: { category: 'todo' } },
+  }).length;
+  const inProgressCount = selectTodos(todos, {
+    matches: { statusObj: { category: 'in_progress' } },
+  }).length;
+  const doneCount = selectTodos(todos, { matches: { statusObj: { category: 'done' } } }).length;
 
   return (
     <div>
       <div className="mb-8 text-2xl">Your Work</div>
 
       <div className="mb-2 flex w-48 items-center justify-between">
-        All <Badge>{allTodos.length}</Badge>
+        All <Badge>{totalCount}</Badge>
       </div>
-      <div className="mb-2 flex w-48 items-center  justify-between">
-        To Do <Badge>{incompleteTodos.length}</Badge>
+      <div className="mb-2 flex w-48 items-center justify-between">
+        To Do <Badge>{notStartedCount}</Badge>
       </div>
-      <div className="mb-2 flex w-48 items-center  justify-between">
-        Done <Badge variant="success">{completeTodos.length}</Badge>
+      <div className="mb-2 flex w-48 items-center justify-between">
+        In Progress <Badge variant="primary">{inProgressCount}</Badge>
+      </div>
+      <div className="mb-2 flex w-48 items-center justify-between">
+        Done <Badge variant="success">{doneCount}</Badge>
       </div>
     </div>
   );

@@ -1,13 +1,13 @@
 import { useField } from 'formik';
 import classNames from 'classnames';
 
-const InputField = ({ className, ...props }) => {
+const TextareaField = ({ className, ...props }) => {
   const [field, meta] = useField(props);
   const showError = meta.touched && meta.error;
 
   return (
     <>
-      <input
+      <textarea
         className={classNames(
           'mt-1 block w-full rounded-md border-slate-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 disabled:bg-slate-100',
           {
@@ -23,4 +23,4 @@ const InputField = ({ className, ...props }) => {
   );
 };
 
-export default InputField;
+export default TextareaField;

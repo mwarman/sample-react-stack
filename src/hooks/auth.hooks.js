@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { getAccount, getAuthState, signIn, signOut, signUp } from '../api/auth.api';
+import { useModalContext } from './modal.hooks';
 
 const QueryKeys = {
   Accounts: 'accounts',
@@ -32,9 +33,11 @@ export const useSignIn = (options) => {
 
 export const useSignOut = (options) => {
   const queryClient = useQueryClient();
+  const { setModalOptions } = useModalContext();
   return useMutation(signOut, {
     ...options,
     onSuccess: async (data) => {
+      setModalOptions();
       await queryClient.resetQueries();
       queryClient.setQueryData([QueryKeys.AuthState], { isAuthenticated: false });
       options?.onSuccess && options.onSuccess(data);

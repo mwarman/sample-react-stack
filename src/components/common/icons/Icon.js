@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import {
+  faAngleDown,
+  faAngleUp,
   faArrowDown,
   faArrowLeft,
   faArrowRight,
@@ -12,6 +14,7 @@ import {
   faEllipsisVertical,
   faListCheck,
   faMagnifyingGlass,
+  faMinus,
   faNotdef,
   faRotate,
   faTriangleExclamation,
@@ -20,6 +23,10 @@ import {
 
 const selectIcon = (name) => {
   switch (name) {
+    case 'angle-down':
+      return faAngleDown;
+    case 'angle-up':
+      return faAngleUp;
     case 'arrow-down':
       return faArrowDown;
     case 'arrow-left':
@@ -42,6 +49,8 @@ const selectIcon = (name) => {
       return faListCheck;
     case 'magnifying-glass':
       return faMagnifyingGlass;
+    case 'minus':
+      return faMinus;
     case 'rotate':
       return faRotate;
     case 'triangle-exclamation':

@@ -1,6 +1,8 @@
 import storage from '../utils/storage';
 import { generateId } from '../utils/id';
 import { delay } from '../utils/delay';
+import { validateSync } from '../utils/validation';
+import { todoCreateSchema, todoUpdateSchema } from './validators/todos.api.validators';
 
 export const getTodos = async () => {
   return new Promise((resolve, reject) => {
@@ -36,11 +38,14 @@ export const createTodo = async (todo) => {
   return new Promise((resolve, reject) => {
     delay().then(() => {
       try {
+        const validatedTodo = validateSync(todoCreateSchema, todo);
         const todos = storage.getJson('todos') || [];
+        const now = new Date().toISOString();
         const createdTodo = {
-          ...todo,
+          ...validatedTodo,
           id: generateId(),
-          createdAt: new Date().toISOString(),
+          createdAt: now,
+          updatedAt: now,
         };
         storage.setJson('todos', [...todos, createdTodo]);
         return resolve(createdTodo);
@@ -55,6 +60,7 @@ export const updateTodo = async (todo) => {
   return new Promise((resolve, reject) => {
     delay().then(() => {
       try {
+        const validatedTodo = validateSync(todoUpdateSchema, todo);
         const todos = storage.getJson('todos') || [];
         const todoToUpdate = todos.find((t) => t.id === todo.id);
         if (!todoToUpdate) {
@@ -63,7 +69,7 @@ export const updateTodo = async (todo) => {
 
         const updatedTodo = {
           ...todoToUpdate,
-          ...todo,
+          ...validatedTodo,
           updatedAt: new Date().toISOString(),
         };
 

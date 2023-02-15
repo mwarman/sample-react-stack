@@ -1,17 +1,24 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { createTodo, getTodo, getTodos, updateTodo, deleteTodo } from '../api/todos.api';
+import { selectTodoOnQuery } from '../selectors/todos.selectors';
 
 const QueryKeys = {
   Todos: 'todos',
 };
 
 export const useGetTodos = (options) => {
-  return useQuery([QueryKeys.Todos], getTodos, options);
+  return useQuery([QueryKeys.Todos], getTodos, {
+    ...options,
+    select: (todos) => todos.map(selectTodoOnQuery),
+  });
 };
 
 export const useGetTodo = (id, options) => {
-  return useQuery([QueryKeys.Todos, id], () => getTodo(id), options);
+  return useQuery([QueryKeys.Todos, id], () => getTodo(id), {
+    ...options,
+    select: selectTodoOnQuery,
+  });
 };
 
 export const useCreateTodo = (options) => {

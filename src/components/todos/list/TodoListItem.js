@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 
-import Badge from '../../common/Badge';
+import StatusBadge from '../common/StatusBadge';
+import Priority from '../common/Priority';
 import UserName from '../../users/UserName';
+import DueDate from '../common/DueDate';
 import DropdownMenu from '../../common/menus/DropdownMenu';
 import DropdownMenuLink from '../../common/menus/DropdownMenuLink';
 import DropdownMenuTitle from '../../common/menus/DropdownMenuTitle';
@@ -14,16 +16,22 @@ const TodoListItem = ({ todo }) => {
 
   return (
     <div className="grid grid-cols-12 items-center gap-4 p-2 hover:bg-slate-200/40">
-      <div className="col-span-7">
-        <Link to={`/todos/${todo.id}`} className="hover:underline">
-          {todo.title}
+      <div className="col-span-6 overflow-clip whitespace-nowrap">
+        <Link to={`/todos/${todo.id}`} title="Edit Todo" className="hover:underline">
+          {todo.summary}
         </Link>
       </div>
-      <div className="col-span-2">
-        {todo.completed ? <Badge type="success">DONE</Badge> : <Badge>NOT STARTED</Badge>}
+      <div className="col-span-1 overflow-clip whitespace-nowrap">
+        <StatusBadge code={todo.statusCode} />
       </div>
-      <div className="col-span-2">
-        <UserName accountId={todo.accountId} />
+      <div className="col-span-1 overflow-clip whitespace-nowrap">
+        <Priority code={todo.priorityCode} />
+      </div>
+      <div className="col-span-2 overflow-clip whitespace-nowrap">
+        <UserName accountId={todo.assigneeId} />
+      </div>
+      <div className="col-span-1 overflow-clip whitespace-nowrap">
+        <DueDate dueDate={todo.dueAt} isOverdue={todo.isOverdue} />
       </div>
       <div className="col-span-1">
         <DropdownMenu
@@ -36,7 +44,7 @@ const TodoListItem = ({ todo }) => {
         >
           <DropdownMenuTitle>Actions</DropdownMenuTitle>
           <DropdownMenuLink
-            to="/todos"
+            to=""
             title="Delete Todo"
             onClick={() => setModalOptions({ modal: 'todoDelete', props: { todo } })}
           >
