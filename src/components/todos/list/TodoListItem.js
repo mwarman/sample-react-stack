@@ -15,7 +15,7 @@ const TodoListItem = ({ todo }) => {
   const { setModalOptions } = useModalContext();
 
   return (
-    <div className="grid grid-cols-12 items-center gap-4 p-2 hover:bg-slate-200/40">
+    <div className="grid grid-cols-12 items-center gap-4 p-2 hover:bg-slate-200/40 dark:hover:bg-slate-800/40">
       <div className="col-span-6 overflow-clip whitespace-nowrap">
         <Link to={`/todos/${todo.id}`} title="Edit Todo" className="hover:underline">
           {todo.summary}
@@ -38,7 +38,7 @@ const TodoListItem = ({ todo }) => {
           trigger={
             <Icon
               name="ellipsis-vertical"
-              className="ml-auto block w-4 rounded p-1 text-slate-700 hover:bg-slate-200/60"
+              className="ml-auto block w-4 rounded p-1 hover:bg-slate-200/60 dark:hover:bg-slate-800/60"
             />
           }
         >

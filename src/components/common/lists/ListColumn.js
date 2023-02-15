@@ -17,7 +17,7 @@ const ListColumn = ({ className, name, path }) => {
 
   return (
     <div
-      className={classNames('flex cursor-pointer items-center text-slate-700', className)}
+      className={classNames('flex cursor-pointer items-center', className)}
       onClick={() => setSort(path)}
     >
       <div className="font-bold">{name}</div>

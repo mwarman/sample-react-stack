@@ -8,8 +8,9 @@ const HeaderNavLink = ({ className, show = true, ...props }) => {
     <NavLink
       className={({ isActive }) =>
         classNames(
-          'px-6 font-bold text-slate-500 hover:text-slate-700',
-          { 'text-slate-900 hover:text-slate-900': isActive },
+          'mx-4 border-b-2 px-2 font-bold hover:opacity-60',
+          { 'border-transparent': !isActive },
+          { 'border-slate-300 opacity-60 dark:border-slate-700': isActive },
           className,
         )
       }

@@ -15,8 +15,10 @@ import {
   faListCheck,
   faMagnifyingGlass,
   faMinus,
+  faMoon,
   faNotdef,
   faRotate,
+  faSun,
   faTriangleExclamation,
   faXmark,
 } from '@fortawesome/free-solid-svg-icons';
@@ -51,8 +53,12 @@ const selectIcon = (name) => {
       return faMagnifyingGlass;
     case 'minus':
       return faMinus;
+    case 'moon':
+      return faMoon;
     case 'rotate':
       return faRotate;
+    case 'sun':
+      return faSun;
     case 'triangle-exclamation':
       return faTriangleExclamation;
     case 'xmark':

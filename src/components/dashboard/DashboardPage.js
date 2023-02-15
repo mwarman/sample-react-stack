@@ -28,7 +28,7 @@ const DashboardPage = () => {
 
   return (
     <div>
-      <div className="mb-8 text-2xl">Your Work</div>
+      <div className="mb-8 text-2xl font-bold">Your Work</div>
 
       <div className="mb-2 flex w-48 items-center justify-between">
         All <Badge>{totalCount}</Badge>

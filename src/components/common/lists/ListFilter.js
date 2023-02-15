@@ -7,7 +7,7 @@ const ListFilter = ({ className, placeholder = 'Filter the list...' }) => {
 
   return (
     <div className={className}>
-      <div className="inline-flex items-center rounded bg-slate-300/50 px-2 py-1 text-sm text-slate-700">
+      <div className="inline-flex items-center rounded bg-slate-300/50 px-2 py-1 text-sm">
         <Icon name="magnifying-glass" className="mr-2" />
         <input
           name="todoListSearch"
