@@ -22,13 +22,13 @@ const TodoListItem = ({ todo }) => {
         </Link>
       </div>
       <div className="col-span-1 overflow-clip whitespace-nowrap">
-        <StatusBadge code={todo.status} />
+        <StatusBadge code={todo.statusCode} />
       </div>
       <div className="col-span-1 overflow-clip whitespace-nowrap">
-        <Priority code={todo.priority} />
+        <Priority code={todo.priorityCode} />
       </div>
       <div className="col-span-2 overflow-clip whitespace-nowrap">
-        <UserName accountId={todo.assignee} />
+        <UserName accountId={todo.assigneeId} />
       </div>
       <div className="col-span-1 overflow-clip whitespace-nowrap">
         <DueDate dueDate={todo.dueAt} isOverdue={todo.isOverdue} />

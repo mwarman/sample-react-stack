@@ -49,17 +49,17 @@ const TodoForm = ({ formik, onCancel }) => {
           <div className="mb-4">
             <div className="mb-2 text-sm font-bold">Assignee</div>
             <div>
-              <UserName accountId={formik.values.assignee} />
+              <UserName accountId={formik.values.assigneeId} />
             </div>
           </div>
 
           <div className="mb-4 w-60">
-            <Label htmlFor="status">Status</Label>
-            <StatusField id="status" name="status" disabled={formik.isSubmitting} />
+            <Label htmlFor="statusCode">Status</Label>
+            <StatusField id="statusCode" name="statusCode" disabled={formik.isSubmitting} />
           </div>
 
           <div className="mb-4 w-60">
-            <Label htmlFor="priority">Priority</Label>
+            <Label htmlFor="priorityCode">Priority</Label>
             <PriorityField disabled={formik.isSubmitting} />
           </div>
 

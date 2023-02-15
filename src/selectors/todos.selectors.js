@@ -10,8 +10,8 @@ import { Priorities, Statuses } from '../utils/constants';
 export const selectTodoOnQuery = (todo) => {
   const selectedTodo = {
     ...todo,
-    priorityObj: Priorities.find((p) => p.code === todo.priority),
-    statusObj: Statuses.find((s) => s.code === todo.status),
+    priorityObj: Priorities.find((p) => p.code === todo.priorityCode),
+    statusObj: Statuses.find((s) => s.code === todo.statusCode),
   };
   selectedTodo.isOverdue =
     selectedTodo.statusObj.category !== 'done' &&

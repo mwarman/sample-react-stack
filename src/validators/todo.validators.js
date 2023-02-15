@@ -8,10 +8,10 @@ import { Expressions, Priorities, Statuses } from '../utils/constants';
  * * id
  * * summary
  * * description
- * * status
- * * priority
+ * * statusCode
+ * * priorityCode
  * * dueAt
- * * assignee
+ * * assigneeId
  * * startedAt
  * * completedAt
  * * createdAt
@@ -24,10 +24,10 @@ import { Expressions, Priorities, Statuses } from '../utils/constants';
 export const todoSchema = Yup.object({
   summary: Yup.string().max(100, 'Must be 100 characters or less').required('Required'),
   description: Yup.string().max(1000, 'Must be 1000 characters or less'),
-  status: Yup.string()
+  statusCode: Yup.string()
     .oneOf(map(Statuses, 'code'), 'Select a value from the list')
     .required('Required'),
-  priority: Yup.string()
+  priorityCode: Yup.string()
     .oneOf(map(Priorities, 'code'), 'Select a value from the list')
     .required('Required'),
   dueAt: Yup.string().matches(Expressions.ISO8601_DATE, {

@@ -17,14 +17,14 @@ const TodoCreate = ({ onCancel, onSuccess }) => {
       initialValues={{
         summary: '',
         description: '',
-        priority: 'medium',
-        status: 'todo',
+        priorityCode: 'medium',
+        statusCode: 'todo',
         dueAt: '',
       }}
       validationSchema={todoSchema}
       onSubmit={(values, { setSubmitting }) => {
         createTodo.mutate(
-          { ...values, assignee: authState.id },
+          { ...values, assigneeId: authState.id },
           {
             onSuccess: (todo) => {
               setSubmitting(false);

@@ -66,7 +66,7 @@ const TodoList = () => {
                 <ListColumn
                   className="col-span-2 overflow-clip whitespace-nowrap"
                   name="Assignee"
-                  path="assignee"
+                  path="assigneeId"
                 />
                 <ListColumn
                   className="col-span-1 overflow-clip whitespace-nowrap"
@@ -77,7 +77,7 @@ const TodoList = () => {
               </ListHeader>
 
               <div className="my-1">
-                {todos?.map((todo) => (
+                {page?.map((todo) => (
                   <TodoListItem key={todo.id} todo={todo} />
                 ))}
               </div>

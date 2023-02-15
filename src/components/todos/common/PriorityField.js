@@ -10,7 +10,7 @@ const PriorityField = ({ ...props }) => {
 
   return (
     <CustomSelectField
-      name="priority"
+      name="priorityCode"
       options={sortedPriorities.map((priority) => ({
         value: priority.code,
         label: <Priority code={priority.code} />,

@@ -33,7 +33,7 @@ const TodoCreateForm = ({ formik, onCancel }) => {
       </div>
 
       <div className="mb-4 w-60">
-        <Label htmlFor="priority">Priority</Label>
+        <Label htmlFor="priorityCode">Priority</Label>
         <PriorityField disabled={formik.isSubmitting} />
       </div>
 
