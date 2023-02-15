@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Formik } from 'formik';
 import { useParams } from 'react-router-dom';
+import truncate from 'lodash/truncate';
 
 import TodoEditLoading from './TodoEditLoading';
 import TodoEditForm from './TodoEditForm';
@@ -15,6 +17,12 @@ const TodoEdit = () => {
   const toastsContext = useToastsContext();
   const { data: todo, isLoading } = useGetTodo(todoId);
   const updateTodo = useUpdateTodo();
+
+  useEffect(() => {
+    if (!isLoading) {
+      document.title = `[TODO-${todo.id}] ${truncate(todo.summary)} - Sample React Stack`;
+    }
+  }, [todo, isLoading]);
 
   if (isLoading) {
     return <TodoEditLoading />;

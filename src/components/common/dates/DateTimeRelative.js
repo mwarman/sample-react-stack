@@ -1,8 +1,6 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
-import { DateFormat } from '../../../utils/constants';
-
 dayjs.extend(relativeTime);
 
 const DateTimeRelative = ({ date, titleFormat, ...props }) => {
