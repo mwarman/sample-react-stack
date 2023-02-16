@@ -30,7 +30,7 @@ const TodoEdit = () => {
 
   return (
     <div>
-      <div className="mb-4 flex items-center text-slate-700">
+      <div className="mb-4 flex items-center">
         <Link to="/todos">Todos</Link>
         <span className="ml-3">/</span>
         <Link to="" className="ml-3 uppercase">
