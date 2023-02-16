@@ -8,7 +8,7 @@ const Protected = ({ children }) => {
   const { data: authState, status } = useAuthState();
 
   if (status === 'loading') {
-    return <Loading className="my-8 animate-pulse justify-center text-6xl text-slate-200" />;
+    return <Loading className="my-8 animate-pulse justify-center text-6xl text-slate-500/70" />;
   }
 
   if (authState.isAuthenticated) {

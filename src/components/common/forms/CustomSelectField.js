@@ -70,7 +70,7 @@ const CustomSelectField = ({ className, disabled = false, name, options = [], pl
                 'border-pink-500/30 text-pink-600 focus:border-pink-500/50': showError,
               },
               {
-                'cursor-default bg-slate-100': disabled,
+                'cursor-default bg-slate-100 dark:bg-slate-800': disabled,
               },
               className,
             )}

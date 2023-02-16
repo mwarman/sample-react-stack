@@ -6,42 +6,35 @@ const Alert = ({ children, className, variant = 'default' }) => {
   let alertColor = '';
   switch (variant) {
     case 'primary':
-      alertColor = 'border-blue-500 bg-blue-100';
+      alertColor = 'bg-blue-500/30';
       break;
     case 'warning':
-      alertColor = 'border-amber-400 bg-amber-100';
+      alertColor = 'bg-amber-300/30';
       break;
     case 'error':
-      alertColor = 'border-red-500 bg-red-100';
+      alertColor = 'bg-red-500/30';
       break;
     default:
-      alertColor = 'border-slate-500 bg-slate-100';
+      alertColor = 'bg-slate-400/30';
   }
 
   let iconColor = '';
   switch (variant) {
     case 'primary':
-      iconColor = 'text-blue-500';
+      iconColor = 'text-blue-800 dark:text-blue-300/70';
       break;
     case 'warning':
-      iconColor = 'text-amber-400';
+      iconColor = 'text-amber-800 dark:text-amber-300/70';
       break;
     case 'error':
-      iconColor = 'text-red-500';
+      iconColor = 'text-red-800 dark:text-red-300/70';
       break;
     default:
-      iconColor = 'text-slate-500';
+      iconColor = '';
   }
 
   return (
-    <div
-      className={classNames(
-        'flex items-center rounded border p-2',
-        alertColor,
-        iconColor,
-        className,
-      )}
-    >
+    <div className={classNames('flex items-center rounded p-2', alertColor, iconColor, className)}>
       <Icon name="triangle-exclamation" className="mr-2 inline-block h-6 w-6" />
       <div>{children}</div>
     </div>

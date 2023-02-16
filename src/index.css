@@ -8,8 +8,15 @@
 *::-webkit-scrollbar-track {
   background: #eee;
 }
+.dark *::-webkit-scrollbar-track {
+  background: #1e293b;
+}
 *::-webkit-scrollbar-thumb {
   background-color: #aaa;
   border-radius: 9px;
   border: 1px solid #eee;
+}
+.dark *::-webkit-scrollbar-thumb {
+  background-color: #334155;
+  border: 1px solid #1e293b;
 }

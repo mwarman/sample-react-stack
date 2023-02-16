@@ -41,7 +41,13 @@ const TodoForm = ({ formik, onCancel }) => {
 
           <div className="mb-4">
             <Label htmlFor="description">Description</Label>
-            <TextareaField id="description" name="description" rows="6" maxLength="1000" />
+            <TextareaField
+              id="description"
+              name="description"
+              rows="6"
+              maxLength="1000"
+              disabled={formik.isSubmitting}
+            />
           </div>
         </div>
 

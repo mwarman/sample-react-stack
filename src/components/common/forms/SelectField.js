@@ -9,7 +9,7 @@ const SelectField = ({ className, ...props }) => {
     <>
       <select
         className={classNames(
-          'mt-1 block w-full rounded-md focus:ring disabled:bg-slate-100 dark:bg-slate-900',
+          'mt-1 block w-full rounded-md focus:ring disabled:bg-slate-100 dark:bg-slate-900 dark:disabled:bg-slate-800',
           { 'border-slate-500/30 focus:border-indigo-300/50 focus:ring-indigo-200/50': !showError },
           {
             'border-pink-500/30 text-pink-600 focus:border-pink-500/50 focus:ring-pink-400/50':
