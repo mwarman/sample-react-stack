@@ -22,7 +22,7 @@ const DropdownMenu = ({ children, position = 'top-0 right-8', trigger }) => {
         {/* dropdown menu content */}
         <div
           className={classNames(
-            'absolute z-50 min-w-[200px] rounded border border-slate-300 bg-white p-1 shadow-md shadow-slate-500/50',
+            'absolute z-50 min-w-[200px] rounded border border-slate-500/30 bg-white p-1 shadow-md shadow-slate-500/50 dark:bg-slate-900',
             {
               hidden: isHidden,
             },

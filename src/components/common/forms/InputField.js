@@ -9,9 +9,11 @@ const InputField = ({ className, ...props }) => {
     <>
       <input
         className={classNames(
-          'mt-1 block w-full rounded-md border-slate-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 disabled:bg-slate-100',
+          'mt-1 block w-full rounded-md focus:ring disabled:bg-slate-100 dark:bg-slate-900',
+          { 'border-slate-500/30 focus:border-indigo-300/50 focus:ring-indigo-200/50': !showError },
           {
-            'border-pink-500 text-pink-600 focus:border-pink-500 focus:ring-pink-200': showError,
+            'border-pink-500/30 text-pink-600 focus:border-pink-500/50 focus:ring-pink-400/50':
+              showError,
           },
           className,
         )}

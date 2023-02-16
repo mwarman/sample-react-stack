@@ -3,7 +3,7 @@ import classNames from 'classnames';
 const Label = ({ children, className, ...props }) => {
   if (props.htmlFor) {
     return (
-      <label className={classNames('text-sm font-bold text-slate-700', className)} {...props}>
+      <label className={classNames('text-sm font-bold', className)} {...props}>
         {children}
       </label>
     );
