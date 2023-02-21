@@ -5,10 +5,10 @@ const Button = ({ className, children, size = 'md', variant = 'default', ...prop
   switch (variant) {
     case 'primary':
       colorClasses =
-        'bg-blue-500 text-white enabled:hover:bg-blue-700 disabled:opacity-50 dark:bg-blue-500/50 dark:enabled:hover:bg-blue-700/50 dark:text-slate-300';
+        'bg-blue text-white enabled:hover:bg-blue-dark disabled:opacity-50 dark:bg-blue/50 dark:enabled:hover:bg-blue-dark/50 dark:text-slate-light';
       break;
     default:
-      colorClasses = 'enabled:hover:bg-slate-500/20 disabled:opacity-50';
+      colorClasses = 'enabled:hover:bg-slate/20 disabled:opacity-50';
   }
 
   let sizeClasses = '';

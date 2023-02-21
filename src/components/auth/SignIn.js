@@ -31,7 +31,7 @@ const SignIn = () => {
   const signIn = useSignIn();
 
   return (
-    <div className="rounded border border-slate-500/30 p-4">
+    <div className="rounded border border-slate/30 p-4">
       <h2 className="text-2xl font-bold">Sign In</h2>
 
       {error && (
@@ -97,9 +97,9 @@ const SignIn = () => {
         )}
       </Formik>
 
-      <div className="mt-2 border-t border-slate-500/30 pt-2 text-sm">
+      <div className="mt-2 border-t border-slate/30 pt-2 text-sm">
         <span className="mr-2">Don't have an account?</span>
-        <Link to="/auth/signup" className="text-blue-500 hover:underline dark:opacity-80">
+        <Link to="/auth/signup" className="text-blue hover:underline dark:opacity-80">
           Sign up.
         </Link>
       </div>

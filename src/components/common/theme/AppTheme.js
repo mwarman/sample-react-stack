@@ -5,7 +5,7 @@ const AppTheme = ({ children }) => {
 
   return (
     <div id="theme" className={preferences.theme}>
-      <div className="bg-white text-slate-700 dark:bg-slate-900 dark:text-slate-300/70">
+      <div className="bg-white text-slate-700 dark:bg-slate-900 dark:text-slate-light/70">
         {children}
       </div>
     </div>

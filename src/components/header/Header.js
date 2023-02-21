@@ -18,11 +18,11 @@ const Header = () => {
   return (
     <div
       id="header"
-      className="flex h-16 items-center px-16 shadow-lg shadow-slate-300/30 dark:shadow-slate-700/30"
+      className="flex h-16 items-center px-16 shadow-lg shadow-slate-light/30 dark:shadow-slate-700/30"
     >
       <div id="title" className="mr-10">
         <Link to="/" title="Todos">
-          <Icon name="list-check" fixedWidth className="text-2xl text-green-700" />
+          <Icon name="list-check" fixedWidth className="text-2xl text-green-dark/70" />
           <span className="sr-only">Todos</span>
         </Link>
       </div>

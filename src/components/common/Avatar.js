@@ -3,13 +3,13 @@ import classNames from 'classnames';
 import { useGetAccount, useAuthState } from '../../hooks/auth.hooks';
 
 const colorOptions = {
-  blue: 'bg-blue-500/70 text-white/80',
-  green: 'bg-lime-600/70 text-white/80',
-  orange: 'bg-orange-500/70 text-white/80',
-  purple: 'bg-violet-600/70 text-white/80',
-  red: 'bg-red-600/70 text-white/80',
-  slate: 'bg-slate-500/70 text-white/80',
-  yellow: 'bg-yellow-400/70 text-white/80',
+  blue: 'bg-blue/70 text-white/80',
+  green: 'bg-green/70 text-white/80',
+  orange: 'bg-orange/70 text-white/80',
+  purple: 'bg-violet/70 text-white/80',
+  red: 'bg-red/70 text-white/80',
+  slate: 'bg-slate/70 text-white/80',
+  yellow: 'bg-yellow/70 text-white/80',
 };
 
 const getColorClasses = (name) => {

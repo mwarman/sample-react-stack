@@ -28,7 +28,7 @@ const ThemeToggle = () => {
         name="sun"
         title="Switch to dark theme"
         fixedWidth
-        className="cursor-pointer text-amber-300"
+        className="cursor-pointer text-amber-light"
         onClick={toggleTheme}
       />
     );
