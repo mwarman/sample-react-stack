@@ -10,7 +10,7 @@ const HeaderNavLink = ({ className, show = true, ...props }) => {
         classNames(
           'mx-4 border-b-2 px-2 font-bold',
           { 'border-transparent hover:opacity-60': !isActive },
-          { 'border-slate-700 dark:border-slate-300/70': isActive },
+          { 'border-slate-700 dark:border-slate-light/70': isActive },
           className,
         )
       }

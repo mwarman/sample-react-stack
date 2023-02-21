@@ -14,7 +14,7 @@ const DashboardPage = () => {
   const { data: todos, isLoading } = useGetTodos();
 
   if (isLoading) {
-    return <Loading className="my-8 animate-pulse justify-center text-6xl text-slate-200" />;
+    return <Loading className="my-8 animate-pulse justify-center text-6xl text-slate/70" />;
   }
 
   const totalCount = selectTodos(todos).length;
