@@ -5,15 +5,10 @@ const Button = ({ className, children, size = 'md', variant = 'default', ...prop
   switch (variant) {
     case 'primary':
       colorClasses =
-        'border-blue-500 bg-blue-500 text-white hover:border-blue-700 hover:bg-blue-700 disabled:border-blue-400 disabled:bg-blue-400 disabled:text-slate-200';
-      break;
-    case 'secondary':
-      colorClasses =
-        'border-slate-400 text-slate-500 hover:border-slate-500 hover:bg-slate-500 hover:text-white disabled:border-slate-200 disabled:bg-slate-200 disabled:hover:text-slate-500';
+        'bg-blue text-white enabled:hover:bg-blue-dark disabled:opacity-50 dark:bg-blue/50 dark:enabled:hover:bg-blue-dark/50 dark:text-slate-light';
       break;
     default:
-      colorClasses =
-        'border-transparent text-slate-700 bg-white hover:border-slate-200 hover:bg-slate-200 disabled:border-slate-100 disabled:bg-slate-100 disabled:text-slate-500';
+      colorClasses = 'enabled:hover:bg-slate/20 disabled:opacity-50';
   }
 
   let sizeClasses = '';
@@ -30,7 +25,7 @@ const Button = ({ className, children, size = 'md', variant = 'default', ...prop
 
   return (
     <button
-      className={classNames('rounded border', sizeClasses, colorClasses, className)}
+      className={classNames('rounded border-0', sizeClasses, colorClasses, className)}
       {...props}
     >
       {children}

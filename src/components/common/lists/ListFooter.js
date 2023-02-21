@@ -28,7 +28,7 @@ const ListFooter = ({ items = [] }) => {
   };
 
   return (
-    <div className="flex items-center justify-between border-t-2 border-slate-300 p-2 text-sm">
+    <div className="flex items-center justify-between border-t-2 border-slate-light p-2 text-sm dark:border-slate-700">
       {/* pagination summary */}
       <div>
         <span className="font-bold">

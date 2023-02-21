@@ -1,5 +1,5 @@
 const DropdownMenuSeparator = () => {
-  return <hr className="my-0.5 border-slate-200" />;
+  return <hr className="my-0.5 border-slate/30" />;
 };
 
 export default DropdownMenuSeparator;

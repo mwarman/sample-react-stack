@@ -16,7 +16,7 @@ const LandingPage = () => {
   const { data: authState, isLoading } = useAuthState();
 
   if (isLoading) {
-    return <Loading className="my-8 animate-pulse justify-center text-6xl text-slate-200" />;
+    return <Loading className="my-8 animate-pulse justify-center text-6xl text-slate/70" />;
   }
 
   if (authState.isAuthenticated) {

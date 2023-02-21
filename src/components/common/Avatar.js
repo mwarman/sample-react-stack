@@ -3,13 +3,13 @@ import classNames from 'classnames';
 import { useGetAccount, useAuthState } from '../../hooks/auth.hooks';
 
 const colorOptions = {
-  blue: 'bg-blue-500 text-white',
-  green: 'bg-lime-600 text-white',
-  orange: 'bg-orange-500 text-white',
-  purple: 'bg-violet-600 text-white',
-  red: 'bg-red-600 text-white',
-  slate: 'bg-slate-500 text-white',
-  yellow: 'bg-yellow-400 text-white',
+  blue: 'bg-blue/70 text-white/80',
+  green: 'bg-green/70 text-white/80',
+  orange: 'bg-orange/70 text-white/80',
+  purple: 'bg-violet/70 text-white/80',
+  red: 'bg-red/70 text-white/80',
+  slate: 'bg-slate/70 text-white/80',
+  yellow: 'bg-yellow/70 text-white/80',
 };
 
 const getColorClasses = (name) => {
@@ -21,7 +21,7 @@ const getColorClasses = (name) => {
 const Avatar = ({ className }) => {
   const { data: authState } = useAuthState();
   const { data: account, status } = useGetAccount(authState.id, {
-    enabled: !!authState.id,
+    enabled: !!authState?.id,
   });
 
   if (status === 'success') {

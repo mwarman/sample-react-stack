@@ -15,7 +15,7 @@ const DueDate = ({ className, dueDate, isOverdue, ...props }) => {
     <DateTime
       date={dueDate}
       {...props}
-      className={classNames(className, { 'text-red-500': isOverdue })}
+      className={classNames(className, { 'text-red': isOverdue })}
       title={title}
     />
   );

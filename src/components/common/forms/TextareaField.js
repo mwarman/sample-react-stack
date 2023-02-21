@@ -9,16 +9,17 @@ const TextareaField = ({ className, ...props }) => {
     <>
       <textarea
         className={classNames(
-          'mt-1 block w-full rounded-md border-slate-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 disabled:bg-slate-100',
+          'mt-1 block w-full rounded-md focus:ring disabled:bg-slate-100 dark:bg-slate-900 dark:disabled:bg-slate-dark',
+          { 'border-slate/30 focus:border-indigo-light/50 focus:ring-indigo-light/70': !showError },
           {
-            'border-pink-500 text-pink-600 focus:border-pink-500 focus:ring-pink-200': showError,
+            'border-red/30 text-red focus:border-red/50 focus:ring-red-light/50': showError,
           },
           className,
         )}
         {...field}
         {...props}
       />
-      {showError ? <div className="mt-1 text-sm text-red-600">{meta.error}</div> : null}
+      {showError ? <div className="mt-1 text-sm text-red">{meta.error}</div> : null}
     </>
   );
 };

@@ -7,6 +7,7 @@ import Avatar from '../common/Avatar';
 import DropdownMenu from '../common/menus/DropdownMenu';
 import DropdownMenuLink from '../common/menus/DropdownMenuLink';
 import DropdownMenuTitle from '../common/menus/DropdownMenuTitle';
+import ThemeToggle from '../common/theme/ThemeToggle';
 
 import { useAuthState } from '../../hooks/auth.hooks';
 
@@ -15,10 +16,13 @@ const Header = () => {
   const isAuthenticated = isSuccess && authState?.isAuthenticated;
 
   return (
-    <div id="header" className="flex h-16 items-center px-16 shadow-lg shadow-slate-300/30">
+    <div
+      id="header"
+      className="flex h-16 items-center px-16 shadow-lg shadow-slate-light/30 dark:shadow-slate-700/30"
+    >
       <div id="title" className="mr-10">
         <Link to="/" title="Todos">
-          <Icon name="list-check" fixedWidth className="text-2xl text-green-700" />
+          <Icon name="list-check" fixedWidth className="text-2xl text-green-dark/70" />
           <span className="sr-only">Todos</span>
         </Link>
       </div>
@@ -31,7 +35,10 @@ const Header = () => {
         </HeaderNavLink>
       </nav>
       {isAuthenticated && <CreateTodoButton className="mx-6 w-24 text-base" />}
-      <nav className="ml-auto flex items-center">
+      <div className="ml-auto text-xl">
+        <ThemeToggle />
+      </div>
+      <nav className="ml-4 flex items-center">
         <HeaderNavLink to="/auth/signin" title="Sign In" show={!isAuthenticated}>
           Sign In
         </HeaderNavLink>

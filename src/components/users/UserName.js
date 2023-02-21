@@ -12,7 +12,11 @@ const UserName = ({ accountId }) => {
   }
 
   return (
-    <Link to={`/users/${account.id}`} className="hover:underline">
+    <Link
+      to={`/users/${account.id}`}
+      className="hover:underline"
+      title={`View ${account.firstName} ${account.lastName}`}
+    >
       {`${account.firstName} ${account.lastName}`}
     </Link>
   );

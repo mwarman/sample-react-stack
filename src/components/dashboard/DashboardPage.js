@@ -14,7 +14,7 @@ const DashboardPage = () => {
   const { data: todos, isLoading } = useGetTodos();
 
   if (isLoading) {
-    return <Loading className="my-8 animate-pulse justify-center text-6xl text-slate-200" />;
+    return <Loading className="my-8 animate-pulse justify-center text-6xl text-slate/70" />;
   }
 
   const totalCount = selectTodos(todos).length;
@@ -28,7 +28,7 @@ const DashboardPage = () => {
 
   return (
     <div>
-      <div className="mb-8 text-2xl">Your Work</div>
+      <div className="mb-8 text-2xl font-bold">Your Work</div>
 
       <div className="mb-2 flex w-48 items-center justify-between">
         All <Badge>{totalCount}</Badge>

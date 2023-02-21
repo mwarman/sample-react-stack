@@ -30,9 +30,9 @@ const SignOut = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center text-2xl">
-      <Icon name="arrow-right-from-bracket" className="mr-2 text-blue-500" />
-      <span className="text-2xl font-bold text-slate-700">Signing Out...</span>
+    <div className="flex animate-pulse items-center justify-center text-2xl">
+      <Icon name="arrow-right-from-bracket" className="mr-2 text-blue dark:opacity-50" />
+      <span className="text-2xl font-bold">Signing Out...</span>
     </div>
   );
 };
