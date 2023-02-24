@@ -1,4 +1,5 @@
 import { Formik } from 'formik';
+import { Link } from 'react-router-dom';
 
 import TodoCreateForm from './TodoCreateForm';
 
@@ -28,7 +29,11 @@ const TodoCreate = ({ onCancel, onSuccess }) => {
           {
             onSuccess: (todo) => {
               setSubmitting(false);
-              toastsContext.createToast(`Created TODO-${todo.id}`);
+              toastsContext.createToast(
+                <span>
+                  Created <Link to={`/todos/${todo.id}`}>TODO-{todo.id}</Link>
+                </span>,
+              );
               onSuccess && onSuccess();
             },
             onError: (err) => {
