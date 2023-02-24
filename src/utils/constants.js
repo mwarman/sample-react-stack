@@ -13,6 +13,7 @@ export const StorageKeys = {
 
 export const QueryKeys = {
   Preferences: 'preferences',
+  Todos: 'todos',
 };
 
 export const Expressions = {
