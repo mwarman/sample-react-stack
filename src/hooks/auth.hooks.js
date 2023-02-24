@@ -2,31 +2,29 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { getAccount, getAuthState, signIn, signOut, signUp } from '../api/auth.api';
 import { useModalContext } from './modal.hooks';
-
-const QueryKeys = {
-  Accounts: 'accounts',
-  AuthState: 'authstate',
-};
+import { QueryKeys } from '../utils/constants';
 
 export const useSignUp = (options) => {
   const queryClient = useQueryClient();
-  return useMutation(signUp, {
+  return useMutation({
     ...options,
-    onSuccess: (data) => {
+    mutationFn: signUp,
+    onSuccess: (data, variables, context) => {
       queryClient.invalidateQueries([QueryKeys.Accounts]);
-      options?.onSuccess && options.onSuccess(data);
+      options?.onSuccess && options.onSuccess(data, variables, context);
     },
   });
 };
 
 export const useSignIn = (options) => {
   const queryClient = useQueryClient();
-  return useMutation((vars) => signIn(vars.username, vars.password), {
+  return useMutation({
     ...options,
-    onSuccess: (data) => {
+    mutationFn: (variables) => signIn(variables.username, variables.password),
+    onSuccess: (data, variables, context) => {
       queryClient.setQueryData([QueryKeys.Accounts, data.id], data);
       queryClient.resetQueries([QueryKeys.AuthState]);
-      options?.onSuccess && options.onSuccess(data);
+      options?.onSuccess && options.onSuccess(data, variables, context);
     },
   });
 };
@@ -34,24 +32,32 @@ export const useSignIn = (options) => {
 export const useSignOut = (options) => {
   const queryClient = useQueryClient();
   const { setModalOptions } = useModalContext();
-  return useMutation(signOut, {
+  return useMutation({
     ...options,
-    onSuccess: async (data) => {
+    mutationFn: signOut,
+    onSuccess: async (data, variables, context) => {
+      // After successfully signingout...
+      // Reset all queries in the cache to the initial state
       setModalOptions();
       await queryClient.resetQueries();
-      queryClient.setQueryData([QueryKeys.AuthState], { isAuthenticated: false });
-      options?.onSuccess && options.onSuccess(data);
+      options?.onSuccess && options.onSuccess(data, variables, context);
     },
   });
 };
 
 export const useAuthState = (options) => {
-  return useQuery([QueryKeys.AuthState], getAuthState, {
+  return useQuery({
+    refetchInterval: 60 * 1000,
     ...options,
-    refetchInterval: 1000 * 60,
+    queryKey: [QueryKeys.AuthState],
+    queryFn: getAuthState,
   });
 };
 
 export const useGetAccount = (id, options) => {
-  return useQuery([QueryKeys.Accounts, id], () => getAccount(id), options);
+  return useQuery({
+    ...options,
+    queryKey: [QueryKeys.Accounts, id],
+    queryFn: () => getAccount(id),
+  });
 };

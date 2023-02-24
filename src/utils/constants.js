@@ -7,11 +7,21 @@ export const DEFAULT_PREFERENCES = {
   theme: Themes.Light,
 };
 
+export const DEFAULT_AUTH_STATE = {
+  isAuthenticated: false,
+};
+
 export const StorageKeys = {
+  Accounts: 'accounts',
+  AuthState: 'auth.state',
   Preferences: 'preferences',
+  Todos: 'todos',
+  Users: 'users',
 };
 
 export const QueryKeys = {
+  Accounts: 'accounts',
+  AuthState: 'authstate',
   Preferences: 'preferences',
   Todos: 'todos',
   Users: 'users',

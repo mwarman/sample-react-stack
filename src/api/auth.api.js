@@ -4,6 +4,7 @@ import storage from '../utils/storage';
 import { generateId } from '../utils/id';
 import config from '../utils/config';
 import { delay } from '../utils/delay';
+import { DEFAULT_AUTH_STATE, StorageKeys } from '../utils/constants';
 
 export const signUp = async (account) => {
   return new Promise((resolve, reject) => {
@@ -52,18 +53,16 @@ export const signOut = async () => {
 
 export const getAuthState = async () => {
   return new Promise((resolve) => {
-    delay().then(() => {
-      const authState = storage.getJson('auth-state');
-      if (authState) {
-        const isAuthenticated = authState.expiresAt && authState.expiresAt > Date.now();
-        return resolve({
-          ...authState,
-          isAuthenticated,
-        });
-      } else {
-        return resolve({ isAuthenticated: false });
-      }
-    });
+    const authState = storage.getJson('auth-state');
+    if (authState) {
+      const isAuthenticated = authState.expiresAt && authState.expiresAt > Date.now();
+      return resolve({
+        ...authState,
+        isAuthenticated,
+      });
+    } else {
+      return resolve(DEFAULT_AUTH_STATE);
+    }
   });
 };
 
