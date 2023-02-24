@@ -3,12 +3,13 @@ import { generateId } from '../utils/id';
 import { delay } from '../utils/delay';
 import { validateSync } from '../utils/validation';
 import { todoCreateSchema, todoUpdateSchema } from './validators/todos.api.validators';
+import { StorageKeys } from '../utils/constants';
 
 export const getTodos = async () => {
   return new Promise((resolve, reject) => {
     delay().then(() => {
       try {
-        const todos = storage.getJson('todos') || [];
+        const todos = storage.getJson(StorageKeys.Todos) || [];
         return resolve(todos);
       } catch (err) {
         return reject(err);
@@ -21,7 +22,7 @@ export const getTodo = async (id) => {
   return new Promise((resolve, reject) => {
     delay().then(() => {
       try {
-        const todos = storage.getJson('todos') || [];
+        const todos = storage.getJson(StorageKeys.Todos) || [];
         const todo = todos.find((t) => t.id === id);
         if (todo) {
           return resolve(todo);
@@ -39,7 +40,7 @@ export const createTodo = async (todo) => {
     delay().then(() => {
       try {
         const validatedTodo = validateSync(todoCreateSchema, todo);
-        const todos = storage.getJson('todos') || [];
+        const todos = storage.getJson(StorageKeys.Todos) || [];
         const now = new Date().toISOString();
         const createdTodo = {
           ...validatedTodo,
@@ -47,7 +48,7 @@ export const createTodo = async (todo) => {
           createdAt: now,
           updatedAt: now,
         };
-        storage.setJson('todos', [...todos, createdTodo]);
+        storage.setJson(StorageKeys.Todos, [...todos, createdTodo]);
         return resolve(createdTodo);
       } catch (err) {
         return reject(err);
@@ -61,7 +62,7 @@ export const updateTodo = async (todo) => {
     delay().then(() => {
       try {
         const validatedTodo = validateSync(todoUpdateSchema, todo);
-        const todos = storage.getJson('todos') || [];
+        const todos = storage.getJson(StorageKeys.Todos) || [];
         const todoToUpdate = todos.find((t) => t.id === todo.id);
         if (!todoToUpdate) {
           return reject(new Error('Not found.'));
@@ -74,7 +75,7 @@ export const updateTodo = async (todo) => {
         };
 
         storage.setJson(
-          'todos',
+          StorageKeys.Todos,
           todos.map((t) => {
             if (t.id === updatedTodo.id) {
               return updatedTodo;
@@ -94,9 +95,9 @@ export const deleteTodo = async (id) => {
   return new Promise((resolve, reject) => {
     delay().then(() => {
       try {
-        const todos = storage.getJson('todos') || [];
+        const todos = storage.getJson(StorageKeys.Todos) || [];
         storage.setJson(
-          'todos',
+          StorageKeys.Todos,
           todos.filter((t) => t.id !== id),
         );
         return resolve();

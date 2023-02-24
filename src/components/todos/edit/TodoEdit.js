@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Formik } from 'formik';
 import { useParams } from 'react-router-dom';
 import truncate from 'lodash/truncate';
@@ -12,7 +12,6 @@ import { useGetTodo, useUpdateTodo } from '../../../hooks/todos.hooks';
 import { useToastsContext } from '../../../hooks/toasts.hooks';
 
 const TodoEdit = () => {
-  const navigate = useNavigate();
   const { todoId } = useParams();
   const toastsContext = useToastsContext();
   const { data: todo, isLoading } = useGetTodo(todoId);
@@ -49,7 +48,6 @@ const TodoEdit = () => {
               onSuccess: () => {
                 setSubmitting(false);
                 toastsContext.createToast(`Updated TODO-${todo.id}`);
-                navigate(`/todos/${todo.id}`);
               },
               onError: (err) => {
                 console.error(`Failed to update todo. Detail:`, err);

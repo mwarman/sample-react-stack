@@ -16,7 +16,7 @@ const queryClient = new QueryClient({
 
 const App = () => {
   return (
-    <div id="app">
+    <div id="app" data-testid="app">
       <QueryClientProvider client={queryClient}>
         <AppTheme>
           <ToastsContextProvider>
