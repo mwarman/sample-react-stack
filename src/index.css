@@ -1,0 +1,27 @@
+@tailwind base;
+
+@layer base {
+  *::-webkit-scrollbar {
+    width: theme('spacing[2.5]');
+  }
+  *::-webkit-scrollbar-track {
+    background-color: theme('colors.slate.300');
+  }
+  .dark *::-webkit-scrollbar-track {
+    background-color: theme('colors.slate.800');
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: theme('colors.slate.400');
+    border-color: theme('colors.slate.300');
+    border-radius: theme('spacing.1');
+    border-style: solid;
+    border-width: theme('spacing.px');
+  }
+  .dark *::-webkit-scrollbar-thumb {
+    background-color: theme('colors.slate.700');
+    border-color: theme('colors.slate.800');
+  }
+}
+
+@tailwind components;
+@tailwind utilities;
