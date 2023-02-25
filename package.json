@@ -1,6 +1,6 @@
 {
   "name": "sample-react-stack",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "6.3.0",
@@ -37,6 +37,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "CI=true react-scripts test --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
