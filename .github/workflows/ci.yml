@@ -1,13 +1,8 @@
 name: ci
 
 on:
-  push:
-    branches:
-      - develop
-      - main
   pull_request:
     branches:
-      - develop
       - main
 
 jobs:
@@ -21,4 +16,4 @@ jobs:
           node-version: 16.19.1
       - run: npm ci
       - run: npm run build
-      - run: npm run test
+      - run: npm run test:coverage
