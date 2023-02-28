@@ -30,6 +30,7 @@
     "yup": "1.0.0"
   },
   "devDependencies": {
+    "jsdoc": "4.0.2",
     "prettier": "2.8.4",
     "prettier-plugin-tailwindcss": "0.2.3"
   },
@@ -38,6 +39,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:coverage": "CI=true react-scripts test --coverage",
+    "jsdoc": "jsdoc --destination ./docs --readme ./README.md --recurse ./src",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

@@ -106,6 +106,10 @@ Executes the test runner in `CI` mode and produces a coverage report. With `CI` 
 
 A detailed test coverage report is created in the `./coverage` directory.
 
+### `npm run jsdoc`
+
+Executes the `jsdoc` documentation generator. Documentation is created in the `./docs` directory.
+
 ## Configuration Guide
 
 This section provides information regarding the configuration of this component.
