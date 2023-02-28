@@ -88,9 +88,9 @@ Interact with the application by issuing any of the following commands from the 
 
 ### `npm run build`
 
-Builds the application for production. The distribution files are located in the `./build` directory. The files are optimized for production mode.
+Builds the application for production. The distribution files are located in the `./build` directory. The files are optimized for production mode. The build is minified and filenames include hashes.
 
-The build is minified and filenames include hashes.
+Linting is performed as part of the build process. Use this command to inspect your changes prior to opening a PR.
 
 ### `npm start`
 
@@ -102,7 +102,7 @@ Executes the test runner in interactive watch mode. At startup, runs only those 
 
 ### `npm run test:coverage`
 
-Executes the test runner in `CI` mode and produces a coverage report. With `CI` mode enabled, the test runner executes all tests one time and prints a test summary report to the console. Next, a code coverage report is printed to the console.
+Executes the test runner in `CI` mode and produces a coverage report. With `CI` mode enabled, the test runner executes all tests one time and prints a test summary report to the console. A code coverage report is printed to the console immediately following the test summary.
 
 A detailed test coverage report is created in the `./coverage` directory.
 
@@ -116,7 +116,7 @@ See also: [Adding Custom Environment Variables](https://create-react-app.dev/doc
 
 ### Configuration Variable Names
 
-Environmentvariables must be prefixed by `REACT_APP_`. Any other variables, save `NODE_ENV` will be ignored to avoid accidental exposure within the build.
+Environment variables must be prefixed by `REACT_APP_`. Any other variables, save `NODE_ENV`, will be ignored to avoid accidental exposure within the build.
 
 ### `NODE_ENV`
 
@@ -126,7 +126,7 @@ The `NODE_ENV` configuration variable is automatically set by the project script
 
 Access to application configuration is centralized within the `./utils/config` module. A configuration validation schema is defined using the [Yup][yup] library. A sensible default value is defined in the schema, allowing the application to be run without external configuration values supplied.
 
-Configuration variables sourced from the environment or from `.env` files are always Strings. Another benefit of Yup validation is that configuration variables are converted to their natural data type during the validation process. For example, the Toast component auto-dismiss time (in milliseconds) is converted from a string to a number, making it more readily consumable by application components.
+Configuration variables sourced from the environment or from `.env` files are always have the string data type. Another benefit of Yup validation is that configuration variables are converted to their natural data type during the validation process. For example, the Toast component auto-dismiss time (in milliseconds) is converted from a string to a number, making it easier to consume by application components.
 
 ```js
 const configSchema = Yup.object({
@@ -137,7 +137,7 @@ const configSchema = Yup.object({
 
 ### Adding new Configuration Variables
 
-To add a new configuration variable, define it within the validation scheme in `./utils/config`. Make sure you define a sensible default value.
+To add a new configuration variable, define it within the validation schema in `./utils/config`. Make sure you define a sensible default value.
 
 Optionally, add the variable as a key/value pair within your local `.env` file. If you choose not to add it to the `.env` file, the default value will be used at runtime.
 
@@ -155,12 +155,12 @@ const configValue = config.REACT_APP_CONFIG_VARIABLE;
 
 ### Configuration Values
 
-| Name                                     | Default     | Description                                                                     |
-| ---------------------------------------- | ----------- | ------------------------------------------------------------------------------- |
-| NODE_ENV                                 | development | The runtime environment name. One of 'development', 'test', 'production'.       |
-| REACT_APP_API_DELAY_MS                   | 2000        | Simulated API call time in milliseconds.                                        |
-| REACT_APP_AUTH_SESSION_EXPIRES_IN_MILLIS | 3600000     | The amount of time after which a user's authentication expires in milliseconds. |
-| REACT_APP_TOAST_AUTODISMISS_MS           | 5000        | Time a toast is displayed before autodismissal in milliseconds.                 |
+| Name                                     | Default     | Description                                                               |
+| ---------------------------------------- | ----------- | ------------------------------------------------------------------------- |
+| NODE_ENV                                 | development | The runtime environment name. One of 'development', 'test', 'production'. |
+| REACT_APP_API_DELAY_MS                   | 2000        | Simulated API call time in milliseconds.                                  |
+| REACT_APP_AUTH_SESSION_EXPIRES_IN_MILLIS | 3600000     | The duration of an authenticated user session in milliseconds.            |
+| REACT_APP_TOAST_AUTODISMISS_MS           | 5000        | Time a toast is displayed before autodismissal in milliseconds.           |
 
 ## Related Information
 
@@ -185,74 +185,3 @@ const configValue = config.REACT_APP_CONFIG_VARIABLE;
 [fa]: https://fontawesome.com/ 'Font Awesome'
 [testing-library]: https://testing-library.com/ 'Testing Library'
 [ghactions]: https://docs.github.com/en/actions 'GitHub Actions'
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
