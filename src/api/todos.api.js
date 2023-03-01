@@ -1,3 +1,21 @@
+/**
+ * Todo API module.
+ * @module api/todo
+ */
+/**
+ * The Todo object.
+ * @typedef {Object} Todo
+ * @property {string} id - The todo identifier.
+ * @property {string} summary - A brief description, or title.
+ * @property {string} [description] - Optional. The detailed description.
+ * @property {string} statusCode - A status code, e.g. 'done'.
+ * @property {string} priorityCode - A priority code, e.g. 'medium'.
+ * @property {string} [dueAt] - Optional. A due date.
+ * @property {string} assigneeId - The account identifier of of the assignee.
+ * @property {string} createdAt - The creation timestamp. ISO8601 format.
+ * @property {string} updatedAt - The last updated timestamp. ISO8601 format.
+ */
+
 import storage from '../utils/storage';
 import { generateId } from '../utils/id';
 import { delay } from '../utils/delay';
@@ -5,6 +23,13 @@ import { validateSync } from '../utils/validation';
 import { todoCreateSchema, todoUpdateSchema } from './validators/todos.api.validators';
 import { StorageKeys } from '../utils/constants';
 
+/**
+ * Fetch all Todos.
+ * @function
+ * @async
+ * @returns {Promise<Todo[]>} Returns a Promise which resolves to a collection
+ * of Todos if successful; otherwise, rejects with an error.
+ */
 export const getTodos = async () => {
   return new Promise((resolve, reject) => {
     delay().then(() => {
@@ -18,6 +43,14 @@ export const getTodos = async () => {
   });
 };
 
+/**
+ * Fetch a single Todo by `id`.
+ * @function
+ * @async
+ * @param {string} id A Todo identifier.
+ * @returns {Promise<Todo|null>} Returns a Promise which resolves to a Todo if
+ * found, `null` if not found; otherwise rejects with an error.
+ */
 export const getTodo = async (id) => {
   return new Promise((resolve, reject) => {
     delay().then(() => {
@@ -35,6 +68,14 @@ export const getTodo = async (id) => {
   });
 };
 
+/**
+ * Create and persist a new Todo.
+ * @function
+ * @async
+ * @param {Todo} todo The Todo to be created.
+ * @returns {Promise<Todo>} Returns a Promise which resolves to the created
+ * Todo if successful; otherwise, rejects with an error.
+ */
 export const createTodo = async (todo) => {
   return new Promise((resolve, reject) => {
     delay().then(() => {
@@ -57,6 +98,14 @@ export const createTodo = async (todo) => {
   });
 };
 
+/**
+ * Update and persist changes to a Todo.
+ * @function
+ * @async
+ * @param {Todo} todo The Todo containing updated values.
+ * @returns {Promise<Todo>} Returns a Promise which resolves to the updated
+ * Todo if successful; otherwise, rejects with an error.
+ */
 export const updateTodo = async (todo) => {
   return new Promise((resolve, reject) => {
     delay().then(() => {
@@ -91,6 +140,14 @@ export const updateTodo = async (todo) => {
   });
 };
 
+/**
+ * Delete the Todo matching the supplied `id`.
+ * @function
+ * @async
+ * @param {string} id A Todo `id`.
+ * @returns {Promise<void>} Returns a Promise which resolves to empty if
+ * successful; otherwise, rejects with an error.
+ */
 export const deleteTodo = async (id) => {
   return new Promise((resolve, reject) => {
     delay().then(() => {

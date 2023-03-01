@@ -1,10 +1,15 @@
+/**
+ * Todo API validators.
+ * @module api/validators/todos
+ */
+
 import * as Yup from 'yup';
 import map from 'lodash/map';
 
 import { Expressions, Priorities, Statuses } from '../../utils/constants';
 
 /**
- * Create todo API validation schema
+ * Validation schema for creating a Todo.
  */
 export const todoCreateSchema = Yup.object({
   summary: Yup.string()
@@ -25,7 +30,7 @@ export const todoCreateSchema = Yup.object({
 });
 
 /**
- * Update todo API validation schema
+ * Validation schema for editing a Todo.
  */
 export const todoUpdateSchema = Yup.object({
   summary: Yup.string()
