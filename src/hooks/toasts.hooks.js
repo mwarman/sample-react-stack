@@ -1,11 +1,7 @@
-import { useContext } from "react";
-import { v4 as uuid } from "uuid";
+import { useContext } from 'react';
+import { v4 as uuid } from 'uuid';
 
-import {
-  ToastsContext,
-  CREATE_TOAST,
-  REMOVE_TOAST,
-} from "../contexts/toasts.context";
+import { Actions, ToastsContext } from '../contexts/toasts.context';
 
 /**
  * A hook allowing components to consume the value of the `ToastsContext`.
@@ -15,17 +11,15 @@ export const useToastsContext = () => {
   // get the value of ToastsContext
   const context = useContext(ToastsContext);
   if (!context) {
-    throw new Error(
-      "useToastsContext hook must be used inside a ToastsContextProvider"
-    );
+    throw new Error('useToastsContext hook must be used inside a ToastsContextProvider');
   }
 
   const { state, dispatch } = context;
 
   // mutator - dispatch an action to create a new toast
-  const createToast = (message = "") => {
+  const createToast = (message = '') => {
     dispatch({
-      type: CREATE_TOAST,
+      type: Actions.CREATE_TOAST,
       payload: {
         id: uuid(),
         message,
@@ -36,7 +30,7 @@ export const useToastsContext = () => {
   // mutator - dispatch an action to remove a toast
   const removeToast = (id) => {
     dispatch({
-      type: REMOVE_TOAST,
+      type: Actions.REMOVE_TOAST,
       payload: { id },
     });
   };

@@ -114,7 +114,9 @@ const reducer = (state, action) => {
  * @param {Object} properties The component properties.
  * @param {ListContextOptions} [properties.listOptions={}] Initial list context options.
  * @param {*} properties.props The rest of the component properties.
- * @returns {JSXElement} JSX
+ * @returns {JSXElement} A JSX element which serves as the React Context
+ * provider for list contexts. Children may consume the context values with
+ * the `useListContext` hook.
  */
 export const ListContextProvider = ({ listOptions = {}, ...props }) => {
   const initialState = merge({}, DEFAULT_STATE, listOptions);
