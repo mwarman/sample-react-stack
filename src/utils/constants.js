@@ -4,7 +4,8 @@
  */
 
 /**
- * UI themese enum.
+ * Enumeration of themes.
+ * @enum {string}
  */
 export const Themes = {
   Dark: 'dark',
@@ -13,6 +14,8 @@ export const Themes = {
 
 /**
  * Default preferences object.
+ * @type Preferences
+ * @see {@link api/preferences/Preferences}
  */
 export const DEFAULT_PREFERENCES = {
   theme: Themes.Light,
@@ -20,6 +23,7 @@ export const DEFAULT_PREFERENCES = {
 
 /**
  * Default AuthState object.
+ * @type AuthState
  * @see {@link api/auth/AuthState}
  */
 export const DEFAULT_AUTH_STATE = {
@@ -27,7 +31,8 @@ export const DEFAULT_AUTH_STATE = {
 };
 
 /**
- * Local storage keys.
+ * Enumeration of local storage keys.
+ * @enum {string}
  */
 export const StorageKeys = {
   Accounts: 'accounts',
@@ -38,7 +43,8 @@ export const StorageKeys = {
 };
 
 /**
- * React Query query cache keys.
+ * Enumeration of React Query cache keys.
+ * @enum {string}
  */
 export const QueryKeys = {
   Accounts: 'accounts',

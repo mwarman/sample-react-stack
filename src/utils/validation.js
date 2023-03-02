@@ -1,3 +1,8 @@
+/**
+ * Validation utility module.
+ * @module utils/validation
+ */
+
 import merge from 'lodash/merge';
 
 /**
@@ -10,9 +15,10 @@ const DEFAULT_OPTIONS = {
 
 /**
  * Synchronously validate an object.
+ * @function
  * @param {Object} schema A Yup Schema.
  * @param {Object} value The object to be validated.
- * @param {Object} [options] Optional. Yup validation options.
+ * @param {Object} [options={}] Optional. Yup validation options.
  * @returns The validated object with defaults applied.
  * @throws A `ValidationError` if validation is not successful.
  */
