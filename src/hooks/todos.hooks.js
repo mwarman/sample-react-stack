@@ -1,9 +1,21 @@
+/**
+ * Hooks to query and mutate todos.
+ * @module hooks/todos
+ */
+
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { createTodo, getTodo, getTodos, updateTodo, deleteTodo } from '../api/todos.api';
 import { selectTodoOnQuery } from '../selectors/todos.selectors';
 import { QueryKeys } from '../utils/constants';
 
+/**
+ * A React Query query hook which fetches all todos.
+ * @function
+ * @param {UseQueryOptions} options React Query query options.
+ * @returns {UseQueryResult} A React Query `UseQueryResult` object.
+ * @see {@link https://tanstack.com/query/latest/docs/react/reference/useQuery|useQuery}
+ */
 export const useGetTodos = (options) => {
   return useQuery({
     select: (todos) => todos.map(selectTodoOnQuery),
@@ -13,6 +25,14 @@ export const useGetTodos = (options) => {
   });
 };
 
+/**
+ * A React Query query hook which fetches a single tody by identifier.
+ * @function
+ * @param {string} id A Todo identifier.
+ * @param {UseQueryOptions} options React Query query options.
+ * @returns {UseQueryResult} A React Query `UseQueryResult` object.
+ * @see {@link https://tanstack.com/query/latest/docs/react/reference/useQuery|useQuery}
+ */
 export const useGetTodo = (id, options) => {
   return useQuery({
     select: selectTodoOnQuery,
@@ -22,6 +42,13 @@ export const useGetTodo = (id, options) => {
   });
 };
 
+/**
+ * A React Query mutation hook to create a new todo.
+ * @function
+ * @param {UseMutationOptions} options React query mutation options.
+ * @returns {UseMutationResult} A React Query `UseMutationResult` object.
+ * @see {@link https://tanstack.com/query/latest/docs/react/reference/useMutation|useMutation}
+ */
 export const useCreateTodo = (options) => {
   const queryClient = useQueryClient();
   return useMutation({
@@ -48,6 +75,13 @@ export const useCreateTodo = (options) => {
   });
 };
 
+/**
+ * A React Query mutation hook to update an existing todo.
+ * @function
+ * @param {UseMutationOptions} options React query mutation options.
+ * @returns {UseMutationResult} A React Query `UseMutationResult` object.
+ * @see {@link https://tanstack.com/query/latest/docs/react/reference/useMutation|useMutation}
+ */
 export const useUpdateTodo = (options) => {
   const queryClient = useQueryClient();
   return useMutation({
@@ -60,6 +94,13 @@ export const useUpdateTodo = (options) => {
   });
 };
 
+/**
+ * A React Query mutation hook to delete a todo.
+ * @function
+ * @param {UseMutationOptions} options React query mutation options.
+ * @returns {UseMutationResult} A React Query `UseMutationResult` object.
+ * @see {@link https://tanstack.com/query/latest/docs/react/reference/useMutation|useMutation}
+ */
 export const useDeleteTodo = (options) => {
   const queryClient = useQueryClient();
   return useMutation({
