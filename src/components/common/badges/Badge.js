@@ -1,5 +1,16 @@
+/**
+ * The `Badge` React component.
+ * @module components/common/badge
+ */
+
 import classNames from 'classnames';
 
+/**
+ * Get the CSS classes for the supplied variant.
+ * @function
+ * @param {string} variant The style variant.
+ * @returns {string} CSS class names.
+ */
 const getVariantClasses = (variant) => {
   switch (variant) {
     case 'danger':
@@ -15,6 +26,17 @@ const getVariantClasses = (variant) => {
   }
 };
 
+/**
+ * The `Badge` component renders a small colored wrapper around a bit of text.
+ * @function
+ * @param {Object} props The component properties.
+ * @param {JSX} props.children The Badge inner content.
+ * @param {string} props.className Optional additional classes applied to the Badge.
+ * @param {string} [props.variant] Thestyle variant.
+ * @returns {JSXElement} JSX
+ * @example
+ * // <Badge variant='success'>Done</Badge>
+ */
 export const Badge = ({ children, className, variant }) => {
   return (
     <span

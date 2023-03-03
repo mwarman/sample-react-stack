@@ -1,7 +1,24 @@
+/**
+ * The `Alert` React component.
+ * @module components/common
+ */
+
 import classNames from 'classnames';
 
 import Icon from './icons/Icon';
 
+/**
+ * The `Alert` component renders a block containing a message. The block is
+ * styled based upon the supplied `variant`.
+ * @function
+ * @param {Object} props The component properties.
+ * @param {JSX} props.children The Alert inner content.
+ * @param {string} props.className Optional additional classes applied to the Alert block.
+ * @param {string} [props.variant='default'] The style variant.
+ * @returns {JSXElement} JSX
+ * @example <caption>Render an error</caption>
+ * // <Alert variant='error'>Oops! Something went wrong.</Alert>
+ */
 const Alert = ({ children, className, variant = 'default' }) => {
   let alertColor = '';
   switch (variant) {
