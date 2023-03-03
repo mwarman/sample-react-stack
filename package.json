@@ -39,7 +39,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:coverage": "CI=true react-scripts test --coverage",
-    "jsdoc": "jsdoc --destination ./docs --readme ./README.md --recurse ./src",
+    "jsdoc": "jsdoc --configure jsdoc.json",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
