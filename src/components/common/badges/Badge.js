@@ -1,6 +1,6 @@
 /**
  * The `Badge` React component.
- * @module components/common/badge
+ * @module components/common/badge/Badge
  */
 
 import classNames from 'classnames';

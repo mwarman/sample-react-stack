@@ -1,6 +1,6 @@
 /**
  * The `Alert` React component.
- * @module components/common
+ * @module components/common/Alert
  */
 
 import classNames from 'classnames';

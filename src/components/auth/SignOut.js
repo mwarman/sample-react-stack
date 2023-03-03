@@ -1,3 +1,8 @@
+/**
+ * The `SignOut` React component.
+ * @module components/auth/SignOut
+ */
+
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,9 +11,10 @@ import Icon from '../common/icons/Icon';
 import { useSignOut } from '../../hooks/auth.hooks';
 
 /**
- * The `SignOut` component signs the currently logged in user out of an
- * authenticated state.
- * @returns JSX
+ * The `SignOut`component renders a static message while the system
+ * performs user sign out.
+ * @function
+ * @returns {JSXElement} JSX
  */
 const SignOut = () => {
   const navigate = useNavigate();

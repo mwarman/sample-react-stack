@@ -1,3 +1,8 @@
+/**
+ * The `SignUp` React component.
+ * @module components/auth/SignUp
+ */
+
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
@@ -22,6 +27,11 @@ const validationSchema = Yup.object({
     .required('Required'),
 });
 
+/**
+ * The `SignUp` component renders a form for user account registration.
+ * @function
+ * @returns {JSXElement} JSX
+ */
 const SignUp = () => {
   useEffect(() => {
     document.title = 'Sign Up - Sample React Stack';
