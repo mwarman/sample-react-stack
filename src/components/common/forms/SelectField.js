@@ -1,6 +1,22 @@
+/**
+ * The `SelectField` React component.
+ * @module components/common/forms/SelectField
+ */
+
 import { useField } from 'formik';
 import classNames from 'classnames';
 
+/**
+ * The `SelectField`  component renders a styled `select` element integrated
+ * with the Formik library.
+ * @function
+ * @param {Object} props The component properties.
+ * @param {string} [props.className] Optional additional classes applied to
+ * the select element.
+ * @param {*} [props....props] Any additional properties added to the
+ * select element.
+ * @returns {JSXElement} JSX
+ */
 const SelectField = ({ className, ...props }) => {
   const [field, meta] = useField(props);
   const showError = meta.touched && meta.error;

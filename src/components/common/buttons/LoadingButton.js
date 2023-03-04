@@ -8,6 +8,7 @@ import Loading from '../Loading';
 /**
  * The `LoadingButton` component builds upon `Button`. It renders a Button which
  * displays a spinner when in a loading state.
+ * @function
  * @param {Object} props The component properties.
  * @param {JSXElement} props.children The inner content.
  * @param {boolean} [props.isLoading=false] Controls loading state display.
