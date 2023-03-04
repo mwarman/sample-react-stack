@@ -1,5 +1,21 @@
+/**
+ * The `Button` React component.
+ * @module components/common/buttons/Button
+ */
+
 import classNames from 'classnames';
 
+/**
+ * The `Button` component renders a styled button element.
+ * @function
+ * @param {Object} props The component properties.
+ * @param {JSXElement} props.children The inner content.
+ * @param {string} [props.className] Optional additional classes applied to the button element.
+ * @param {string} [props.size='md'] The size.
+ * @param {string} [props.variant='default'] The style variant.
+ * @param {*} [props....props] Any additional properties added to the button element.
+ * @returns {JSXElement} JSX
+ */
 const Button = ({ className, children, size = 'md', variant = 'default', ...props }) => {
   let colorClasses = '';
   switch (variant) {

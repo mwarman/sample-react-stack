@@ -30,9 +30,9 @@ const getVariantClasses = (variant) => {
  * The `Badge` component renders a small colored wrapper around a bit of text.
  * @function
  * @param {Object} props The component properties.
- * @param {JSX} props.children The Badge inner content.
- * @param {string} props.className Optional additional classes applied to the Badge.
- * @param {string} [props.variant] Thestyle variant.
+ * @param {JSXElement} props.children The Badge inner content.
+ * @param {string} [props.className] Optional additional classes applied to the Badge.
+ * @param {string} [props.variant] The style variant.
  * @returns {JSXElement} JSX
  * @example
  * // <Badge variant='success'>Done</Badge>
