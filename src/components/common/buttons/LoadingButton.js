@@ -18,7 +18,7 @@ import Loading from '../Loading';
 const LoadingButton = ({ children, isLoading = false, ...props }) => {
   if (isLoading) {
     return (
-      <Button size={size} {...props}>
+      <Button {...props}>
         <div className="flex items-center justify-center">
           <Loading className="mr-2" />
           {children}
@@ -27,11 +27,7 @@ const LoadingButton = ({ children, isLoading = false, ...props }) => {
     );
   }
 
-  return (
-    <Button size={size} {...props}>
-      {children}
-    </Button>
-  );
+  return <Button {...props}>{children}</Button>;
 };
 
 export default LoadingButton;
