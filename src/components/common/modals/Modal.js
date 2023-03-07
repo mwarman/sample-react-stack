@@ -1,3 +1,8 @@
+/**
+ * The `Modal` React component.
+ * @module components/common/modals/Modal
+ */
+
 import classNames from 'classnames';
 
 const getSizeClasses = (size) => {
@@ -13,6 +18,23 @@ const getSizeClasses = (size) => {
   }
 };
 
+/**
+ * The `Modal` component renders a styled modal dialog with a semi-transparent
+ * backdrop. Modal width may be specified using the `size` property.
+ * @function
+ * @param {Object} props The component properties.
+ * @param {children} props.children The inner content.
+ * @param {function} [props.onHide] The function executed when the modal is hidden.
+ * @param {string} [props.size] The modal size.
+ * @returns {JSXElement} JSX
+ * @example
+ * <Modal onHide={hide} size="lg">
+ *   <ModalTitle title="Create Todo" className="p-4" />
+ *   <div className="p-4">
+ *     <TodoCreate onSuccess={hide} onCancel={hide} {...props} />
+ *   </div>
+ * </Modal>
+ */
 const Modal = ({ children, onHide, size }) => {
   const hide = () => {
     !!onHide && onHide();
