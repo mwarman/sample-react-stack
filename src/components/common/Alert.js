@@ -17,7 +17,7 @@ import Icon from './icons/Icon';
  * @param {string} [props.variant='default'] The style variant.
  * @returns {JSXElement} JSX
  * @example <caption>Render an error</caption>
- * // <Alert variant='error'>Oops! Something went wrong.</Alert>
+ * <Alert variant='error'>Oops! Something went wrong.</Alert>
  */
 const Alert = ({ children, className, variant = 'default' }) => {
   let alertColor = '';
