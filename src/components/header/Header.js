@@ -1,3 +1,8 @@
+/**
+ * The `Header` React component.
+ * @module components/header/Header
+ */
+
 import { Link } from 'react-router-dom';
 
 import Icon from '../common/icons/Icon';
@@ -11,6 +16,11 @@ import ThemeToggle from '../common/theme/ThemeToggle';
 
 import { useAuthState } from '../../hooks/auth.hooks';
 
+/**
+ * The `Header` component renders the top toolbar menu within the application.
+ * @function
+ * @returns {JSXElement} JSX
+ */
 const Header = () => {
   const { data: authState, isSuccess } = useAuthState();
   const isAuthenticated = isSuccess && authState?.isAuthenticated;

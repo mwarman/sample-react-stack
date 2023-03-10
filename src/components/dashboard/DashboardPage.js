@@ -1,3 +1,8 @@
+/**
+ * The `DashboardPage` React component.
+ * @module components/dashboard/DashboardPage
+ */
+
 import { useEffect } from 'react';
 
 import Badge from '../common/badges/Badge';
@@ -6,6 +11,11 @@ import Loading from '../common/Loading';
 import { useGetTodos } from '../../hooks/todos.hooks';
 import { selectTodos } from '../../selectors/todos.selectors';
 
+/**
+ * The `DashboardPage` component renders the authenticated user landing page.
+ * @function
+ * @returns {JSXElement} JSX
+ */
 const DashboardPage = () => {
   useEffect(() => {
     document.title = 'Dashboard - Sample React Stack';

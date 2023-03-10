@@ -1,8 +1,19 @@
+/**
+ * The `ErrorPage` React component.
+ * @module components/errors/ErrorPage
+ */
+
 import { useNavigate, useRouteError } from 'react-router-dom';
 
 import Alert from '../common/Alert';
 import Button from '../common/buttons/Button';
 
+/**
+ * The `ErrorPage` component renders the standard application error page.
+ * Serves as the application default Error Boundary.
+ * @function
+ * @returns {JSXElement} JSX
+ */
 const ErrorPage = () => {
   const navigate = useNavigate();
   const error = useRouteError();
