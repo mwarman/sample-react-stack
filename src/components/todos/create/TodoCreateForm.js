@@ -1,3 +1,8 @@
+/**
+ * The `TodoCreateForm` React component.
+ * @module components/todos/create/TodoCreateForm
+ */
+
 import { Form } from 'formik';
 
 import ButtonBar from '../../common/buttons/ButtonBar';
@@ -8,6 +13,20 @@ import TextareaField from '../../common/forms/TextareaField';
 import PriorityField from '../common/PriorityField';
 import Label from '../../common/forms/Label';
 
+/**
+ * The `TodoCreateForm` renders a Formik `Form` component containing the input
+ * fields to collect information to create a new Todo.
+ * @function
+ * @param {Object} props The component properties.
+ * @param {Object} props.formik The `formik` render props.
+ * @param {function} [props.onCancel] A function invoked when user cancels form submission.
+ * @returns {JSXElement} JSX
+ * @see {@link https://formik.org/docs/api/formik}
+ * @example <caption>Formik Render Props Method</caption>
+ * <Formik ...>
+ *   {(formik) => <TodoCreateForm formik={formik} onCancel={onCancel} />}
+ * </Formik>
+ */
 const TodoCreateForm = ({ formik, onCancel }) => {
   const cancel = () => {
     onCancel && onCancel();

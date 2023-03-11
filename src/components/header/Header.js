@@ -44,7 +44,7 @@ const Header = () => {
           Todos
         </HeaderNavLink>
       </nav>
-      {isAuthenticated && <CreateTodoButton className="mx-6 w-24 text-base" />}
+      {isAuthenticated && <CreateTodoButton size="sm" className="mx-6 w-24 text-base" />}
       <div className="ml-auto text-xl">
         <ThemeToggle />
       </div>

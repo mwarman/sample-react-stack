@@ -1,9 +1,21 @@
+/**
+ * The `CreateTodoModal` React component.
+ * @module components/todos/create/CreateTodoModal
+ */
+
 import Modal from '../../common/modals/Modal';
 import ModalTitle from '../../common/modals/ModalTitle';
 import TodoCreate from './TodoCreate';
 
 import { useModalContext } from '../../../hooks/modal.hooks';
 
+/**
+ * The `CreateTodoModal` component renders a `Modal` containing the
+ * `TodoCreate` component. Integrates with the `ModalContext` to
+ * determine when to render.
+ * @function
+ * @returns {JSXElement} JSX
+ */
 const CreateTodoModal = () => {
   const { modalOptions, setModalOptions } = useModalContext();
   const { modal = '', props = {} } = modalOptions;
