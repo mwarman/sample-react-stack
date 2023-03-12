@@ -1,6 +1,17 @@
+/**
+ * The `TodoEditLoading` React component.
+ * @module components/todos/edit/TodoEditLoading
+ */
+
 import { Link } from 'react-router-dom';
 import Placeholder from '../../common/Placeholder';
 
+/**
+ * The `TodoEditLoading` component renders a loading state placeholder
+ * for display when the Todo to be edited is being fetched.
+ * @function
+ * @returns {JSXElement} JSX
+ */
 const TodoEditLoading = () => {
   return (
     <div>

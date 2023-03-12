@@ -1,3 +1,8 @@
+/**
+ * The `TodoEdit` React component.
+ * @module components/todos/edit/TodoEdit
+ */
+
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik } from 'formik';
@@ -11,6 +16,13 @@ import { todoSchema } from '../../../validators/todo.validators';
 import { useGetTodo, useUpdateTodo } from '../../../hooks/todos.hooks';
 import { useToastsContext } from '../../../hooks/toasts.hooks';
 
+/**
+ * The `TodoEdit` component renders a Formik instance to edit an existing Todo.
+ * This component wraps the `TodoEditForm` with a configured `Formik`
+ * component.
+ * @function
+ * @returns {JSXElement} JSX
+ */
 const TodoEdit = () => {
   const { todoId } = useParams();
   const toastsContext = useToastsContext();

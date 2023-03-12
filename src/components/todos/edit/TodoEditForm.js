@@ -1,3 +1,8 @@
+/**
+ * The `TodoEditForm` React component.
+ * @module components/todos/edit/TodoEditForm
+ */
+
 import { Form } from 'formik';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -18,6 +23,20 @@ import { DateFormat } from '../../../utils/constants';
 
 dayjs.extend(relativeTime);
 
+/**
+ * The `TodoEditForm` renders a Formik `Form` component containing the input
+ * fields to display and collect information to edit an existing Todo.
+ * @function
+ * @param {Object} props The component properties.
+ * @param {Object} props.formik The `formik` render props.
+ * @param {function} [props.onCancel] A function invoked when user cancels form submission.
+ * @returns {JSXElement} JSX
+ * @see {@link https://formik.org/docs/api/formik}
+ * @example <caption>Formik Render Props Method</caption>
+ * <Formik ...>
+ *   {(formik) => <TodoEditForm formik={formik} onCancel={onCancel} />}
+ * </Formik>
+ */
 const TodoForm = ({ formik, onCancel }) => {
   const cancel = () => {
     onCancel && onCancel();
