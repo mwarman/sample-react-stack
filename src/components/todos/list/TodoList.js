@@ -1,3 +1,8 @@
+/**
+ * The `TodoList` React component.
+ * @module components/todos/list/TodoList
+ */
+
 import { useEffect } from 'react';
 import classNames from 'classnames';
 
@@ -15,6 +20,12 @@ import { useListContext } from '../../../hooks/list.hooks';
 import { selectTodosWithListContext } from '../../../selectors/todos.selectors';
 import ListError from '../../common/lists/ListError';
 
+/**
+ * The `TodoList` component renders a collection of Todos. Integrates with
+ * `ListContext` to provide list controls.
+ * @function
+ * @returns {JSXElement} JSX
+ */
 const TodoList = () => {
   const { data: todos, error, isError, isLoading, isFetching } = useGetTodos();
   const { list: listContext, setPage } = useListContext();

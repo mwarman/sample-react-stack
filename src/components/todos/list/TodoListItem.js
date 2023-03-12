@@ -1,3 +1,8 @@
+/**
+ * The `TodoListItem` React component.
+ * @module components/todos/list/TodoListItem
+ */
+
 import { Link } from 'react-router-dom';
 
 import StatusBadge from '../common/StatusBadge';
@@ -11,6 +16,13 @@ import Icon from '../../common/icons/Icon';
 
 import { useModalContext } from '../../../hooks/modal.hooks';
 
+/**
+ * The `TodoListItem` component renders a single Todo within the `TodoList`.
+ * @function
+ * @param {Object} props The component properties.
+ * @param {Object} props.todo A Todo.
+ * @returns {JSXElement} JSX
+ */
 const TodoListItem = ({ todo }) => {
   const { setModalOptions } = useModalContext();
 
