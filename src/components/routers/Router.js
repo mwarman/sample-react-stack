@@ -1,3 +1,8 @@
+/**
+ * The `Router` React component.
+ * @module components/routers/Router
+ */
+
 import { createBrowserRouter } from 'react-router-dom';
 
 import Protected from './Protected';
@@ -13,6 +18,11 @@ import SignIn from '../auth/SignIn';
 import SignUp from '../auth/SignUp';
 import SignOut from '../auth/SignOut';
 
+/**
+ * Creates the application router using the DOM History API to update
+ * the URL and manage the history stack.
+ * @see {@link https://reactrouter.com/en/main/routers/create-browser-router}
+ */
 export const router = createBrowserRouter([
   {
     path: '/',

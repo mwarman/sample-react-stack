@@ -1,8 +1,20 @@
+/**
+ * The `ThemeToggle` React component.
+ * @module components/common/theme/ThemeToggle
+ */
+
 import Icon from '../icons/Icon';
 
 import { useGetPreferences, useUpdatePreferences } from '../../../hooks/preferences.hooks';
 import { Themes } from '../../../utils/constants';
 
+/**
+ * The `ThemeToggle` component renders an icon depicting the current theme,
+ * light or dark. When clicked, toggles the the theme and updates the user
+ * preferences.
+ * @function
+ * @returns {JSXElement} JSX
+ */
 const ThemeToggle = () => {
   const { data: preferences } = useGetPreferences();
   const { mutate: updatePreferences } = useUpdatePreferences();

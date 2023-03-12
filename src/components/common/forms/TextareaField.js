@@ -1,6 +1,30 @@
+/**
+ * The `TextareaField` React component.
+ * @module components/common/forms/TextareaField
+ */
+
 import { useField } from 'formik';
 import classNames from 'classnames';
 
+/**
+ * The `TextareaField` component renders a styled `textarea` element integrated
+ * with the Formik library.
+ * @function
+ * @param {Object} props The component properties.
+ * @param {string} [props.className] Optional additional classes applied to the
+ * textarea element.
+ * @param {*} [props....props] Any additional properties added to the textarea
+ * element.
+ * @returns {JSXElement} JSX
+ * @example
+ *  <TextareaField
+ *    id="description"
+ *    name="description"
+ *    rows="6"
+ *    maxLength="1000"
+ *    disabled={formik.isSubmitting}
+ *  />
+ */
 const TextareaField = ({ className, ...props }) => {
   const [field, meta] = useField(props);
   const showError = meta.touched && meta.error;

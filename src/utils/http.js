@@ -1,15 +1,23 @@
-import axios from "axios";
+/**
+ * HTTP utility module.
+ * @module utils/http
+ */
 
-import config from "../utils/config";
-import { delay } from "../utils/delay";
+import axios from 'axios';
 
+import config from '../utils/config';
+import { delay } from '../utils/delay';
+
+/**
+ * The axios HTTP instance with global configuration applied.
+ */
 const instance = axios.create({
   headers: {
     common: {
-      Accept: "application/json",
+      Accept: 'application/json',
     },
     post: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   },
 });

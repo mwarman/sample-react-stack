@@ -1,9 +1,21 @@
+/**
+ * The `DeleteTodoModal` React component.
+ * @module components/todos/delete/DeleteTodoModal
+ */
+
 import Modal from '../../common/modals/Modal';
 import ModalTitle from '../../common/modals/ModalTitle';
 import DeleteTodo from './DeleteTodo';
 
 import { useModalContext } from '../../../hooks/modal.hooks';
 
+/**
+ * The `DeleteTodoModal` component renders a `Modal` containing the
+ * `DeleteTodo` component. Integrates with the `ModalContext` to
+ * determine when to render.
+ * @function
+ * @returns {JSXElement} JSX
+ */
 const DeleteTodoModal = () => {
   const { modalOptions, setModalOptions } = useModalContext();
   const { modal = '', props = {} } = modalOptions;

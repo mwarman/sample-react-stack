@@ -1,3 +1,24 @@
+/**
+ * Authentication API module.
+ * @module api/auth
+ */
+/**
+ * The Account object.
+ * @typedef {Object} Account
+ * @property {string} id - The account identifier.
+ * @property {string} firstName - The accountholder's first name.
+ * @property {string} lastName - The accountholder's last name.
+ * @property {string} username - Authentication credentials. The username.
+ * @property {string} password - Authentication credentials. The password.
+ */
+/**
+ * The AuthState object.
+ * @typedef {Object} AuthState
+ * @property {string|null} id - The account identifier of the currently authenticated user.
+ * @property {number|null} expiresAt - The authenticated session expiration timestamp in milliseconds.
+ * @property {boolean} isAuthenticated - Indicates if a user is currently authenticated.
+ */
+
 import storage from '../utils/storage';
 import { generateId } from '../utils/id';
 import config from '../utils/config';
@@ -8,7 +29,7 @@ import { DEFAULT_AUTH_STATE, StorageKeys } from '../utils/constants';
  * Simple simulation of one-way password hashing which should
  * occur on the server side.
  * @param {string} pass Clear text password.
- * @returns Hashed password.
+ * @returns {string} Hashed password.
  */
 const hashPassword = (pass) => {
   return btoa(pass);
@@ -19,13 +40,21 @@ const hashPassword = (pass) => {
  * occur on the server side.
  * @param {string} pass Clear text password.
  * @param {string} passHash Hashed password.
- * @returns Returns `true` if the password matches the hashed value; otherwise,
+ * @returns {boolean} Returns `true` if the password matches the hashed value; otherwise,
  * returns `false`.
  */
 const isPasswordMatch = (pass, passHash) => {
   return hashPassword(pass) === passHash;
 };
 
+/**
+ * Register a new user. Create an Account.
+ * @function
+ * @async
+ * @param {Account} account An Account object.
+ * @returns {Promise<void>} Returns a Promise which resolves to empty if
+ * successful; otherwise, rejects with an error.
+ */
 export const signUp = async (account) => {
   return new Promise((resolve, reject) => {
     delay().then(() => {
@@ -43,6 +72,16 @@ export const signUp = async (account) => {
   });
 };
 
+/**
+ * Authenticates a user using their credentials. Returns the user's Account
+ * if successful. Throws an error if unsuccessful.
+ * @function
+ * @async
+ * @param {string} username A username.
+ * @param {string} password A password.
+ * @returns {Promise<Account>} Returns a Promise which resolves to the user's Account if successful;
+ * otherwise rejects with an Error.
+ */
 export const signIn = async (username, password) => {
   return new Promise((resolve, reject) => {
     delay().then(() => {
@@ -62,6 +101,14 @@ export const signIn = async (username, password) => {
   });
 };
 
+/**
+ * Signs out the currently authenticated user, removing their authentication
+ * session.
+ * @function
+ * @async
+ * @returns {Promise<void>} Returns a Promise which resolves to empty if
+ * successful; otherwise rejects with an Error.
+ */
 export const signOut = async () => {
   return new Promise((resolve) => {
     delay().then(() => {
@@ -71,6 +118,13 @@ export const signOut = async () => {
   });
 };
 
+/**
+ * Returns the authentication state for the current user.
+ * @function
+ * @async
+ * @returns {Promise<AuthState>} Returns a Promise which resolves to the authentication state
+ * object if successful; otherwise, rejects with an Error.
+ */
 export const getAuthState = async () => {
   return new Promise((resolve) => {
     const authState = storage.getJson(StorageKeys.AuthState);
@@ -86,6 +140,14 @@ export const getAuthState = async () => {
   });
 };
 
+/**
+ * Returns the Account for the supplied Account `id`.
+ * @function
+ * @async
+ * @param {string} id An Account identifier.
+ * @returns {Promise<Account>} Returns a Promise which resolves to the Account if found;
+ * otherwise, rejects with an Error.
+ */
 export const getAccount = async (id) => {
   return new Promise((resolve, reject) => {
     delay().then(() => {

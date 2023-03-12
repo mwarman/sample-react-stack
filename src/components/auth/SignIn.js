@@ -1,3 +1,8 @@
+/**
+ * The `SignIn` React component.
+ * @module components/auth/SignIn
+ */
+
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
@@ -20,6 +25,11 @@ const validationSchema = Yup.object({
     .required('Required'),
 });
 
+/**
+ * The `SignIn` component renders a form for user authentication.
+ * @function
+ * @returns {JSXElement} JSX
+ */
 const SignIn = () => {
   useEffect(() => {
     document.title = 'Sign In - Sample React Stack';

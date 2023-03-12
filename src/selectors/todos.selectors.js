@@ -1,3 +1,8 @@
+/**
+ * Todo selector functions.
+ * @module selectors/todos
+ */
+
 import chunk from 'lodash/chunk';
 import filter from 'lodash/filter';
 import merge from 'lodash/merge';
@@ -7,6 +12,12 @@ import dayjs from 'dayjs';
 import { DEFAULT_STATE as DEFAULT_LIST_CONTEXT } from '../contexts/list.context';
 import { Priorities, Statuses } from '../utils/constants';
 
+/**
+ * Inspect and transform a Todo after fetching.
+ * @function
+ * @param {Todo} todo A Todo.
+ * @returns {Todo} Returns the Todo with additional, derived attributes.
+ */
 export const selectTodoOnQuery = (todo) => {
   const selectedTodo = {
     ...todo,
@@ -20,6 +31,17 @@ export const selectTodoOnQuery = (todo) => {
   return selectedTodo;
 };
 
+/**
+ * Select specific Todos and sort the results.
+ * @function
+ * @param {Todo[]} [todos=[]] The source collection of Todos.
+ * @param {Object} [options={}] Selector options.
+ * @param {Object} [options.matches={}] Filter matcher criteria.
+ * @param {string[]} [options.sortBy=['summary']] The todo attribute(s) to sort by.
+ * @param {string[]} [options.sortOrder=['asc']] The sort direction(s).
+ * @returns {Todo[]} Returns a sorted collection of Todos matching the
+ * selection criteria.
+ */
 export const selectTodos = (todos = [], options = {}) => {
   const defaults = {
     matches: {},
@@ -31,6 +53,15 @@ export const selectTodos = (todos = [], options = {}) => {
   return orderBy(filter(todos, opts.matches), opts.sortBy, opts.sortOrder);
 };
 
+/**
+ * Select and sort Todos using the options in the supplied ListContext.
+ * @function
+ * @param {Todo[]} [items=[]] The source collection of Todos.
+ * @param {ListContext} [listContext={}] The list context.
+ * @returns {Todo[]} Returns a sorted collection of Todos matching the
+ * ListContext criteria.
+ * @see {@link contexts/list/ListContext}
+ */
 export const selectTodosWithListContext = (items = [], listContext = {}) => {
   const context = merge({}, DEFAULT_LIST_CONTEXT, listContext);
 

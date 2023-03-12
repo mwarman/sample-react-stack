@@ -1,25 +1,15 @@
+/**
+ * Todo form validation schemas.
+ * @module validators/todo
+ */
+
 import * as Yup from 'yup';
 import map from 'lodash/map';
 
 import { Expressions, Priorities, Statuses } from '../utils/constants';
 
 /**
- * Todo
- * * id
- * * summary
- * * description
- * * statusCode
- * * priorityCode
- * * dueAt
- * * assigneeId
- * * startedAt
- * * completedAt
- * * createdAt
- * * updatedAt
- */
-
-/**
- * Todo validation schema
+ * Validation schema for Todo create and update form submission.
  */
 export const todoSchema = Yup.object({
   summary: Yup.string().max(100, 'Must be 100 characters or less').required('Required'),

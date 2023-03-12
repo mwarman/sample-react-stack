@@ -1,9 +1,25 @@
+/**
+ * The `ListFooter` React component.
+ * @module components/common/lists/ListFooter
+ */
+
 import classNames from 'classnames';
 
 import { useListContext } from '../../../hooks/list.hooks';
 
 import Icon from '../icons/Icon';
 
+/**
+ * The `ListFooter` component renders list status information at the bottom
+ * of a page of items. This component integrates with the `ListContext` to
+ * provide pagination controls.
+ * @function
+ * @param {Object} props The component properties.
+ * @param {Object[]} [props.items=[]] The list items.
+ * @returns {JSXElement} JSX
+ * @example
+ * <ListFooter items={list} />
+ */
 const ListFooter = ({ items = [] }) => {
   const { list, setPage } = useListContext();
 

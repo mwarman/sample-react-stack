@@ -1,5 +1,22 @@
+/**
+ * The `AppTheme` React component.
+ * @module components/common/theme/AppTheme
+ */
+
 import { useGetPreferences } from '../../../hooks/preferences.hooks';
 
+/**
+ * The `AppTheme` component applies application-wide theme styling
+ * based upon user preferences.
+ * @function
+ * @param {Object} props The component properties.
+ * @param {JSXElement} props.children The inner content, i.e. the application.
+ * @returns {JSXElement} JSX
+ * @example
+ * <AppTheme>
+ *  <RouterProvider router={router} />
+ * </AppTheme>
+ */
 const AppTheme = ({ children }) => {
   const { data: preferences } = useGetPreferences();
 

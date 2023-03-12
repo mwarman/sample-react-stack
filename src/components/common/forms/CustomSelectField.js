@@ -1,3 +1,8 @@
+/**
+ * The `CustomSelectField` React component.
+ * @module components/common/forms/CustomSelectField
+ */
+
 import { useState } from 'react';
 import { useField } from 'formik';
 import classNames from 'classnames';
@@ -22,8 +27,28 @@ import reject from 'lodash/reject';
  *  }
  * ]
  * ```
+ * @function
  * @param {Object} props The component properties.
- * @returns JSX
+ * @param {string} [props.className] Optional additional classes applied to the select field.
+ * @param {boolean} [props.disabled=false] Indicates if the field is in disabled state.
+ * @param {name} props.name The field name, i.e. within the overall form.
+ * @param {Object[]} [props.options=[]] The available options.
+ * @param {string} props.placeholder The value to display when the field value is empty.
+ * @returns {JSXElement} JSX
+ * @example
+ * <CustomSelectField
+ *   className="my-3"
+ *   disabled={isSubmitting}
+ *   name="priority"
+ *   placeholder="Select one"
+ *   options={[{
+ *     value='high',
+ *     label=<div className="text-red">High</div>
+ *   },{
+ *     value='low',
+ *     label=<div className="text-blue">Low</div>
+ *   }]}
+ * />
  */
 const CustomSelectField = ({ className, disabled = false, name, options = [], placeholder }) => {
   const [isClosed, setIsClosed] = useState(true);

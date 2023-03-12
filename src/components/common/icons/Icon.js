@@ -1,3 +1,8 @@
+/**
+ * The `Icon` React component.
+ * @module components/common/icons/Icon
+ */
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import {
@@ -23,6 +28,11 @@ import {
   faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 
+/**
+ * Returns the icon component matching the supplied name.
+ * @param {string} name The icon name.
+ * @returns {JSXElement} The icon.
+ */
 const selectIcon = (name) => {
   switch (name) {
     case 'angle-down':
@@ -68,6 +78,18 @@ const selectIcon = (name) => {
   }
 };
 
+/**
+ * The `Icon` component renders an icon. Wraps the `FontAwesomeIcon` component.
+ * @function
+ * @param {Object} props The component properties.
+ * @param {string} props.name The icon name.
+ * @param {*} [props....props] Any additional properties added to the icon
+ * element.
+ * @returns {JSXElement} JSX
+ * @see {@link https://fontawesome.com/v6/docs/web/use-with/react/style Icon Styling with React}
+ * @example
+ *  <Icon name="circle-notch" spin className="inline-block" />
+ */
 const Icon = ({ name, ...props }) => {
   return <FontAwesomeIcon icon={selectIcon(name)} {...props} />;
 };

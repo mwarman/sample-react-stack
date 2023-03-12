@@ -1,8 +1,44 @@
+/**
+ * React context to manage lists of items.
+ * @module contexts/list
+ */
+/**
+ * The ListContextOptions object.
+ * @typedef {Object} ListContextOptions
+ * @property {Object} matches - Filter matching criteria.
+ * @property {Object} pagination - Pagination controls.
+ * @property {number} pagination.page - The current page.
+ * @property {number} pagination.size - The maximum number of items per page.
+ * @property {string} search - Text search criteria.
+ * @property {Object} sort - Sort controls.
+ * @property {string} sort.by - The attribute by which to sort.
+ * @property {string} sort.order - The sort direction. One of 'asc', 'desc'.
+ * @example
+ * const listContextOptions = {
+  matches: {
+    isArchived: false
+  },
+  pagination: {
+    page: 1,
+    size: 10,
+  },
+  search: 'monkey',
+  sort: {
+    by: 'summary',
+    order: 'asc',
+  },
+};
+ */
+
 import React, { useMemo, useReducer } from 'react';
 import merge from 'lodash/merge';
 
+/** The ListContext React Context */
 export const ListContext = React.createContext();
 
+/**
+ * Enumeration of ListContext reducer action types.
+ */
 export const Actions = {
   SET_MATCHES: 'SET_MATCHES',
   SET_PAGE: 'SET_PAGE',
@@ -10,6 +46,10 @@ export const Actions = {
   SET_SORT: 'SET_SORT',
 };
 
+/**
+ * ListContext default state.
+ * @type ListContextOptions
+ */
 export const DEFAULT_STATE = {
   matches: {},
   pagination: {
@@ -23,6 +63,13 @@ export const DEFAULT_STATE = {
   },
 };
 
+/**
+ * ListContext reducer function manages the internal state of the context.
+ * @function
+ * @param state {ListContextOptions} The current context state.
+ * @param action {Object} The action to perform.
+ * @returns {ListContextOptions} The updated context state.
+ */
 const reducer = (state, action) => {
   const { type, payload } = action;
 
@@ -60,6 +107,17 @@ const reducer = (state, action) => {
   }
 };
 
+/**
+ * The `ListContextProvider` component creates a ListContext which may be
+ * consumed by children of this component.
+ * @function
+ * @param {Object} properties The component properties.
+ * @param {ListContextOptions} [properties.listOptions={}] Initial list context options.
+ * @param {*} properties.props The rest of the component properties.
+ * @returns {JSXElement} A JSX element which serves as the React Context
+ * provider for list contexts. Children may consume the context values with
+ * the `useListContext` hook.
+ */
 export const ListContextProvider = ({ listOptions = {}, ...props }) => {
   const initialState = merge({}, DEFAULT_STATE, listOptions);
 

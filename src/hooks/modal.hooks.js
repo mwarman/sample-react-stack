@@ -1,16 +1,20 @@
+/**
+ * Hooks to interact with the `ModalContext`.
+ * @module hooks/modal
+ * @see {@link contexts/modal}
+ */
+
 import { useContext } from 'react';
 
 import { ModalContext } from '../contexts/modal.context';
 
 /**
- * A hook which returns the current value of the `ModalContext` React Context.
- * The hook provides access to the context value and the functions to mutate it.
- *
- * Usage:
- * ```
+ * Hook which returns the current value of the `ModalContext` and the functions
+ * to mutate the context value.
+ * @function
+ * @returns {Object} The current `ModalContext` value and the functions to mutate it.
+ * @example
  * const {modalOptions, setModalOptions} = useModalContext();
- * ```
- * @returns The current `ModalContext` value.
  */
 export const useModalContext = () => {
   const context = useContext(ModalContext);
