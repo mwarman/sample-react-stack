@@ -39,7 +39,6 @@ export const StorageKeys = {
   AuthState: 'auth.state',
   Preferences: 'preferences',
   Todos: 'todos',
-  Users: 'users',
 };
 
 /**
@@ -51,7 +50,6 @@ export const QueryKeys = {
   AuthState: 'authstate',
   Preferences: 'preferences',
   Todos: 'todos',
-  Users: 'users',
 };
 
 /**
