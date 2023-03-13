@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import Badge from '../common/badges/Badge';
 import Loading from '../common/Loading';
 
+import { useAuthState } from '../../hooks/auth.hooks';
 import { useGetTodos } from '../../hooks/todos.hooks';
 import { selectTodos } from '../../selectors/todos.selectors';
 
@@ -21,7 +22,10 @@ const DashboardPage = () => {
     document.title = 'Dashboard - Sample React Stack';
   }, []);
 
-  const { data: todos, isLoading } = useGetTodos();
+  const { data: authState } = useAuthState();
+  const { data: todos, isLoading } = useGetTodos(authState?.id, {
+    enabled: !!authState?.id,
+  });
 
   if (isLoading) {
     return <Loading className="my-8 animate-pulse justify-center text-6xl text-slate/70" />;

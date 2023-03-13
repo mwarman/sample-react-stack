@@ -12,16 +12,17 @@ import { QueryKeys } from '../utils/constants';
 /**
  * A React Query query hook which fetches all todos.
  * @function
- * @param {UseQueryOptions} options React Query query options.
+ * @param {string} assigneeId The userId assigned to the Todo.
+ * @param {UseQueryOptions} [options] React Query query options.
  * @returns {UseQueryResult} A React Query `UseQueryResult` object.
  * @see {@link https://tanstack.com/query/latest/docs/react/reference/useQuery|useQuery}
  */
-export const useGetTodos = (options) => {
+export const useGetTodos = (assigneeId, options) => {
   return useQuery({
     select: (todos) => todos.map(selectTodoOnQuery),
     ...options,
     queryKey: [QueryKeys.Todos],
-    queryFn: getTodos,
+    queryFn: () => getTodos(assigneeId),
   });
 };
 

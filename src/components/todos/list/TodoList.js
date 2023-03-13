@@ -15,6 +15,7 @@ import ListLoading from '../../common/lists/ListLoading';
 import ListEmpty from '../../common/lists/ListEmpty';
 import TodoListItem from './TodoListItem';
 
+import { useAuthState } from '../../../hooks/auth.hooks';
 import { useGetTodos } from '../../../hooks/todos.hooks';
 import { useListContext } from '../../../hooks/list.hooks';
 import { selectTodosWithListContext } from '../../../selectors/todos.selectors';
@@ -27,7 +28,16 @@ import ListError from '../../common/lists/ListError';
  * @returns {JSXElement} JSX
  */
 const TodoList = () => {
-  const { data: todos, error, isError, isLoading, isFetching } = useGetTodos();
+  const { data: authState } = useAuthState();
+  const {
+    data: todos,
+    error,
+    isError,
+    isLoading,
+    isFetching,
+  } = useGetTodos(authState?.id, {
+    enabled: !!authState?.id,
+  });
   const { list: listContext, setPage } = useListContext();
   const { page = [], items = [] } = selectTodosWithListContext(todos, listContext);
   const isEmpty = items && items.length === 0;
