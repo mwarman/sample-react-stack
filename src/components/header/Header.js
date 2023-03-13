@@ -31,6 +31,7 @@ const Header = () => {
   return (
     <div
       id="header"
+      data-testid="header"
       className="flex h-16 items-center px-16 shadow-lg shadow-slate-light/30 dark:shadow-slate-700/30"
     >
       <div id="title" className="mr-10">

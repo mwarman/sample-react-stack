@@ -58,6 +58,7 @@ const Avatar = ({ className, name = '' }) => {
           className,
         )}
         title={avatarName}
+        data-testid="avatar"
       >
         <span>{avatarName.charAt(0)}</span>
       </div>
