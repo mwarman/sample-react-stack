@@ -15,7 +15,6 @@ import TextareaField from '../../common/forms/TextareaField';
 import PriorityField from '../common/PriorityField';
 import StatusField from '../common/StatusField';
 import Label from '../../common/forms/Label';
-import UserName from '../../users/UserName';
 import DateTime from '../../common/dates/DateTime';
 import DateTimeRelative from '../../common/dates/DateTimeRelative';
 
@@ -71,13 +70,6 @@ const TodoForm = ({ formik, onCancel }) => {
         </div>
 
         <div>
-          <div className="mb-4">
-            <div className="mb-2 text-sm font-bold">Assignee</div>
-            <div>
-              <UserName accountId={formik.values.assigneeId} />
-            </div>
-          </div>
-
           <div className="mb-4 w-60">
             <Label htmlFor="statusCode">Status</Label>
             <StatusField id="statusCode" name="statusCode" disabled={formik.isSubmitting} />

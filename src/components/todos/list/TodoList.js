@@ -70,27 +70,22 @@ const TodoList = () => {
             <div className={classNames({ 'opacity-25': isFetching })}>
               <ListHeader>
                 <ListColumn
-                  className="col-span-6 overflow-clip whitespace-nowrap"
+                  className="col-span-5 overflow-clip whitespace-nowrap"
                   name="Summary"
                   path="summary"
                 />
                 <ListColumn
-                  className="col-span-1 overflow-clip whitespace-nowrap"
+                  className="col-span-2 overflow-clip whitespace-nowrap"
                   name="Status"
                   path="statusObj.ordinal"
                 />
                 <ListColumn
-                  className="col-span-1 overflow-clip whitespace-nowrap"
+                  className="col-span-2 overflow-clip whitespace-nowrap"
                   name="Priority"
                   path="priorityObj.ordinal"
                 />
                 <ListColumn
                   className="col-span-2 overflow-clip whitespace-nowrap"
-                  name="Assignee"
-                  path="assigneeId"
-                />
-                <ListColumn
-                  className="col-span-1 overflow-clip whitespace-nowrap"
                   name="Due"
                   path="dueAt"
                 />
