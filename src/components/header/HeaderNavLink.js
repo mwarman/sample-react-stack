@@ -34,6 +34,7 @@ const HeaderNavLink = ({ className, show = true, ...props }) => {
         )
       }
       {...props}
+      data-testid="header-nav-link"
     />
   );
 };

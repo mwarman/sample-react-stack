@@ -14,7 +14,7 @@ import DropdownMenuLink from '../common/menus/DropdownMenuLink';
 import DropdownMenuTitle from '../common/menus/DropdownMenuTitle';
 import ThemeToggle from '../common/theme/ThemeToggle';
 
-import { useAuthState } from '../../hooks/auth.hooks';
+import { useAuthState, useGetAccount } from '../../hooks/auth.hooks';
 
 /**
  * The `Header` component renders the top toolbar menu within the application.
@@ -22,12 +22,16 @@ import { useAuthState } from '../../hooks/auth.hooks';
  * @returns {JSXElement} JSX
  */
 const Header = () => {
-  const { data: authState, isSuccess } = useAuthState();
-  const isAuthenticated = isSuccess && authState?.isAuthenticated;
+  const { data: authState, isSuccess: isSuccessAuthState } = useAuthState();
+  const { data: account } = useGetAccount(authState?.id, {
+    enabled: !!authState?.id,
+  });
+  const isAuthenticated = isSuccessAuthState && authState?.isAuthenticated;
 
   return (
     <div
       id="header"
+      data-testid="header"
       className="flex h-16 items-center px-16 shadow-lg shadow-slate-light/30 dark:shadow-slate-700/30"
     >
       <div id="title" className="mr-10">
@@ -54,7 +58,15 @@ const Header = () => {
         </HeaderNavLink>
       </nav>
       {isAuthenticated && (
-        <DropdownMenu trigger={<Avatar className="cursor-pointer" />} position="-right-0 top-11">
+        <DropdownMenu
+          trigger={
+            <Avatar
+              className="cursor-pointer"
+              name={`${account?.firstName || ''} ${account?.lastName || ''}`}
+            />
+          }
+          position="-right-0 top-11"
+        >
           <DropdownMenuTitle>Account</DropdownMenuTitle>
           <DropdownMenuLink to="/auth/signout" title="Sign Out">
             Sign Out

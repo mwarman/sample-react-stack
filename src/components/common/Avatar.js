@@ -4,8 +4,7 @@
  */
 
 import classNames from 'classnames';
-
-import { useGetAccount, useAuthState } from '../../hooks/auth.hooks';
+import trim from 'lodash/trim';
 
 /**
  * Color options and their corresponding CSS classes.
@@ -33,20 +32,23 @@ const getColorClasses = (name) => {
 
 /**
  * The `Avatar` component renders a colored user avatar which displays the
- * user's initials.
+ * user's initial. Renders when `name` value is passed.
  * @function
  * @param {Object} props The component properties.
  * @param {string} [props.className] Optional additional classes applied to the avatar element.
+ * @param {string} [props.name=''] Optional. A name. Must be provided to render.
  * @returns {JSXElement} JSX
+ * @example
+ * <Avatar name='Bob' />
+ * // renders Avatar for Bob
+ * <Avatar name='' />
+ * // renders null
  */
-const Avatar = ({ className }) => {
-  const { data: authState } = useAuthState();
-  const { data: account, status } = useGetAccount(authState.id, {
-    enabled: !!authState?.id,
-  });
+const Avatar = ({ className, name = '' }) => {
+  const avatarName = trim(name);
 
-  if (status === 'success') {
-    const colorClasses = getColorClasses(account.firstName + account.lastName);
+  if (avatarName) {
+    const colorClasses = getColorClasses(avatarName);
 
     return (
       <div
@@ -55,9 +57,10 @@ const Avatar = ({ className }) => {
           colorClasses,
           className,
         )}
-        title={`${account.firstName} ${account.lastName}`}
+        title={avatarName}
+        data-testid="avatar"
       >
-        <span>{account.firstName.charAt(0)}</span>
+        <span>{avatarName.charAt(0)}</span>
       </div>
     );
   }
