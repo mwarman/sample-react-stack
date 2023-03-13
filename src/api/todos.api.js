@@ -16,6 +16,8 @@
  * @property {string} updatedAt - The last updated timestamp. ISO8601 format.
  */
 
+import filter from 'lodash/filter';
+
 import storage from '../utils/storage';
 import { generateId } from '../utils/id';
 import { delay } from '../utils/delay';
@@ -24,17 +26,19 @@ import { todoCreateSchema, todoUpdateSchema } from './validators/todos.api.valid
 import { StorageKeys } from '../utils/constants';
 
 /**
- * Fetch all Todos.
+ * Fetch all Todos by assignee.
  * @function
  * @async
+ * @param {string} assigneeId The userId assigned to the Todo.
  * @returns {Promise<Todo[]>} Returns a Promise which resolves to a collection
  * of Todos if successful; otherwise, rejects with an error.
  */
-export const getTodos = async () => {
+export const getTodos = async (assigneeId) => {
   return new Promise((resolve, reject) => {
     delay().then(() => {
       try {
-        const todos = storage.getJson(StorageKeys.Todos) || [];
+        const allTodos = storage.getJson(StorageKeys.Todos) || [];
+        const todos = filter(allTodos, { assigneeId });
         return resolve(todos);
       } catch (err) {
         return reject(err);

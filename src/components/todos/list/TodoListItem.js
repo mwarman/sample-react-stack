@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 
 import StatusBadge from '../common/StatusBadge';
 import Priority from '../common/Priority';
-import UserName from '../../users/UserName';
 import DueDate from '../common/DueDate';
 import DropdownMenu from '../../common/menus/DropdownMenu';
 import DropdownMenuLink from '../../common/menus/DropdownMenuLink';
@@ -28,21 +27,18 @@ const TodoListItem = ({ todo }) => {
 
   return (
     <div className="grid grid-cols-12 items-center gap-4 p-2 hover:bg-slate/20">
-      <div className="col-span-6 overflow-clip whitespace-nowrap">
+      <div className="col-span-5 overflow-clip whitespace-nowrap">
         <Link to={`/todos/${todo.id}`} title="Edit Todo" className="hover:underline">
           {todo.summary}
         </Link>
       </div>
-      <div className="col-span-1 overflow-clip whitespace-nowrap">
+      <div className="col-span-2 overflow-clip whitespace-nowrap">
         <StatusBadge code={todo.statusCode} />
       </div>
-      <div className="col-span-1 overflow-clip whitespace-nowrap">
+      <div className="col-span-2 overflow-clip whitespace-nowrap">
         <Priority code={todo.priorityCode} />
       </div>
       <div className="col-span-2 overflow-clip whitespace-nowrap">
-        <UserName accountId={todo.assigneeId} />
-      </div>
-      <div className="col-span-1 overflow-clip whitespace-nowrap">
         <DueDate dueDate={todo.dueAt} isOverdue={todo.isOverdue} />
       </div>
       <div className="col-span-1">
