@@ -5,6 +5,7 @@
 
 import { Formik } from 'formik';
 import { Link } from 'react-router-dom';
+import uniqueId from 'lodash/uniqueId';
 
 import TodoCreateForm from './TodoCreateForm';
 
@@ -35,6 +36,7 @@ const TodoCreate = ({ onCancel, onSuccess }) => {
         priorityCode: 'medium',
         statusCode: 'todo',
         dueAt: '',
+        id: uniqueId(), // generate temporary id for optimistic creation
       }}
       validationSchema={todoSchema}
       onSubmit={(values, { setSubmitting }) => {
