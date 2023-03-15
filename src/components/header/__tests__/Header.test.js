@@ -4,8 +4,8 @@ import { renderWithProviders } from '../../../test/helpers';
 
 import * as authHooks from '../../../hooks/auth.hooks';
 import Header from '../Header';
-import { authenticatedUser1, notAuthenticated } from '../../../__fixtures__/authstate.fixture';
-import { account1 } from '../../../__fixtures__/accounts.fixture';
+import { authenticatedUser1, notAuthenticated } from '../../../__fixtures__/authstate.fixtures';
+import { account1 } from '../../../__fixtures__/accounts.fixtures';
 
 const useAuthStateSpy = jest.spyOn(authHooks, 'useAuthState');
 const useGetAccountSpy = jest.spyOn(authHooks, 'useGetAccount');
