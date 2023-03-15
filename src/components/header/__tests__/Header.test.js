@@ -1,6 +1,4 @@
-import { screen, waitFor } from '@testing-library/react';
-
-import { renderWithProviders } from '../../../test/helpers';
+import { render, screen } from '../../../test/test-utils';
 
 import * as authHooks from '../../../hooks/auth.hooks';
 import Header from '../Header';
@@ -22,13 +20,13 @@ describe('Header', () => {
   });
 
   it('should render successfully', () => {
-    renderWithProviders(<Header />);
+    render(<Header />);
 
     expect(screen.getByTestId('header')).toBeDefined();
   });
 
   it('should render Sign In link to unauthenticated user', () => {
-    renderWithProviders(<Header />);
+    render(<Header />);
 
     expect(screen.getByText(/Sign In/i)).toBeInTheDocument();
   });
@@ -40,7 +38,7 @@ describe('Header', () => {
     });
     useGetAccountSpy.mockReturnValueOnce({ data: account1 });
 
-    renderWithProviders(<Header />);
+    render(<Header />);
 
     expect(screen.getByText(/Sign Out/i)).toBeInTheDocument();
   });
