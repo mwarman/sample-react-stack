@@ -54,7 +54,10 @@
       "node_modules",
       "src/test",
       "__fixtures__"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^test-utils$": "<rootDir>/src/test/test-utils.js"
+    }
   },
   "browserslist": {
     "production": [

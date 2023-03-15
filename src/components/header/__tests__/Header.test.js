@@ -1,4 +1,4 @@
-import { render, screen } from '../../../test/test-utils';
+import { render, screen } from 'test-utils';
 
 import * as authHooks from '../../../hooks/auth.hooks';
 import Header from '../Header';
