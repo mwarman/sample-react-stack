@@ -39,7 +39,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:coverage": "CI=true react-scripts test --coverage",
+    "test:coverage": "CI=true react-scripts test --coverage --verbose --color",
     "jsdoc": "jsdoc --configure jsdoc.json",
     "eject": "react-scripts eject"
   },
