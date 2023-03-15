@@ -49,6 +49,13 @@
       "react-app/jest"
     ]
   },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "node_modules",
+      "src/test",
+      "__fixtures__"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
