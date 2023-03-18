@@ -72,6 +72,15 @@ const customRender = (ui, options, { route = '/' } = {}) => {
   return render(ui, { wrapper: WithAllProviders, ...options });
 };
 
+/**
+ * A custom `renderHook` function which configures a wrapper for rendering
+ * consisting of the `QueryClientProvider` for testing React Query hooks.
+ * @param {function} render A function which invokes the hook to be tested.
+ * @param {*} options Render hook options.
+ * @returns {Object} Render hook result.
+ * @see {@link https://testing-library.com/docs/react-testing-library/api/#renderhook-options}
+ * @see {@link https://testing-library.com/docs/react-testing-library/api/#renderhook-result}
+ */
 const customRenderHook = (render, options) => {
   return renderHook(render, { wrapper: WithQueryClientProvider, ...options });
 };
