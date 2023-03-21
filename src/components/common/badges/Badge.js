@@ -45,6 +45,7 @@ export const Badge = ({ children, className, variant }) => {
         getVariantClasses(variant),
         className,
       )}
+      data-testid="badge"
     >
       {children}
     </span>
