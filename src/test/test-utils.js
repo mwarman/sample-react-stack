@@ -42,18 +42,6 @@ const WithAllProviders = ({ children }) => {
 };
 
 /**
- * The `QueryClientProvider` which wraps a component to be rendered under
- * test, i.e. the `children`.
- * @function
- * @param {Object} props The component properties.
- * @param {JSXElement} props.children The wrapped component.
- * @returns {JSXElement} The component wrapper.
- */
-const WithQueryClientProvider = ({ children }) => {
-  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
-};
-
-/**
  * A custom `render` function which configures a wrapper for rendering
  * consisting of all the application providers. Configures a `MemoryRouter`
  * and history.
@@ -74,7 +62,8 @@ const customRender = (ui, options, { route = '/' } = {}) => {
 
 /**
  * A custom `renderHook` function which configures a wrapper for rendering
- * consisting of the `QueryClientProvider` for testing React Query hooks.
+ * consisting of all the application providers. Useful for testing React
+ * Query hooks.
  * @param {function} render A function which invokes the hook to be tested.
  * @param {*} options Render hook options.
  * @returns {Object} Render hook result.
@@ -82,7 +71,7 @@ const customRender = (ui, options, { route = '/' } = {}) => {
  * @see {@link https://testing-library.com/docs/react-testing-library/api/#renderhook-result}
  */
 const customRenderHook = (render, options) => {
-  return renderHook(render, { wrapper: WithQueryClientProvider, ...options });
+  return renderHook(render, { wrapper: WithAllProviders, ...options });
 };
 
 // re-export everything
