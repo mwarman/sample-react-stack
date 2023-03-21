@@ -16,7 +16,12 @@ import classNames from 'classnames';
  * <Placeholder className="ml-3 h-5 w-32" />
  */
 const Placeholder = ({ className }) => {
-  return <div className={classNames('animate-pulse rounded bg-slate-light/70', className)}></div>;
+  return (
+    <div
+      className={classNames('animate-pulse rounded bg-slate-light/70', className)}
+      data-testid="placeholder"
+    ></div>
+  );
 };
 
 export default Placeholder;
