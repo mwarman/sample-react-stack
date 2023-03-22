@@ -14,7 +14,11 @@ import classNames from 'classnames';
  * @returns {JSXElement} JSX
  */
 const ButtonBar = ({ className, children }) => {
-  return <div className={classNames('flex items-center', className)}>{children}</div>;
+  return (
+    <div className={classNames('flex items-center', className)} data-testid="button-bar">
+      {children}
+    </div>
+  );
 };
 
 export default ButtonBar;
