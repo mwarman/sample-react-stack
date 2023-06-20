@@ -4,6 +4,7 @@
  */
 
 import { Link } from 'react-router-dom';
+import toString from 'lodash/toString';
 
 import Icon from '../common/icons/Icon';
 import HeaderNavLink from './HeaderNavLink';
@@ -62,7 +63,7 @@ const Header = () => {
           trigger={
             <Avatar
               className="cursor-pointer"
-              name={`${account?.firstName || ''} ${account?.lastName || ''}`}
+              name={`${toString(account?.firstName)} ${toString(account?.lastName)}`}
             />
           }
           position="-right-0 top-11"

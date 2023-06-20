@@ -43,6 +43,7 @@ const Button = ({ className, children, size = 'md', variant = 'default', ...prop
     <button
       className={classNames('rounded border-0', sizeClasses, colorClasses, className)}
       {...props}
+      data-testid="button"
     >
       {children}
     </button>

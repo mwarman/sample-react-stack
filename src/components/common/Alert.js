@@ -51,7 +51,10 @@ const Alert = ({ children, className, variant = 'default' }) => {
   }
 
   return (
-    <div className={classNames('flex items-center rounded p-2', alertColor, iconColor, className)}>
+    <div
+      className={classNames('flex items-center rounded p-2', alertColor, iconColor, className)}
+      data-testid="alert"
+    >
       <Icon name="triangle-exclamation" className="mr-2 inline-block h-6 w-6" />
       <div>{children}</div>
     </div>

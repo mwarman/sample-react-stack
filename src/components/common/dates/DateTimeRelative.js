@@ -28,7 +28,7 @@ const DateTimeRelative = ({ date, titleFormat, ...props }) => {
   const title = !!titleFormat ? dayjs(date).format(titleFormat) : null;
 
   return (
-    <span {...props} title={title}>
+    <span {...props} title={title} data-testid="datetime-relative">
       {dayjs(date).fromNow()}
     </span>
   );

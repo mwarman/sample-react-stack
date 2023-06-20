@@ -1,6 +1,6 @@
 {
   "name": "sample-react-stack",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "6.3.0",
@@ -39,7 +39,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:coverage": "CI=true react-scripts test --coverage",
+    "test:ci": "CI=true react-scripts test --coverage --verbose --color",
     "jsdoc": "jsdoc --configure jsdoc.json",
     "eject": "react-scripts eject"
   },
@@ -48,6 +48,24 @@
       "react-app",
       "react-app/jest"
     ]
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "node_modules",
+      "src/test",
+      "__fixtures__"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 20,
+        "functions": 20,
+        "lines": 20,
+        "statements": 20
+      }
+    },
+    "moduleNameMapper": {
+      "^test-utils$": "<rootDir>/src/test/test-utils.js"
+    }
   },
   "browserslist": {
     "production": [
